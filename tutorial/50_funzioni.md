@@ -515,6 +515,13 @@ checkEquality("Arianna", "Claudio") // -> stampa: "Come il giorno e la notte"
 checkEquality(7, 7) // -> stampa: "Due gocce d'acqua"
 ```
 
+### Esercizio - funzione
+
+Ora prova tu! Questo esercizio ti chiederà di completare una funzione di modo che esegua certe operazioni.
+
+
+<a href="../src/catalogue/exercise_test/index.html" target="_blank">Prova tu stessa!</a>
+
 ## Return dentro if
 
 All'interno di una funzione si può invocare il comando `return` ovunque lo si voglia, non per forza solo alla fine.
@@ -682,6 +689,14 @@ console.log(message5) // non stampa nulla, perchè message5 è `undefined`
 > 
 > In JavaScript, usare `return` da solo, senza specificare alcun valore da restituire,
 > è come scrivere `return undefined`
+
+
+### Esercizio - validazione argomenti
+
+Ora prova tu! Questo esercizio è analogo a [quello precedente](#esercizio---funzione), ma questa volta per completarlo correttamente
+dovrai verificare la correttezza degli argomenti in input.
+
+<a href="../src/catalogue/exercise_test2/index.html" target="_blank">Prova tu stessa!</a>
 
 ## Return dentro cicli
 
