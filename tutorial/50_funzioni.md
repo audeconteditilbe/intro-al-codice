@@ -758,6 +758,14 @@ TODO
 
 ```
 
+## Esercizi
+
+I seguenti esercizi possono essere utili per fare (ulteriore) pratica nella scrittura di funzioni,
+nonchè per renderti conto di cosa forse non ti è ancora chiaro.
+
+- <a href="../src/catalogue/50_funzioni/exercise3/index.html" target="_blank">Concatenami tutto</a>
+- <a href="../src/catalogue/50_funzioni/exercise4/index.html" target="_blank">Trova tutti i Waldo!</a>
+- <a href="../src/catalogue/50_funzioni/exercise5/index.html" target="_blank">Elon Musk ha 11 figli e è riuscito a non beccare neanche un nome normale</a>
 
 ## *Breve digressione inutile* Graffe nelle funzioni
 
