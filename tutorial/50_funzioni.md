@@ -515,12 +515,52 @@ checkEquality("Arianna", "Claudio") // -> stampa: "Come il giorno e la notte"
 checkEquality(7, 7) // -> stampa: "Due gocce d'acqua"
 ```
 
+### Esempio: funzione con cicli all'interno
+
+E' naturalmente possibile usare [cicli](./40_cicli.md) all'interno delle funzioni.
+Il seguente esempio usa un ciclo per stampare il contenuto dell'array passata come argomento.
+
+```javascript
+function printNames (names) {
+  for (name of names) {
+    console.log('Hi! My name is' + name)
+  }
+}
+```
+
+### Esempio: somma dei numeri in input
+
+Il seguente esempio usa un ciclo per sommare i numeri contenuti nell'array passata come argomento.
+
+```javascript
+function sumNumbers (nums) {
+  let total = 0
+  for (num of nums) {
+    total = total + num
+  }
+  return total
+}
+```
+
+E' chiaro come *funziona questa funzione*? Forse può essere utile confrontarlo con [questo esempio](./40_cicli.md#esempio-flusso-completo).
+
+Se non ti è chiaro, prova a scrivere a fare del [rubber ducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging) con te stessa!
+
+Prova a scrivere ad esempio cosa succede se chiami la funzione con certi input:
+```javascript
+sumNumbers([1, 5, 7])
+```
+
+Se ancora non ti è chiaro, tranquilla: vieni pure da me, vediamo di capirlo bene insieme.
+<u>Dico davvero!</u> Cicli di questo tipo sono il pane quotidiano di praticamente tutti i programmi.
+
+... poi una volta che ci sei [sporcati un po' le mani](#esercizi---vari) 😙
+
 ### Esercizio - funzione
 
-Ora prova tu! Questo esercizio ti chiederà di completare una funzione di modo che esegua certe operazioni.
+<a href="../src/catalogue/50_funzioni/exercise1/index.html" target="_blank">Ora prova tu!</a>
+Questo esercizio ti chiederà di completare una funzione di modo che esegua certe operazioni.
 
-
-<a href="../src/catalogue/exercise_test/index.html" target="_blank">Prova tu stessa!</a>
 
 ## Return dentro if
 
@@ -693,18 +733,17 @@ console.log(message5) // non stampa nulla, perchè message5 è `undefined`
 
 ### Esercizio - validazione argomenti
 
-Ora prova tu! Questo esercizio è analogo a [quello precedente](#esercizio---funzione), ma questa volta per completarlo correttamente
+<a href="../src/catalogue/50_funzioni/exercise2/index.html" target="_blank">Ora prova tu!</a>
+Questo esercizio è simile al [precedente](#esercizio---funzione), ma questa volta per completarlo correttamente
 dovrai verificare la correttezza degli argomenti in input.
-
-<a href="../src/catalogue/exercise_test2/index.html" target="_blank">Prova tu stessa!</a>
 
 ## Return dentro cicli
 
 Come già detto [sopra](#return-dentro-if), all'interno di una funzione si può invocare il comando `return` ovunque lo si voglia,
 non per forza solo alla fine.
 
-Basandoti su quanto detto fino ad ora sulle funzioni, cosa ritieni accada quando durante l'esecuzione di una funzione
-si arriva ad un comando di `return`?
+Basandoti su quanto detto fino ad ora sulle funzioni, cosa ritieni accada quando durante l'esecuzione di un [ciclo](./40_cicli.md) all'interno
+di una funzione si arriva ad un comando di `return`?
 
 Quello che succede ogni volta che una funzione trova un `return`: questa termina, e qualunque cosa sia a destra del
 `return` è il risultato.
@@ -714,7 +753,7 @@ Quello che succede ogni volta che una funzione trova un `return`: questa termina
 ```javascript
 
 function findWaldo() {
-
+TODO
 }
 
 ```

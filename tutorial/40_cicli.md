@@ -16,18 +16,18 @@ finchè [CONDIZIONE], esegui [OPERAZIOINI]
 Schematicamente (è venuto davvero bene, sono un artista 🎨)
 
 ```
-  ➡️➡️➡️➡️➡️ verifica condizione
+  ➡️ ➡️ ➡️ ➡️ ➡️ verifica condizione
   ⬆️            ↙️         ↘️
   ⬆️          ↙️             ↘️
   ⬆️       risolve a        risolve a
   ⬆️         true             false
-  ⬆️          ⬇️               ⬇️
-  ⬆️          ⬇️               ⬇️
+  ⬆️          ⬇️                 ⬇️
+  ⬆️          ⬇️                 ⬇️
   ⬆️        esegue        FINE del ciclo
   ⬆️      operazioni      
   ⬆️          ⬇️
   ⬆️          ⬇️
-  ⬅️⬅️⬅️⬅️⬅️⬅️
+  ⬅️ ⬅️ ⬅️ ⬅️ ⬅️ ⬅️
 ```
 
 In quasi ogni linguaggio di programmazione esistono due tipi di ciclo, il ciclo `while` e il ciclo `for`.
@@ -268,6 +268,8 @@ console.log('I am happy now! :)')
 ```
 
 ### *Sexy approfondimento per secchioni* 🤓 Comando `break`
+
+TODO
 
 ## Ciclo `for`
 
