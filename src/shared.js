@@ -23,7 +23,7 @@ class ExercisePage extends HTMLElement {
           
           <textarea id="exercise-code-block"></textarea>
           
-          <input class="btn" type="submit" value="Conferma">
+          <input class="submit-btn" type="submit" value="Conferma">
         </form>
       </section>
       

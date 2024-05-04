@@ -25,15 +25,15 @@ const _tests = Array(25).fill(0).map((_, idx) => {
     const expected = idx >= 18
     const res = isAdult(input)
     
-    if (res !== expected) {
-      return { error: `Errore: con input ${input}, la funzione restituisce ${res}, ma dovrebbe restituire ${expected}` }
+    if (assertEq(res, expected)) {
+      return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(res)}` }
     }
-    return { success: `Ottimo! Con input ${input}, la funzione restituisce ${res}` }
+    return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(res)}, ma dovrebbe restituire ${pretty(expected)}` }
   }
 })
 
 const exercise = {
-  name: 'Esercizio 1',
+  name: 'Esercizio: vietato ai minori 🔞',
   text: 'Completa la funzione in modo che ritorni true se l\'argomento age è maggiore o uguale di 18, false altrimenti',
   initialValue: _initialValue,
   validation: _validation,

@@ -3,6 +3,7 @@ function isAdult (age) {
   // ...
 }
 `
+
 function _validation (codeStr) {
   let error
   let code
@@ -22,10 +23,10 @@ const testFunction = (input, expected) => (code) => {
   const isAdult = code()
   const res = isAdult(input)
   
-  if (res !== expected) {
-    return { error: `Errore: con input ${input}, la funzione restituisce ${res}, ma dovrebbe restituire ${expected}` }
+  if (assertEq(res, expected)) {
+    return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(res)}` }
   }
-  return { success: `Ottimo! Con input ${input}, la funzione restituisce ${res}` }
+  return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(res)}, ma dovrebbe restituire ${pretty(expected)}` }
 }
 const _tests = [
   ...Array(25).fill(0).map((_, idx) => testFunction(idx, idx >= 18)),
@@ -38,7 +39,7 @@ const _tests = [
 ]
 
 const exercise = {
-  name: 'Esercizio 1',
+  name: 'Esercizio: vietato ai minori 🔞... e a chi non ha un\'età',
   text: `\
   Completa la funzione in modo che ritorni true se l\'argomento age è maggiore o uguale di 18, \
   false se minore di 18, \

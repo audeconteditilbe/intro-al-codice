@@ -53,7 +53,7 @@ function addTestResult (msg, type) {
   testResults.appendChild(item)
 }
 
-function addReport (msg, type) {
+function addReportItem (msg, type) {
   reportResult.classList.add(type)  
   reportResult.innerText = msg
 }
@@ -116,7 +116,7 @@ function onsubmit (e) {
       }
     })
 
-    addReport(`Report: ${passed} test passati su ${tests.length}`, passed === tests.length ? 'success' : 'error')
+    addReportItem(`Report: ${passed} test passati su ${tests.length}`, passed === tests.length ? 'success' : 'error')
   }
 }
 
