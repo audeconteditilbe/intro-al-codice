@@ -1,7 +1,7 @@
-[<- lezione precedente (if)](./30_if.md)
-
-[-> lezione successiva (funzioni)](./50_funzioni.md)
-____
+<div style="display: flex; justify-content: space-between;">
+  <a href="./30_if">lezione precedente (if)</a>
+  <a href="./50_funzioni">lezione successiva (funzioni)</a>
+</div>
 
 # Operazioni ripetute (cicli)
 
@@ -354,8 +354,7 @@ TODO
 
 TODO
 
-____
-
-[<- lezione precedente (if)](./30_if.md)
-
-[-> lezione successiva (funzioni)](./50_funzioni.md)
+<div style="display: flex; justify-content: space-between;">
+  <a href="./30_if">lezione precedente (if)</a>
+  <a href="./50_funzioni">lezione successiva (funzioni)</a>
+</div>

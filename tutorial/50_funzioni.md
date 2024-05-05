@@ -1,6 +1,8 @@
-[<- lezione precedente (cicli)](./40_cicli.md)
 
-____
+<div style="display: flex; justify-content: space-between;">
+  <a href="./40_cicli">lezione precedente (cicli)</a>
+  <a></a>
+</div>
 
 # Funzioni
 
@@ -914,6 +916,7 @@ else {
 ```
 ...ognuno è matto a modo suo.
 
-____
-
-[<- lezione precedente (cicli)](./40_cicli.md)
+<div style="display: flex; justify-content: space-between;">
+  <a href="./40_cicli">lezione precedente (cicli)</a>
+  <a></a>
+</div>

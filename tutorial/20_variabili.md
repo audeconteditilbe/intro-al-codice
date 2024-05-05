@@ -1,8 +1,9 @@
-[<- lezione precedente (intro)](./10_intro.md)
 
-[-> lezione successiva (if)](./30_if.md)
+<div style="display: flex; justify-content: space-between;">
+  <a href="./10_intro">lezione precedente (intro)</a>
+  <a href="./30_if">lezione successiva (if)</a><br>
+</div>
 
-____
 
 # Dichiarare (creare) una variabile
 
@@ -324,8 +325,8 @@ num = num + 1 // -> Note that `num` is still a number!
 ```
 
 il valore di `num` viene aggiornato a 6, ad indicare che è ancora un numero.
-_____
 
-[<- lezione precedente (intro)](./10_intro.md)
-
-[-> lezione successiva (if)](./30_if.md)
+<div style="display: flex; justify-content: space-between;">
+  <a href="./10_intro">lezione precedente (intro)</a>
+  <a href="./30_if">lezione successiva (if)</a><br>
+</div>

@@ -1,6 +1,8 @@
-[-> lezione successiva (variabili)](./20_variabili.md)
 
-____
+<div style="display: flex; justify-content: space-between;">
+  <a></a>
+  <a href="./20_variabili">lezione successiva (variabili)</a>
+</div>
 
 
 # DISCLAIMER iniziale
@@ -96,6 +98,7 @@ Semplificando, possiamo per ora elencare questi tipi di operazioni:
   finchè [CONDIZINE] fai [OPERAZINOI]
   ```
 
-____
-
-[-> lezione successiva (variabili)](./20_variabili.md)
+<div style="display: flex; justify-content: space-between;">
+  <a></a>
+  <a href="./20_variabili">lezione successiva (variabili)</a>
+</div>
