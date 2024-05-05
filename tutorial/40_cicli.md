@@ -142,46 +142,105 @@ console.log('I am happy now! :)')
 
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-
-Il codice stampa:
-
-```
-Sleeping...
-Drinking...
-Eating...
-I am happy now! :)
-```
-
-Il flusso è il seguente:
-- valuto la condizione del while: `!iAmHappy` è uguale a `true`,
-quindi entro nel loop ([ricorda](./20_variabili.md#booleani) che `!` è il NOT logico)
-  - trovo un costrutto [`if ... else if ... `](./30_if.md#controllare-più-condizioni-alternative).
-  - valuto la condizione del primo `if`, ovvero `iAmTired`, che è `true`, quindi eseguo il codice corrispondente
-    - stampo "Sleeping..."
-    - aggiorno `iAmTired` a `false`
-  - esco dall' `if ... else if ...`
-  - eseguo l'operazione successiva: `iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired`
-  che è uguale a `iAmHappy = true && false && false`, qunidi il valore di `iAmHappy` rimane `false`.
-  [Ricorda](./20_variabili.md#booleani) che `&&` indica l'AND logico.
-- valuto la condizione del while: : `!iAmHappy` è uguale a `true`
-  - valuto la condizione del primo `if`, che è `false`, quindi passo all'`else if` successivo
-  - valuto la condizione del primo `else if`, che è `true`, quindi ne eseguo il codice
-    - stampo "Drinking..."
-    - aggiorno `iAmThirsty` a `false`
-  - esco dall' `if ... else if ...`
-  - eseguo l'operazione successiva: `iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired`,
-  che è uguale a `iAmHappy = true && true && false`, qunidi `iAmHappy` rimane `false`.
-- valuto la condizione del while: : `!iAmHappy` è uguale a `true`
-  - valuto la condizione del primo `if`, che è `false`
-  - valuto la condizione del primo `else if`, che è `false`
-  - valuto la condizione del secondo `else if`, che è `true`, quindi ne eseguo il codice
-    - stampo "Eating..."
-    - aggiorno `iAmHungry` a `false`
-  - esco dall' `if ... else if ...`
-  - eseguo l'operazione successiva: `iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired`,
-  che è uguale a `iAmHappy = true && true && true`, qunidi `iAmHappy` diventa `true`.
-- valuto la condizione del while: : `!iAmHappy` è uguale a `false`, quindi esco dal ciclo `while`
-- stampo "I am happy now! :)" Alla fine per essere felici basta poco si direbbe 🧘
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    Il codice stampa:
+    <pre><code>    Sleeping...
+      Drinking...
+      Eating...
+      I am happy now! :)</code></pre>
+    Il flusso è il seguente:
+    <ul>
+      <li>
+        valuto la condizione del while: <code>!iAmHappy</code> è uguale a <code>true</code>,
+        quindi entro nel loop (<a href="./20_variabili.md#booleani">ricorda</a> che <code>!</code> è il NOT logico)
+        <ul>
+          <li>
+            trovo un costrutto
+            <a href="./30_if.md#controllare-più-condizioni-alternative"><code>if ... else if ...</code></a>.
+          </li>
+          <li>
+            valuto la condizione del primo <code>if</code>, ovvero <code>iAmTired</code>,
+            che è <code>true</code>, quindi eseguo il codice corrispondente
+            <ul>
+              <li>stampo "Sleeping..."</li>
+              <li>aggiorno <code>iAmTired</code> a <code>false</code></li>
+            </ul>
+          </li>
+          <li>esco dall'<code>if ... else if ...</code></li>
+          <li>
+            eseguo l'operazione successiva:
+            <pre><code>iAmHappy = !iAmHungry &amp;&amp; !iAmThirsty &amp;&amp;!iAmTired</code></pre>
+            che è uguale a
+            <pre><code>iAmHappy = true &amp;&amp; false &amp;&amp; false</code></pre>
+            qunidi il valore di <code>iAmHappy</code> rimane <code>false</code>.
+            <a href="./20_variabili.md#booleani">Ricorda</a> che <code>&amp;&amp;</code> indica l'ND logico.
+          </li>
+        </ul>
+      </li>
+      <li>
+        valuto la condizione del while: : <code>!iAmHappy</code> è uguale a <code>true</code>
+        <ul>
+          <li>
+            valuto la condizione del primo <code>if</code>, che è
+            <code>false</code>, quindi passo all'code>else if</code> successivo
+          </li>
+          <li>
+            valuto la condizione del primo <code>else if</code>, che è
+            <code>true</code>, quindi ne eseguo il codice
+            <ul>
+              <li>stampo "Drinking..."</li>
+              <li>aggiorno <code>iAmThirsty</code> a <code>false</code></li>
+            </ul>
+          </li>
+          <li>esco dall'<code>if ... else if ...</code></li>
+          <li>
+            eseguo l'operazione successiva:
+            <pre><code>iAmHappy = !iAmHungry &amp;&amp; !iAmThirsty &amp;&amp; !iAmTired</code></pre>
+            che è uguale a
+            <pre><code>iAmHappy = true &amp;&amp; true &amp;&amp; false</code></pre>
+            qunidi <code>iAmHappy</code> rimane <code>false</code>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        valuto la condizione del while: : <code>!iAmHappy</code> è uguale a
+        <code>true</code>
+        <ul>
+          <li>
+            valuto la condizione del primo <code>if</code>, che è <code>false</code>
+          </li>
+          <li>
+            valuto la condizione del primo <code>else if</code>, che è
+            <code>false</code>
+          </li>
+          <li>
+            valuto la condizione del secondo <code>else if</code>, che è
+            <code>true</code>, quindi ne eseguo il codice
+            <ul>
+              <li>stampo "Eating..."</li>
+              <li>aggiorno <code>iAmHungry</code> a <code>false</code></li>
+            </ul>
+          </li>
+          <li>esco dall'<code>if ... else if ...</code></li>
+          <li>
+            eseguo l'operazione successiva:
+            <pre><code>iAmHappy = !iAmHungry &amp;&amp; !iAmThirsty &amp;&amp; !iAmTired</code></pre>
+            che è uguale a
+            <pre><code>iAmHappy = true &amp;&amp; true &amp;&amp; true</code></pre>
+            qunidi <code>iAmHappy</code> diventa <code>true</code>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        valuto la condizione del while: : <code>!iAmHappy</code> è uguale a
+        <code>false</code>, quindi esco dal ciclo <code>while</code>
+      </li>
+      <li>
+        stampo "I am happy now! :)" Alla fine per essere felici basta poco
+        si direbbe 🧘
+      </li>
+    </ul>
+  </div>
 </details>
 
 ### Esempio trabocchetto
@@ -201,18 +260,21 @@ Cosa esegue? Noti qualcosa di strano?
 
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-
-La condizione del ciclo `while`, `num < iterations`, non sarà mai `false`,
-qundi rimaniamo bloccati nel ciclo indefinitivamente!
-
-Quando questo si verifica, il nostro programma muore male 💀, spesso accompagnato da un
-pesante rallentamento dell'intero computer su cui il codice sta girando.
-
-Per farla semplice: il computer continua ad eseguire le operazioni specificate all'interno del ciclo
-indefinitivamnete, il che monopolizza le risorse, e manda in crush l'intero sistema.
-
-Occhio a non cadere in cicli infiniti!
-
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    <p>
+      La condizione del ciclo <code>while</code>, <code>num < iterations</code>, non sarà mai <code>false</code>,
+      qundi rimaniamo bloccati nel ciclo indefinitivamente!
+    </p>
+    <p>
+      Quando questo si verifica, il nostro programma muore male 💀, spesso accompagnato da un
+      pesante rallentamento dell'intero computer su cui il codice sta girando.
+    </p>
+    <p>
+      Per farla semplice: il computer continua ad eseguire le operazioni specificate all'interno del ciclo
+      indefinitivamnete, il che monopolizza le risorse, e manda in crush l'intero sistema.
+    </p>
+    <p>Occhio a non cadere in cicli infiniti!</p>
+  </div>
 </details>
 
 ### Occhio ai cicli infiniti

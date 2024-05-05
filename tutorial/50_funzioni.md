@@ -361,13 +361,17 @@ let val = askConfirmation()
 ```
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-
-La risposta è... nessun valore! Se hai pensato che `val` sia uguale a "Sei sicuro di voler proseguire?", ti meno.
-Scherzo, è comprensibile.
-Ma ricorda che l'output di una funzione è specificato dalla parola chiave `return`.
-
-[Il concetto di "nessun valore"](./20_variabili.md#variabili-non-definite) in JavaScript è indicato da `undefined`, ed indica che alla variabile non è (ancora) stato assegnato alcun un valore.
-
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    <p>
+      La risposta è... nessun valore! Se hai pensato che <code>val</code> sia uguale a "Sei sicuro di voler proseguire?", ti meno.
+      Scherzo, è comprensibile.
+      Ma ricorda che l'output di una funzione è specificato dalla parola chiave <code>return</code>.
+    </p>
+    <p>
+      <a href="./20_variabili.md#variabili-non-definite">Il concetto di "nessun valore"</a> in JavaScript è
+      indicato da <code>undefined</code>, ed indica che alla variabile non è (ancora) stato assegnato alcun un valore.
+    </p>
+  </div>
 </details>
 
 ### Esempio: funzioni in funzioni
@@ -429,9 +433,9 @@ hai capito cosa fa?
 
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-
-Unisce tre stringhe mettendo 'e' fra loro. In altre parole, è la versione con tre argomenti di `concatStrings`.
-
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    Unisce tre stringhe mettendo 'e' fra loro. In altre parole, è la versione con tre argomenti di <code>concatStrings</code>.
+  </div>
 </details>
 
 <br/>
@@ -568,28 +572,30 @@ sumNumbers([1, 5, 7])
 ```
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-  <ul>
-    <li>Creo una variabile <code>total</code> inizializzata a 0</li>
-    <li>
-      Eseguo il codice del ciclo <code>for</code> con il primo elemento dell'array in input, che vale 1:
-      <ul>
-        <li>incremento <code>total</code> di 1, che ora vale 1</li>
-      </ul>
-    </li>
-    <li>
-      Eseguo il codice del ciclo <code>for</code> con il secondo elemento dell'array in input, che vale 5:
-      <ul>
-        <li>incremento <code>total</code> di 5, che ora vale 6</li>
-      </ul>
-    </li>
-    <li>
-      Eseguo il codice del ciclo <code>for</code> con il terzo elemento dell'array in input, che vale 7:
-      <ul>
-        <li>incremento <code>total</code> di 7, che ora vale 13</li>
-      </ul>
-    </li>
-    <li>l'esecuzione termina</li>
-  </ul>
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    <ul>
+      <li>Creo una variabile <code>total</code> inizializzata a 0</li>
+      <li>
+        Eseguo il codice del ciclo <code>for</code> con il primo elemento dell'array in input, che vale 1:
+        <ul>
+          <li>incremento <code>total</code> di 1, che ora vale 1</li>
+        </ul>
+      </li>
+      <li>
+        Eseguo il codice del ciclo <code>for</code> con il secondo elemento dell'array in input, che vale 5:
+        <ul>
+          <li>incremento <code>total</code> di 5, che ora vale 6</li>
+        </ul>
+      </li>
+      <li>
+        Eseguo il codice del ciclo <code>for</code> con il terzo elemento dell'array in input, che vale 7:
+        <ul>
+          <li>incremento <code>total</code> di 7, che ora vale 13</li>
+        </ul>
+      </li>
+      <li>l'esecuzione termina</li>
+    </ul>
+  </div>
 </details>
 
 Se ancora non ti torna, tranquilla: vieni pure da me, vediamo di capirlo bene insieme.
@@ -643,17 +649,18 @@ function greetFriend (name, isFriend) {
 
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-
-Non c'è differenza.
-
-Il `return` all'interno del primo `if` fa in modo che se arrivassimo ad eseguirlo, le istruzinoi seguenti non sarebbero eseguite, in quanto la
-funzione terminerebbe immediatamente.
-Allo stesso tempo, se arivviamo ad eseguire l'istruzione successiva al blocco `if`, sicuramente la condizione dell'`if` non si è verificata,
-altrimenti avremmo raggiunto il `return` e terminato la funzione prima.
-
-Questo rende specificare la clausola `else` superfluo.
-
-Ma specificare un `else` non è un errore! Se ritieni che renda il codice più chiaro, fai pure cara.
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    <p>Non c'è differenza.</p>
+    <p>
+      Il <code>return</code> all'interno del primo <code>if</code> fa in modo che se arrivassimo ad eseguirlo,
+      le istruzinoi seguenti non sarebbero eseguite, in quanto la funzione terminerebbe immediatamente.
+      Allo stesso tempo, se arivviamo ad eseguire l'istruzione successiva al blocco <code>if</code>,
+      sicuramente la condizione dell'<code>if</code> non si è verificata,
+      altrimenti avremmo raggiunto il <code>return</code> e terminato la funzione prima.
+    </p>
+    <p>Questo rende specificare la clausola <code>else</code> superfluo.</p>
+    <p>Ma specificare un <code>else</code> non è un errore! Se ritieni che renda il codice più chiaro, fai pure cara.</p>
+  </div>
 
 </details>
 
@@ -844,20 +851,20 @@ nonchè per renderti conto di cosa forse non ti è ancora chiaro.
 
 <details>
   <summary>Già incontrati sopra</summary>
-  <ul>
-    <li>
-      <a href="../src/catalogue/50_funzioni/exercise1/index.html" target="_blank">Vietato ai minori!</a>
-    </li>
-    <li>
-      <a href="../src/catalogue/50_funzioni/exercise2/index.html" target="_blank">Vietato ai minori... e a chi non ha età!</a>
-    </li>
-    <li>
-      <a href="../src/catalogue/50_funzioni/exercise3/index.html" target="_blank">Concatenami tutto</a>
-    </li>
-  </ul>
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    <ul>
+      <li>
+        <a href="../src/catalogue/50_funzioni/exercise1/index.html" target="_blank">Vietato ai minori!</a>
+      </li>
+      <li>
+        <a href="../src/catalogue/50_funzioni/exercise2/index.html" target="_blank">Vietato ai minori... e a chi non ha età!</a>
+      </li>
+      <li>
+        <a href="../src/catalogue/50_funzioni/exercise3/index.html" target="_blank">Concatenami tutto</a>
+      </li>
+    </ul>
+  </div>
 </details>
-
-
 
 ## *Breve digressione inutile* Graffe nelle funzioni
 

@@ -88,13 +88,14 @@ let another_age = age + 5
 
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-
-- il computer risolve prima la parte a destra dell'uguale. L'espressione `age + 5` è risolta al numero 51
-- la parte a sinistra dell'uguale indica che una variabile di nome `another_age` va creata
-- il computer assegna a questa variabile il valore a destra dell'uguale, ovvero il numero 51
-
-Quindi, abbiamo creato una nuova variabile, chiamata `another_age`, che contiene il valore 51.
-
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+    <ul>
+      <li>il computer risolve prima la parte a destra dell'uguale. L'espressione <code>age + 5</code> è risolta al numero 51</li>
+      <li>la parte a sinistra dell'uguale indica che una variabile di nome <code>another_age</code> va creata</li>
+      <li>il computer assegna a questa variabile il valore a destra dell'uguale, ovvero il numero 51</li>
+    </ul>
+    Quindi, abbiamo creato una nuova variabile, chiamata <code>another_age</code>, che contiene il valore 51.
+  </div>
 </details>
 
 ## Esempio: dichiarare variabili di vario tipo
