@@ -4,9 +4,9 @@ ____
 
 # Funzioni
 
-Le funzioni possono essere viste come pezzi di codice che si possono riusare più volte.
+Le funzioni possono essere viste come pezzi di codice riutilizzabili.
 
-Anche le funzioni possono essere schematizzate con la stessa struttura di interi programmi [già accennata](./10_intro.md):
+Le funzioni possono essere schematizzate con la stessa struttura di interi programmi [già accennata](./10_intro.md):
 
 ```
 [dati input] -> operazioni sui dati -> [dati di output]
@@ -37,38 +37,42 @@ function addText (name, sentence)
 > return output
 > ```
 >
-> ogni volta che vorrò eseguire queste istruzioni, sarò io a darti valori appropriati per `name` e `sentence`
-
-Il codice di una funzione può essere usato tutte le volte che lo si desidera e serve ad evitare di dover specificare lo stesso codice più volte, il chè comporta vari benefici (al di là del dover scrivere meno codice) 😄
+> ogni volta che vorrò eseguire queste istruzioni, sarò io a darti valori appropriati per `name` e `sentence`,
+> mentre tu dovrai darmi come risultato il valore di `output`.
 
 Nella maggior parte dei linguaggi di programmazione la parola chiave `return` indica il valore restituito dalla funzione.
 
-Fra le parentesi tonde sono specificati gli input della funzione.
-Questi hanno nomi arbitrari, e all'interno del "corpo" della tua funzione puoi usare questi input come fossero normali variabili.
+Fra le parentesi tonde sono specificati gli input della funzione, che all'interno del "corpo" della tua funzione (nel codice
+che scrivi fra graffe) puoi usare come fossero normali variabili.
 
 ## Usare il codice di una funzione
 
-Per eseguire il codice assegnato ad una funzione (in gergo: *chiamare* la funzione), virtualmente ogni linguaggio di programmazione rispetta la sintassi mostrata nel seguente esempio:
+Per eseguire il codice assegnato ad una funzione (in gergo: *chiamare* la funzione), virtualmente ogni linguaggio di
+programmazione rispetta la sintassi mostrata nel seguente esempio:
 
 ```javascript
-let sentence = addText("Arianna", "Ginger è bella!!") // "Arianna dice: 'Ginger è bella!'. Che ne pensi?"
+addText("Arianna", "Ginger è bella!!") // il risultato della funzione è "Arianna dice: 'Ginger è bella!'. Che ne pensi?"
 ```
 
 Si scrive quindi il nome della funzione seguito da parentesi tonde. All'interno delle tonde, vanno specificati i valori
 da attribuire agli input della funzione, usati nell'esecuzione del codice della funzione.
 
+Il codice di una funzione può essere usato tutte le volte che lo si desidera in questo modo, ed è utile ad evitare di dover
+specificare le stesse operazioni più volte, il chè comporta vari benefici (al di là del dover scrivere meno codice 😄)
+
+### Esempio: salvare il risultato di una funzione in una variabile
+
 Quello che si trova a destra del `return` è il risultato della funzione, e può essere usato per salvare il risultato di una funzione
 in una variable. Tutto quello che si trova a destra del `return` è valutato e restituito a dalla funzione.
 
-### Esempio
-
-Prendiamo l'esempio sopra:
+Prendiamo l'esempio:
 
 ```javascript
 let sentence = addText("Arianna", "Ginger è bella!!") // "Arianna dice: 'Ginger è bella!'. Che ne pensi?"
 ```
 
 Questo codice crea una variabile di nome `sentence` di tipo stringa e valore: "Arianna dice: 'Ginger è bella!'. Che ne pensi?".
+
 Il bloco di codice specificato per `addText` viene eseguito prendendo come input ciò che viene messo fra parantesi, e restituendo
 come output ciò che segue alla parola chiave `return`.
 
@@ -97,7 +101,9 @@ let output = "Arianna" + " dice che: '" + "Ginger è bella!!" + "'. Che ne pensi
 return output
 ```
 
-quello che sta a destra del `return` è il risultato fornito dalla funzione - in questo caso la variabile `output`, che vale "Arianna dice che: 'Ginger è bella!!'. Che ne pensi?".
+quello che sta a destra del `return` è il risultato fornito dalla funzione - in questo caso la variabile `output`,
+che vale "Arianna dice che: 'Ginger è bella!!'. Che ne pensi?".
+
 Quindi, dopo aver eseguito la funzione, il codice di partenza è equivalente a:
 
 ```javascript
@@ -165,7 +171,7 @@ In questo caso, l'espressione viene eseguita, ed il risultato passato alla funzi
 > Ancora una volta: quello che è a destra del `return` è il risultato della funzione, indipendentemente che sia una variabile o un'espressione.
 > Qualora sia un'espressione, questa viene risolta prima di essere restituita dalla funzione.
 
-### Esempio (un po' del 🫢)
+### Esempio (un po' del 🤭)
 
 Qual è il valore assegnato a `text2` nel seguente esempio?
 
@@ -212,17 +218,17 @@ function asd (name1, name2, num) {
 let name1 = 'Arianna'
 let name2 = 'Claudio'
 let num = 5
-let sentence = asd(name1, name2, num)
+let sentence = makeSentence(name1, name2, num)
 
 name1 = 'Giovanna'
 name2 = 'Riccardo'
 num = 3
-let sentence = asd(name1, name2, num)
+let sentence2 = makeSentence(name1, name2, num)
 
 name1 = 'Gianni'
 name2 = 'Pinotto'
 num = 6
-let sentence = asd(name1, name2, num)
+let sentence3 = makeSentence(name1, name2, num)
 ```
 
 La lettrice <s>secchiona 🤓</s>attenta avrà notato che nelle frasi mancano degli spazi.
@@ -271,18 +277,19 @@ let sentence = makeSentence(name1, name2, num)
 name1 = 'Giovanna'
 name2 = 'Riccardo'
 num = 3
-let sentence = makeSentence(name1, name2, num)
+let sentence2 = makeSentence(name1, name2, num)
 
 name1 = 'Gianni'
 name2 = 'Pinotto'
 num = 6
-let sentence = makeSentence(name1, name2, num)
+let sentence3 = makeSentence(name1, name2, num)
 ```
 
-**Nota** che nel primo caso è stato necessario modificare il codice in vari punti, mentre nell'esempio con la funzione è bastato modificare la funzione.
+**Nota** che nel primo caso è stato necessario modificare il codice in vari punti, mentre nel secondo è bastato modificare la funzione.
 
-Questo è uno dei vantaggi delle funzioni: se ci sono delle istruzioni che sai già eseguirai più volte, incapsularle in una funzione
-ti permette di modificarle (correggerle, estenderle, ...) immediatamente, toccando un unico punto il tuo codice.
+Questo è uno dei vantaggi delle funzioni:
+se ci sono delle istruzioni che sai già eseguirai più volte, incapsularle in una funzione ti permette di modificarle
+(correggerle, estenderle, ...) immediatamente, toccando in un unico punto il tuo codice.
 
 ### Esempio: console.log
 
@@ -425,22 +432,26 @@ hai capito cosa fa?
 
 Unisce tre stringhe mettendo 'e' fra loro. In altre parole, è la versione con tre argomenti di `concatStrings`.
 
-Più avanti vedremo come creare una funzione analoga che permetta di concatenare un numero arbitrario di stringhe.
-
 </details>
 
 <br/>
 
 La funzione `concatStrings` è usata sia in `compareCouples`, nell'[esempio precedente](#esempio-funzioni-in-funzioni),
-che in `newConcatStrings`, nonostante queste svolgano compiti molto diversi fra loro.
-Questo è possibile in quanto `concatStrings` è una funzione semplice e, cosa più importante,
-"generica" - ovvero, si presta ad essere usata in vari contesti.
+che in `newConcatStrings`, nonostante in queste due funzioni svolgano compiti molto diversi fra loro.
+Questo è possibile in quanto `concatStrings` è una funzione semplice e, cosa più importante, "generica"
+- ovvero, si presta ad essere usata in vari contesti.
 
-Funzioni generiche, che si prestano ad essere usate in vari contesti, sono spesso utili.
+Funzioni generiche, che si prestano ad essere usate in vari contesti, sono spesso utili. Normalmente è bene cercare di
+rendere le proprie funzioni tali.
+
+Sapresti scrivere una funzione che concatena un numero arbitrario di stinghe?
+<a href="../src/catalogue/50_funzioni/exercise3/index.html" target="_blank">Mettiti alla prova!</a>
+
+Questa funzione è più o meno generica di `concatStrings` dell'esempio precedente? Come mai?
 
 ## Variabili all'interno di una funzione
 
-In generale, una funzione smette di esistere quando si chiude la graffe del blocco di codice in cui è stata dichiarata.
+In generale, una funzione smette di esistere quando si chiude la graffa del blocco di codice in cui è stata dichiarata.
 
 L'esempio seguente è ❌ **SBAGLIATO** ❌
 
@@ -453,9 +464,9 @@ name = 'Claudio' // ERRORE! ❌ `name` non esiste più!
 ```
 
 la variabile `name` dichiarata dentro la funzione `fun` smette di esiste dopo la graffa che chiude la funzione, quindi
-l'operazione `name = "Claudio"` causa un erroe: stai dicendo al computer di aggiornare una variabile, `name`, che però per lui non esiste più!
+l'operazione `name = "Claudio"` causa un errore: stai dicendo al computer di aggiornare una variabile, `name`, che però per lui non esiste più!
 
-L'esempio seguente invece è **corretto** ✅,
+L'esempio seguente invece è **corretto** ✅
 
 ```javascript
 function fun () {
@@ -486,8 +497,8 @@ let person3 = canRide(12, 150)
 ### Esempio: funzione con operatori logici (stringhe)
 
 ```javascript
-function isHot (name1) {
-  return( name === "Claudio") || (name === "Arianna")
+function isHot (name) {
+  return (name === "Claudio") || (name === "Arianna")
 }
 
 let person1 = isHot("Arianna") // true 🔥
@@ -498,8 +509,8 @@ let person4 = isHot("Claudio") // true 🔥
 
 ### Esempio: funzione con if all'interno
 
-Poichè il valore degli argomenti di una funzine non sono noti a prescindere,
-il costrutto `if` è spesso usato per verificarne la forma.
+Poichè i valori degli argomenti di una funzine non sono noti a prescindere, il costrutto `if` è spesso usato per verificarne
+la forma.
 
 ```javascript
 function checkEquality (num1, num2) {
@@ -514,6 +525,11 @@ function checkEquality (num1, num2) {
 checkEquality("Arianna", "Claudio") // -> stampa: "Come il giorno e la notte"
 checkEquality(7, 7) // -> stampa: "Due gocce d'acqua"
 ```
+
+### Esercizio - funzione con if
+
+<a href="../src/catalogue/50_funzioni/exercise1/index.html" target="_blank">Ora prova tu!</a>
+Questo esercizio ti chiederà di completare una funzione di modo che esegua certe operazioni.
 
 ### Esempio: funzione con cicli all'interno
 
@@ -542,25 +558,42 @@ function sumNumbers (nums) {
 }
 ```
 
-E' chiaro come *funziona questa funzione*? Forse può essere utile confrontarlo con [questo esempio](./40_cicli.md#esempio-flusso-completo).
+E' chiaro come *funziona questa funzione*? Forse può essere utile confrontarlo con [questo esempio](./40_cicli.md#esempio-flusso-completo-di-un-ciclo-while).
 
-Se non ti è chiaro, prova a scrivere a fare del [rubber ducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging) con te stessa!
+Se non ti è chiaro, fai del [rubber ducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging) con te stessa!
+Prova a scrivere esplicitamente cosa succede ad ogni step di questo esempio con certi input:
 
-Prova a scrivere ad esempio cosa succede se chiami la funzione con certi input:
 ```javascript
 sumNumbers([1, 5, 7])
 ```
+<details>
+  <summary>⚠️ SPOILER ⚠️</summary>
+  <ul>
+    <li>Creo una variabile <code>total</code> inizializzata a 0</li>
+    <li>
+      Eseguo il codice del ciclo <code>for</code> con il primo elemento dell'array in input, che vale 1:
+      <ul>
+        <li>incremento <code>total</code> di 1, che ora vale 1</li>
+      </ul>
+    </li>
+    <li>
+      Eseguo il codice del ciclo <code>for</code> con il secondo elemento dell'array in input, che vale 5:
+      <ul>
+        <li>incremento <code>total</code> di 5, che ora vale 6</li>
+      </ul>
+    </li>
+    <li>
+      Eseguo il codice del ciclo <code>for</code> con il terzo elemento dell'array in input, che vale 7:
+      <ul>
+        <li>incremento <code>total</code> di 7, che ora vale 13</li>
+      </ul>
+    </li>
+    <li>l'esecuzione termina</li>
+  </ul>
+</details>
 
-Se ancora non ti è chiaro, tranquilla: vieni pure da me, vediamo di capirlo bene insieme.
+Se ancora non ti torna, tranquilla: vieni pure da me, vediamo di capirlo bene insieme.
 <u>Dico davvero!</u> Cicli di questo tipo sono il pane quotidiano di praticamente tutti i programmi.
-
-... poi una volta che ci sei [sporcati un po' le mani](#esercizi---vari) 😙
-
-### Esercizio - funzione
-
-<a href="../src/catalogue/50_funzioni/exercise1/index.html" target="_blank">Ora prova tu!</a>
-Questo esercizio ti chiederà di completare una funzione di modo che esegua certe operazioni.
-
 
 ## Return dentro if
 
@@ -571,7 +604,7 @@ Quando una funzione arriva al `return`, il flusso di operazioni viene interrotto
 la funzione restutisce come outout qualunque cosa sia seguita dal `return`, e termina
 senza eseguire eventuali comandi successivi.
 
-Ad esempio:
+### Esempio
 
 ```javascript
 function greetFriend (name, isFriend) {
@@ -587,7 +620,7 @@ const message1 = greet("Arianna", true)
 const message2 = greet("Bruce", false)
 ```
 
-Questo esempio, `message1` è uguale a "Ciao Arianna!", mentre `message2` è uguale a "Con te non ci parlo!".
+In questo esempio, `message1` è uguale a "Ciao Arianna!", mentre `message2` è uguale a "Con te non ci parlo!".
 
 ### *Sexy approfondimento per secchioni* 🤓 Esercizio
 
@@ -611,10 +644,49 @@ function greetFriend (name, isFriend) {
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
 
-Non c'è differenza. Il return all'interno dell'`if` fa in modo che il codice seguente non sia comunque eseguito, rendendo l'`else` inutile.
-Ma metterlo non fa certo male! Se ritieni che renda il codice più chiaro, mettilo pure cara.
+Non c'è differenza.
+
+Il `return` all'interno del primo `if` fa in modo che se arrivassimo ad eseguirlo, le istruzinoi seguenti non sarebbero eseguite, in quanto la
+funzione terminerebbe immediatamente.
+Allo stesso tempo, se arivviamo ad eseguire l'istruzione successiva al blocco `if`, sicuramente la condizione dell'`if` non si è verificata,
+altrimenti avremmo raggiunto il `return` e terminato la funzione prima.
+
+Questo rende specificare la clausola `else` superfluo.
+
+Ma specificare un `else` non è un errore! Se ritieni che renda il codice più chiaro, fai pure cara.
 
 </details>
+
+## Return dentro cicli
+
+Come già detto [sopra](#return-dentro-if), all'interno di una funzione si può invocare il comando `return` ovunque lo si voglia,
+non per forza solo alla fine.
+
+Basandoti su quanto detto fino ad ora sulle funzioni, cosa ritieni accada quando durante l'esecuzione di un [ciclo](./40_cicli.md) all'interno
+di una funzione si arriva ad un comando di `return`?
+
+Quello che succede ogni volta che una funzione trova un `return`: questa termina, e qualunque cosa sia a destra del
+`return` è il risultato.
+
+### Esempio
+
+```javascript
+function findWaldo(names) {
+  for (name of names) {
+    if (name === 'Waldo') {
+      return true
+    }
+  }
+  return false
+}
+```
+
+La funzione `findWaldo` restituisce `true` se l'array passata come argomento contiene la stringa "Waldo", altrimenti `false`.
+
+Nota infatti che arriveremo ad eseguire il `return false` finale <u>solo se</u> dopo aver ciclato su tutti gli elementi di `names`,
+nessuno di questi è uguale a "Waldo".
+Al contrario, se uno degli elementi in input fosse uguale alla stringa "Waldo", entreremmo dentro l'`if`, chiamando `return true`,
+terminando quindi immediatamente l'esecuizione e restituendo come risultato il valore `true`.
 
 ## Controllare gli argomenti
 
@@ -634,13 +706,14 @@ Modifichiamo uno degli esempi precedenti per controlllare che i valori ricevuti 
 ```javascript
 function greetFriend (name, isFriend) {
   if (isFriend === undefined && name === undefined) {
-    return "Non ci coosciamo! Piacere!"
+    return "Non ci conosciamo! Piacere!"
   }
   else if (name === undefined) {
     return "Non ricordo il tuo nome"
   }
-  else if (isFriend === undefined) { // NOTA che a questo punto sono sicuro che "name" sia definito, altrimenti saremmo entrati nell'if precedente
-    return name + "Frank, sei un amico o nemico?"
+  // NOTA che a questo punto sono sicuro che "name" sia definito, altrimenti saremmo entrati nell'if precedente
+  else if (isFriend === undefined) {
+    return name + ", sei un amico o nemico?"
   }
   else if (!isFriend) {
     return "Con te non ci parlo!"
@@ -676,8 +749,7 @@ E' possibile controllare il tipo di un dato usando il costrutto `typeof [variabi
 - `string`
 - `boolean`
 - `number`
-- `object` 👈 vedremo in seguito
-- `array` 👈 vedremo in seguito
+- `object`
 
 ```javascript
 let num = 5
@@ -688,7 +760,32 @@ console.log(typeof str) // stampa: "string"
 
 let bool = true
 console.log(typeof bool) // stampa: "boolean"
+
+let unk
+console.log(typeof unk) // stampa: "undefined"
+
+let obj = { name: 'Arianna' }
+console.log(typeof obj) // stampa: "object"
+
+let arr = ["Gianni", "Pinotto"]
+console.log(typeof att) // stampa: "object"
+
+let isArr = Array.isArray(arr)
+console.log(isArr) // stampa `true`
 ```
+
+> 🔎 NOTA
+> 
+> In JavaScript, come detto, le variabili non definite sono uguali ad `undefined`.
+> Quando si chiede il tipo di una variabile non definita, JavaScript risponde on la stringa "undefined".\
+> E' un linguaggio curioso.
+
+
+> 🔎 NOTA
+> 
+> In JavaScript, l'operatore `typeof` restituisce `object` sia nel caso di variabili array che nel caso di oggetti.
+> Per controllare se un valore è un'array, si può usare la funzione speciale `Array.isArray(...)`. Questa restituisce
+> `true` se l'input è un'array, `false` altrimenti.
 
 #### Esempio
 
@@ -737,40 +834,34 @@ console.log(message5) // non stampa nulla, perchè message5 è `undefined`
 Questo esercizio è simile al [precedente](#esercizio---funzione), ma questa volta per completarlo correttamente
 dovrai verificare la correttezza degli argomenti in input.
 
-## Return dentro cicli
-
-Come già detto [sopra](#return-dentro-if), all'interno di una funzione si può invocare il comando `return` ovunque lo si voglia,
-non per forza solo alla fine.
-
-Basandoti su quanto detto fino ad ora sulle funzioni, cosa ritieni accada quando durante l'esecuzione di un [ciclo](./40_cicli.md) all'interno
-di una funzione si arriva ad un comando di `return`?
-
-Quello che succede ogni volta che una funzione trova un `return`: questa termina, e qualunque cosa sia a destra del
-`return` è il risultato.
-
-### Esempio
-
-```javascript
-
-function findWaldo() {
-TODO
-}
-
-```
-
 ## Esercizi
 
 I seguenti esercizi possono essere utili per fare (ulteriore) pratica nella scrittura di funzioni,
 nonchè per renderti conto di cosa forse non ti è ancora chiaro.
 
-- <a href="../src/catalogue/50_funzioni/exercise3/index.html" target="_blank">Concatenami tutto</a>
+<details>
+  <summary>Già incontrati sopra</summary>
+  <ul>
+    <li>
+      <a href="../src/catalogue/50_funzioni/exercise1/index.html" target="_blank">Vietato ai minori!</a>
+    </li>
+    <li>
+      <a href="../src/catalogue/50_funzioni/exercise2/index.html" target="_blank">Vietato ai minori... e a chi non ha età!</a>
+    </li>
+    <li>
+      <a href="../src/catalogue/50_funzioni/exercise3/index.html" target="_blank">Concatenami tutto</a>
+    </li>
+  </ul>
+</details>
+
 - <a href="../src/catalogue/50_funzioni/exercise4/index.html" target="_blank">Trova tutti i Waldo!</a>
 - <a href="../src/catalogue/50_funzioni/exercise5/index.html" target="_blank">Elon Musk ha 11 figli e è riuscito a non beccare neanche un nome normale</a>
 
+
 ## *Breve digressione inutile* Graffe nelle funzioni
 
-Dai due esempi sopra puoi notare che di come metti le graffe non frega a nessuno.
-La maggior parte dei linguaggi di programmazione ti lascia libera di indentare il codice come preferisci.
+Di come metti le graffe non frega a nessuno. La maggior parte dei linguaggi di programmazione ti lascia libera
+di indentare il codice come preferisci.
 
 Di solito per le funzioni si usa:
 

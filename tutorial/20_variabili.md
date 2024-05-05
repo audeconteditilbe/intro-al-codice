@@ -29,8 +29,8 @@ Si dice allora che `age` é una **variabile**.
 >
 >
 > Alcuni linguaggi, come JavaScript, non permettono di assegnare un tipo alle variabili: la macchina "indovina" il tipo per te.\
-> Linguaggi come TypeScript (versione con i tipi di JavaScript) *permettono* di specificate il tipo: `let age: number = 45`.\
-> Altri linguaggi ancora, come ad esempio C, ti *obbligherebbe* a specificarne il tipo.\
+> Altri linguaggi, come ad esempio C, *obbligano* a specificare il tipo di ogni dato.\
+> Ci sono poi linguaggi democristiani, come TypeScript (versione con i tipi di JavaScript), che *permettono* di specificare il tipo.
 
 
 # Cambiare il valore di una variabile
@@ -45,14 +45,17 @@ age = 50
 
 > 🔎 NOTA
 > 
-> La parola chiave `let` informa il computer che una NUOVA variabile deve essere creata.\
+> La parola chiave `let`, vista nell'esempio precedente, informa il computer che una NUOVA variabile deve essere creata.\
 > In questo caso, non stiamo creando una variabile, stiamo aggiornando una <u>che già esiste</u>,
-> quindi `let` va omesso.
+> quindi `let` va omesso.\
+> Se prima di questa istruzione non avessimo mai dichiarato la variabile che stiamo modificando (`let age = ...`), allora il codice
+> andrebbe in errore.
 
 # Assegnare valori a variabili
 
 In generale, in espressioni del tipo `[variabile] = ...`, la parte a destra dell'uguale è eseguita per prima.
-Il risultato delle operazioni specificate a destra dell'uguale viene poi assegnato alla variabile specificata a sinistra dell'uguale.
+Il risultato delle operazioni specificate a destra dell'uguale viene poi assegnato come valore alla variabile specificata
+a sinistra.
 
 Rileggendo i due esempi precedenti in quest'ottica:
 
@@ -60,15 +63,15 @@ Rileggendo i due esempi precedenti in quest'ottica:
 let age = 45
 ```
 - il computer legge prima la parte a destra dell'uguale. In questo caso è banalmente il numero 45
-- la parte a sinistra dell'uguale indica che una variabile di nome `age` va creata (è presente la parola chiave `let`),
+- la parte a sinistra dell'uguale indica che una variabile di nome `age` va creata
 - il computer assegna a questa variabile il valore a destra dell'uguale, ovvero il numero 45
 
 ```javascript
 age = age + 1
 ```
-- il computer esegue prima: `age + 1`. A questo punto `age` vale 45, quindi `age + 1` è risolto a 46.
-- il computer assegna poi il valore ottenuto alla variabile a sinistra dell'uguale, che in questo caso è sempre `age`,
-  portando quindi ad aggiornare il valore di `age`
+- il computer esegue prima: `age + 1`. A questo punto `age` vale 45, quindi `age + 1` è risolto a 46
+- la parte a sinistra dell'uguale indicata che la variabile `age` va aggiornata
+- il computer assegna il valore ottenuto alla variabile, che in questo caso è sempre `age`, portando quindi ad aggiornare il valore di `age`
 
 `age = age + 1` consiste quindi nell'aumentare il valore di `age` di 1.
 
@@ -86,13 +89,38 @@ let another_age = age + 5
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
 
-- il computer risolve prima la parte a destra dell'uguale. L'espressione `age + 5` è risolta al numero 51.
-- la parte a sinistra dell'uguale indica che una variabile di nome `another_age` va creata (è presente la parola chiave `let`),
+- il computer risolve prima la parte a destra dell'uguale. L'espressione `age + 5` è risolta al numero 51
+- la parte a sinistra dell'uguale indica che una variabile di nome `another_age` va creata
 - il computer assegna a questa variabile il valore a destra dell'uguale, ovvero il numero 51
 
 Quindi, abbiamo creato una nuova variabile, chiamata `another_age`, che contiene il valore 51.
 
 </details>
+
+## Esempio: dichiarare variabili di vario tipo
+
+Gli esempi visti fino a qui trattano solamente dati numerici, ma ovviamente valgono anche per dati di altri tipi.
+
+```javascript
+let name1 = "Arianna"
+let name2 = "Claudio"
+```
+
+> 💬 *Come dire...*
+> 
+> Computer, usa due celle di memoria per salvare i valori "Arianna" e "Claudio".\
+> D'ora in poi per referenziare (usare) questi dati usaerò i nomi `name1` e `name2`.
+
+
+```javascript
+let isAriannaRich = true
+```
+
+> 💬 *Come dire...*
+> 
+> Computer, usa una celle di memoria per salvare il valore `true`.\
+> D'ora in poi per referenziare (usare) questi dati usaerò il nome `isAriannaRich`.
+
 
 # Operazioni e tipi
 
@@ -111,7 +139,7 @@ let mul = age * 10 // 400
 let div = age / 10 // 4
 ```
 
-Molti linguaggi offrono ulterioti operatori, la cui dicitura può cambiare. Ad esempio, in `JavaScript`:
+Molti linguaggi offrono ulterioti operatori, i cui simboli possono cambiare. Ad esempio, in `JavaScript`:
 
 ```javascript
 let squared = age ** 2 // 40 elevato alla potenza del 2 = 1600
@@ -135,7 +163,7 @@ let modu = age % 3 // 40 modulo 3 = 1
 
 ## Stringhe
 
-Nel caso di valori di tipo **stringa**, l'operazione più comune è la concatenazione
+Nel caso di valori di tipo **stringa**, l'operazione più comune è la concatenazione.
 
 In JavaScript uno dei modi per eseguire la concatenazione fra stringhe è con il simbolo `+`:
 
@@ -143,18 +171,6 @@ In JavaScript uno dei modi per eseguire la concatenazione fra stringhe è con il
 let name = "Arianna"
 let text = name + " studia molto" // Arianna studia molto
 ```
-
-## Esempio: dichiarare variabili di tipo stringa
-
-```javascript
-let name1 = "Arianna"
-let name2 = "Claudio"
-```
-
-> 💬 *Come dire...*
-> 
-> Computer, usa due celle di memoria per salvare i valori "Arianna" e "Claudio".\
-> D'ora in poi per referenziare (usare) questi dati usaerò i nomi `name1` e `name2`.
 
 ### Esempio: concatenazione di stringhe
 
@@ -166,9 +182,9 @@ Questo esempio crea una variabile di nome `study` dal valore: "Arianna e Claudio
 
 > 🔎 NOTA
 > 
-> Le operazioni che si possono eseguire dipendono dal tipo dei dati che si sta trattando.\
-> Ad esempio, nota dagli esempi precedenti come l'operatore `+` applicato a dati di tipo numero ne comporta la somma,
-> mentre nel caso di stringhe ne comporta la concatenazione.
+> Nota dagli esempi precedenti come l'operatore `+` applicato a dati di tipo numero ne comporta la somma,
+> mentre nel caso di stringhe ne comporta la concatenazione.\
+> Ancora una volta: le operazioni che si possono eseguire dipendono dal tipo dei dati che si sta trattando.
 
 ### Esempio
 
@@ -193,9 +209,9 @@ name = name + " è la CFO di Mia"
 > 
 > ```javascript
 > let name = "arianna"
-> let allCapsName = name.toUpperCase() // "ARIANNA"
+> let screamed = name.toUpperCase() // "ARIANNA"
 > ```
-> In questo esempio `allCapsName` vale "ARIANNA".
+> In questo esempio `screamed` vale "ARIANNA".
 > 
 > `toUpperCase` si chiama "funzione". Parleremo delle funzioni [in seguito](./50_funzioni.md).
 
@@ -217,6 +233,8 @@ let notBool = !bool // NOT true = false
 let boolAnd = bool && bool2 // true AND false = false
 let bool = bool || bool2 // true OR false = true
 ```
+
+Se le variabili booleane ora ti sembrano oscure, tranquilla - vedremo presto [come utilizzarli con profitto](./30_if.md).
 
 > 🔎 NOTA
 > 
@@ -274,7 +292,7 @@ In JavaScript questo valore è `undefined`.
 
 In JavaScript, come si è detto, non sta a te specificare il tipo delle variabili, è la macchina ad "indovinarlo".
 Ma la macchina non può indovinare il tipo di una variabile non inizializzata!\
-Per ora diciamo che le varibili non inizializzate non hanno ancora un tipo... Qualcuno direbbe che è una piccola bugia, ma va bene così 😊
+Per ora diciamo che le varibili non inizializzate non hanno ancora un tipo... è una piccola bugia, ma va bene così 😊
 
 ## *Sexy approfondimento per secchioni* 🤓 Operazioni su dati di diverso tipo
 
@@ -305,7 +323,6 @@ num = num + 1 // -> Note that `num` is still a number!
 ```
 
 il valore di `num` viene aggiornato a 6, ad indicare che è ancora un numero.
-
 _____
 
 [<- lezione precedente (intro)](./10_intro.md)

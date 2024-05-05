@@ -16,26 +16,33 @@ finchè [CONDIZIONE], esegui [OPERAZIOINI]
 Schematicamente (è venuto davvero bene, sono un artista 🎨)
 
 ```
-  ➡️ ➡️ ➡️ ➡️ ➡️ verifica condizione
-  ⬆️            ↙️         ↘️
-  ⬆️          ↙️             ↘️
+  ↗️ ➡️ ➡️ ➡️ ➡️ verifica condizione
+  ⬆            ↙️           ↘️
+  ⬆️          ↙️               ↘️
   ⬆️       risolve a        risolve a
   ⬆️         true             false
-  ⬆️          ⬇️                 ⬇️
-  ⬆️          ⬇️                 ⬇️
-  ⬆️        esegue        FINE del ciclo
-  ⬆️      operazioni      
+  ⬆️           ⬇️                ⬇️
+  ⬆️           ⬇️                ⬇️
+  ⬆️       esegue le       FINE del ciclo
+  ⬆️       operazioni
+  ⬆️      specificate
   ⬆️          ⬇️
   ⬆️          ⬇️
-  ⬅️ ⬅️ ⬅️ ⬅️ ⬅️ ⬅️
+  ↖️ ⬅️ ⬅️ ⬅️ ⬅️ ⬅️
 ```
+
+Quindi, al termine dell'esecuzione delle operazioni specificate per il ciclo, invece di andare avanti nell'esecuzione
+dell'istruzione sottostante, il computer torna a valutare se la condizione del ciclo è ancora valida. Se sì, le operazioni
+sono esguite nuovamente, altrimenti il ciclo termina e l'esecuzione del codice prosegue normalmente.
+
 
 In quasi ogni linguaggio di programmazione esistono due tipi di ciclo, il ciclo `while` e il ciclo `for`.
 
 ## Ciclo `while`
 
 ```javascript
-while ( CONDIZIONE ) { // finchè CONDIZIONE si verifica...
+while ( CONDIZIONE ) // finchè CONDIZIONE si verifica...
+{
   // ...fai quello che trovi qui
 }
 ```
@@ -45,13 +52,14 @@ while ( CONDIZIONE ) { // finchè CONDIZIONE si verifica...
 > come per gli [`if`](./30_if.md), la condizione verificata può essere una variabile booleana o un'espressione
 > il cui risultato è un booleano.
 
-### Esempio: flusso completo
+### Esempio: flusso completo di un ciclo `while`
 
 ```javascript
 let iterations = 3
 let num = 0
 
-while (num < iterations) {
+while (num < iterations)
+{
   console.log("Iterazione numero " + num)
   num = num + 1
 }
@@ -87,19 +95,20 @@ Prova a scrivere il flusso del codice sottostante, come fatto per l'esempio prec
 
 ```javascript
 let dragonBalls = 7
-let found = 2
+let found = 4
 
-while (found <= dragonBalls) {
+while (found <= dragonBalls)
+{
   console.log("Abbiamo " + found + " sfere del drago su " + dragonBalls)
   found = found + 1
 }
 ```
 
-### Esempio: if + while
+### Esempio: `if` dentro `while`
 
 Il seguente codice utilizza il costrutto `if` all'interno di un ciclo `while`.
 
-Prova a capire tu stessa come si svolge la sua esecuzione.
+Prova a capire tu stessa come si svolge la sua esecuzione, prima di controllare.
 
 ```javascript
 let iAmHappy = false
@@ -107,19 +116,24 @@ let iAmTired = true
 let iAmThirsty = true
 let iAmHungry = true
 
-while (!iAmHappy) {
-  if (iAmTired) {
+while (!iAmHappy)
+{
+  if (iAmTired)
+  {
     console.log('Sleeping...')
     iAmTired = false
   }
-  else if (iAmThirsty) {
+  else if (iAmThirsty)
+  {
     console.log('Drinking...')
     iAmThirsty = false
   }
-  else if (iAmHungry) {
+  else if (iAmHungry)
+  {
     console.log('Eating...')
     iAmHungry = false
   }
+  
   iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired
 }
 
@@ -148,10 +162,10 @@ quindi entro nel loop ([ricorda](./20_variabili.md#booleani) che `!` è il NOT l
   - esco dall' `if ... else if ...`
   - eseguo l'operazione successiva: `iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired`
   che è uguale a `iAmHappy = true && false && false`, qunidi il valore di `iAmHappy` rimane `false`.
-  Ricorda che `&&` indica l'AND logico.
+  [Ricorda](./20_variabili.md#booleani) che `&&` indica l'AND logico.
 - valuto la condizione del while: : `!iAmHappy` è uguale a `true`
   - valuto la condizione del primo `if`, che è `false`, quindi passo all'`else if` successivo
-  - valuto la condizione del primo `else if`, che è `true`, quindi se eseguo il codice
+  - valuto la condizione del primo `else if`, che è `true`, quindi ne eseguo il codice
     - stampo "Drinking..."
     - aggiorno `iAmThirsty` a `false`
   - esco dall' `if ... else if ...`
@@ -197,12 +211,14 @@ pesante rallentamento dell'intero computer su cui il codice sta girando.
 Per farla semplice: il computer continua ad eseguire le operazioni specificate all'interno del ciclo
 indefinitivamnete, il che monopolizza le risorse, e manda in crush l'intero sistema.
 
+Occhio a non cadere in cicli infiniti!
+
 </details>
 
 ### Occhio ai cicli infiniti
 
-E' un errore molto comune quello di creare un loop che la cui condizione non diventa mai `false`,
-ed incappare quindi in un ciclo infinito, come quello visto nell'esempio precedente.
+E' un errore molto comune quello di creare un loop la cui condizione non diventa mai `false`,
+ed incappare quindi in un ciclo infinito, come quello visto nell'[esempio precedente](#esempio-trabocchetto).
 
 Se ci fai caso, noterai che in tutti gli altri esempi visti fino ad ora, all'interno del `while` è presente
 l'aggiornamento di una variabile dichiarata fuori dal ciclo.
@@ -210,36 +226,34 @@ l'aggiornamento di una variabile dichiarata fuori dal ciclo.
 Negli esempi precedenti questi sono:
 
 ```javascript
-// ...
-while (num < iterations) {
+while (num < iterations)
+{
   console.log("Iterazione numero " + num)
   num = num + 1  // <--------- LUI
 }
 ```
 
 ```javascript
-// ...
-
-while (found <= dragonBalls) {
+while (found <= dragonBalls)
+{
   console.log("Abbiamo " + found + " sfere del drago su " + dragonBalls)
   found = found + 1  // <--------- LUI
 }
 ```
 
 ```javascript
-// ...
-while (!iAmHappy) {
+while (!iAmHappy)
+{
   // ...
   iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired // <--------- LUI
 }
-// ...
 ```
 
-Queste operazioni garantiscono che lo stato del programma venga aggiornato ad ogni iterazione del ciclo
-`while`, cosicchè prima o poi si arrivi alla sua fine.
+Queste operazioni garantiscono che le variabili del programma venga aggiornato ad ogni iterazione del ciclo
+`while`, facendo sì che prima o poi si arrivi alla sua fine.
 
 Cicli infiniti possono verificarsi anche a seguito di bug - errori nel codice.
-Ad esempio, riesci a vedere come mai modificando l'[esempio sopra](#esempio-if--while) come segue si viene a
+Ad esempio, riesci a spiegare come mai modificando l'[esempio sopra](#esempio-if-dentro-while) come segue si viene a
 creare un ciclo infinito?
 
 ```javascript
@@ -266,6 +280,9 @@ while (!iAmHappy) {
 
 console.log('I am happy now! :)')
 ```
+
+In questo caso ci siamo ricordati di aggiornare la variabile `iAmHappy` ad ogni iterazione del ciclo,
+ma lo facciamo nel modo sbagliato: `iAmHappy` non sarà mai `true`.
 
 ### *Sexy approfondimento per secchioni* 🤓 Comando `break`
 
