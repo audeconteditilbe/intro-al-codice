@@ -1,5 +1,8 @@
 function pretty (input) {
-  typeof input === 'string' ? JSON.stringify(input) : input
+  // if (typeof input === 'object' && !Array.isArray(input) && input !== null) {
+  //   return JSON.stringify(input, null, 2)
+  // }
+  return JSON.stringify(input)
 }
 
 function assertEq (result, expected) {

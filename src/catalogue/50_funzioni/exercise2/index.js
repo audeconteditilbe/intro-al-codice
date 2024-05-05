@@ -1,8 +1,7 @@
 const _initialValue = `\
 function isAdult (age) {
-  // ...
-}
-`
+  
+}`
 
 function _validation (codeStr) {
   let error
@@ -40,13 +39,12 @@ const _tests = [
 
 const exercise = {
   name: 'Esercizio: vietato ai minori 🔞... e a chi non ha un\'età',
-  text: `\
-  Completa la funzione in modo che ritorni true se l\'argomento age è maggiore o uguale di 18, \
-  false se minore di 18, \
-  e undefined qualora age non sia un numero.`,
+  text: 'Completa la funzione in modo che ritorni true se l\'argomento age è maggiore o uguale di 18,'
+    + ' false se minore di 18,'
+    + ' e undefined qualora age non sia un numero.',
   initialValue: _initialValue,
   validation: _validation,
   tests: _tests,
 }
 
-loadExercise(exercise)
+new ExercisePageManager().loadExercise(exercise)

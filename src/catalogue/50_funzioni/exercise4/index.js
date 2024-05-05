@@ -33,15 +33,14 @@ const _tests = [
 ]
 
 const exercise = {
-  name: 'Esercizio: find Waldo!',
-  text: ''+
-  + 'Scrivi una funzione di nome `findWaldos`.'
-  + 'Questa funzione deve accettare come argomento un\'array, e produrre come risultato un\'array che contenga'
-  + 'tutte le posizioni all\'interno dell\'array in cui si trova la stringa "Waldo".'
-  + 'Qualore "Waldo" non faccia parte dell\'array in input, la funzione deve ritornare un\'array vuoto.',
+  name: 'Esercizio: find them Waldos!',
+  text: 'Scrivi una funzione di nome `findWaldos`.'
+  + ' Questa funzione deve accettare come argomento un\'array, e produrre come risultato un\'array che contenga'
+  + ' tutte le posizioni all\'interno dell\'array in cui si trova la stringa "Waldo".'
+  + ' Qualore "Waldo" non faccia parte dell\'array in input, la funzione deve ritornare un\'array vuoto.',
   initialValue: '',
   validation: _validation,
   tests: _tests,
 }
 
-loadExercise(exercise)
+new ExercisePageManager().loadExercise(exercise)

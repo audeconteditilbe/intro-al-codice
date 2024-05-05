@@ -38,16 +38,15 @@ const _tests = [
 ]
 
 const exercise = {
-  name: 'Esercizio',
-  text: '\
-  Scrivi una funzione di nome `main`.\
-  Questa funzione deve accettare come argomento un\'array, e produrre come risultato la concatenazione delle stringhe contenute nell\'array.\
-  NOTA BENE:\
-  devi concatenare solo i valori di tipo stringa!\
-  Qualore non ci fossero stringhe nell\'array in input, il risultato deve essereuna stringa vuota.',
+  name: 'Esercizio: concateniamoci 😏',
+  text: 'Scrivi una funzione di nome `main`'
+    + ' Questa funzione deve accettare un argomento, verificare che sia un\'array, e produrre come risultato la concatenazione'
+    + ' delle stringhe contenute nell\'array.'
+    + ' Se l\'input non è un\'array, o se non ci sono stringhe nell\'array, il risultato deve essere una stringa vuota.'
+    + ' NOTA BENE: devi concatenare solo i valori di tipo stringa!',
   initialValue: '',
   validation: _validation,
   tests: _tests,
 }
 
-loadExercise(exercise)
+new ExercisePageManager().loadExercise(exercise)

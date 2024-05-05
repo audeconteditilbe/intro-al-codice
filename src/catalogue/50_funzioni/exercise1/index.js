@@ -1,8 +1,8 @@
 const _initialValue = `\
 function isAdult (age) {
-  // ...
-}
-`
+  
+}`
+
 function _validation (codeStr) {
   let error
   let code
@@ -40,5 +40,5 @@ const exercise = {
   tests: _tests,
 }
 
-loadExercise(exercise)
+new ExercisePageManager().loadExercise(exercise)
 
