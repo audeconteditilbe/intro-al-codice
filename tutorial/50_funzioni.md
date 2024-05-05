@@ -376,7 +376,7 @@ let val = askConfirmation()
       Ma ricorda che l'output di una funzione è specificato dalla parola chiave <code>return</code>.
     </p>
     <p>
-      <a href="./20_variabili.md#variabili-non-definite">Il concetto di "nessun valore"</a> in JavaScript è
+      <a href="./20_variabili#variabili-non-definite">Il concetto di "nessun valore"</a> in JavaScript è
       indicato da <code>undefined</code>, ed indica che alla variabile non è (ancora) stato assegnato alcun un valore.
     </p>
   </div>

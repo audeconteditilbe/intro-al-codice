@@ -158,11 +158,11 @@ console.log('I am happy now! :)')
     <ul>
       <li>
         valuto la condizione del while: <code>!iAmHappy</code> è uguale a <code>true</code>,
-        quindi entro nel loop (<a href="./20_variabili.md#booleani">ricorda</a> che <code>!</code> è il NOT logico)
+        quindi entro nel loop (<a href="./20_variabili#booleani">ricorda</a> che <code>!</code> è il NOT logico)
         <ul>
           <li>
             trovo un costrutto
-            <a href="./30_if.md#controllare-più-condizioni-alternative"><code>if ... else if ...</code></a>.
+            <a href="./30_if#controllare-più-condizioni-alternative"><code>if ... else if ...</code></a>.
           </li>
           <li>
             valuto la condizione del primo <code>if</code>, ovvero <code>iAmTired</code>,
@@ -179,7 +179,7 @@ console.log('I am happy now! :)')
             che è uguale a
             <pre><code>iAmHappy = true &amp;&amp; false &amp;&amp; false</code></pre>
             qunidi il valore di <code>iAmHappy</code> rimane <code>false</code>.
-            <a href="./20_variabili.md#booleani">Ricorda</a> che <code>&amp;&amp;</code> indica l'ND logico.
+            <a href="./20_variabili#booleani">Ricorda</a> che <code>&amp;&amp;</code> indica l'ND logico.
           </li>
         </ul>
       </li>
