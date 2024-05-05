@@ -132,7 +132,7 @@ class ExercisePageManager {
     this.resetReport()
     
     this.title.innerText = name
-    this.instructions.innerText = text
+    this.instructions.innerHTML = text
     this.codeblock.value = initialValue
     this.validation = _validation
     this.tests = _tests

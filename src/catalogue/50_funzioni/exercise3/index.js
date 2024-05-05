@@ -2,7 +2,7 @@ function _validation (codeStr) {
   let error
   let code
   try {
-    code = new Function (codeStr + 'return main')
+    code = new Function (codeStr + '\nreturn main')
   } catch (err) {
     error = `Ahia... il codice che hai scritto non è valido!\n${error}`
     return { error }

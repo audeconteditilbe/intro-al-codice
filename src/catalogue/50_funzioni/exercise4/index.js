@@ -2,7 +2,7 @@ function _validation (codeStr) {
   let error
   let code
   try {
-    code = new Function (codeStr + 'return findWaldos')
+    code = new Function (codeStr + '\nreturn findWaldos')
   } catch (err) {
     error = `Ahia... il codice che hai scritto non è valido!\n${error}`
     return { error }
@@ -34,10 +34,14 @@ const _tests = [
 
 const exercise = {
   name: 'Esercizio: find them Waldos!',
-  text: 'Scrivi una funzione di nome `findWaldos`.'
-  + ' Questa funzione deve accettare come argomento un\'array, e produrre come risultato un\'array che contenga'
-  + ' tutte le posizioni all\'interno dell\'array in cui si trova la stringa "Waldo".'
-  + ' Qualore "Waldo" non faccia parte dell\'array in input, la funzione deve ritornare un\'array vuoto.',
+  text:`<div>
+    <p>
+      Scrivi una funzione di nome <code>findWaldos</code>.
+      Questa funzione deve accettare come argomento un\'array, e produrre come risultato un\'array che contenga
+      tutte le posizioni all\'interno di questa in cui si trova la stringa "Waldo".
+    </p>
+    <p>Qualora "Waldo" non faccia parte dell\'array in input, la funzione deve ritornare un\'array vuoto.</p>
+  </div>`,
   initialValue: '',
   validation: _validation,
   tests: _tests,
