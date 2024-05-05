@@ -1,7 +1,13 @@
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a href="./30_if">lezione precedente (if)</a>
   <a href="./50_funzioni">lezione successiva (funzioni)</a>
 </div>
+
+# Table of content
+{:.no_toc}
+
+* TOC
+{:toc}
 
 # Operazioni ripetute (cicli)
 
@@ -354,7 +360,7 @@ TODO
 
 TODO
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a href="./30_if">lezione precedente (if)</a>
   <a href="./50_funzioni">lezione successiva (funzioni)</a>
 </div>

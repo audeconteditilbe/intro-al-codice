@@ -1,9 +1,14 @@
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a></a>
   <a href="./20_variabili">lezione successiva (variabili)</a>
 </div>
 
+# Table of content
+{:.no_toc}
+
+* TOC
+{:toc}
 
 # DISCLAIMER iniziale
 
@@ -98,7 +103,7 @@ Semplificando, possiamo per ora elencare questi tipi di operazioni:
   finchè [CONDIZINE] fai [OPERAZINOI]
   ```
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a></a>
   <a href="./20_variabili">lezione successiva (variabili)</a>
 </div>

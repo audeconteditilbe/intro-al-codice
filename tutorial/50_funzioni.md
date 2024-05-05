@@ -1,8 +1,14 @@
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a href="./40_cicli">lezione precedente (cicli)</a>
   <a></a>
 </div>
+
+# Table of content
+{:.no_toc}
+
+* TOC
+{:toc}
 
 # Funzioni
 
@@ -916,7 +922,7 @@ else {
 ```
 ...ognuno è matto a modo suo.
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a href="./40_cicli">lezione precedente (cicli)</a>
   <a></a>
 </div>
