@@ -19,10 +19,9 @@ class ExercisePage extends HTMLElement {
             </div>
           </div>
         </div>
+        
         <form id="exercise-form">
-          
-          <textarea id="exercise-code-block"></textarea>
-          
+          <div id="container" style="width: 800px; height: 600px; border: 1px solid grey"></div>
           <input class="btn" type="submit" value="Conferma">
         </form>
       </section>
