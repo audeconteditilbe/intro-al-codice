@@ -117,7 +117,7 @@ class ExercisePageManager {
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(
         document.getElementById('container'),
-        { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true }
+        { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true, scrollBeyondLastLine: false }
       )
     })
     
