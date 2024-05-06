@@ -175,11 +175,11 @@ console.log('I am happy now! :)')
           <li>esco dall'<code>if ... else if ...</code></li>
           <li>
             eseguo l'operazione successiva:
-            <pre><code>iAmHappy = !iAmHungry &amp;&amp; !iAmThirsty &amp;&amp;!iAmTired</code></pre>
+            <pre><code>iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired</code></pre>
             che è uguale a
-            <pre><code>iAmHappy = true &amp;&amp; false &amp;&amp; false</code></pre>
+            <pre><code>iAmHappy = true && false && false</code></pre>
             qunidi il valore di <code>iAmHappy</code> rimane <code>false</code>.
-            <a href="./20_variabili#booleani">Ricorda</a> che <code>&amp;&amp;</code> indica l'ND logico.
+            <a href="./20_variabili#booleani">Ricorda</a> che <code>&&</code> indica l'AND logico.
           </li>
         </ul>
       </li>
@@ -188,11 +188,10 @@ console.log('I am happy now! :)')
         <ul>
           <li>
             valuto la condizione del primo <code>if</code>, che è
-            <code>false</code>, quindi passo all'code>else if</code> successivo
+            <code>false</code>, quindi passo all'<code>else if</code> successivo
           </li>
           <li>
-            valuto la condizione del primo <code>else if</code>, che è
-            <code>true</code>, quindi ne eseguo il codice
+            ne valuto la condizione, che è <code>true</code>, quindi ne eseguo il codice
             <ul>
               <li>stampo "Drinking..."</li>
               <li>aggiorno <code>iAmThirsty</code> a <code>false</code></li>
@@ -201,27 +200,26 @@ console.log('I am happy now! :)')
           <li>esco dall'<code>if ... else if ...</code></li>
           <li>
             eseguo l'operazione successiva:
-            <pre><code>iAmHappy = !iAmHungry &amp;&amp; !iAmThirsty &amp;&amp; !iAmTired</code></pre>
+            <pre><code>iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired</code></pre>
             che è uguale a
-            <pre><code>iAmHappy = true &amp;&amp; true &amp;&amp; false</code></pre>
+            <pre><code>iAmHappy = true && true && false</code></pre>
             qunidi <code>iAmHappy</code> rimane <code>false</code>.
           </li>
         </ul>
       </li>
       <li>
-        valuto la condizione del while: : <code>!iAmHappy</code> è uguale a
+        valuto la condizione del while: <code>!iAmHappy</code> è uguale a
         <code>true</code>
         <ul>
           <li>
             valuto la condizione del primo <code>if</code>, che è <code>false</code>
           </li>
           <li>
-            valuto la condizione del primo <code>else if</code>, che è
-            <code>false</code>
+            valuto la condizione del primo <code>else if</code>, che è <code>false</code>
           </li>
           <li>
-            valuto la condizione del secondo <code>else if</code>, che è
-            <code>true</code>, quindi ne eseguo il codice
+            valuto la condizione del secondo <code>else if</code>, che è <code>true</code>,
+            quindi ne eseguo il codice
             <ul>
               <li>stampo "Eating..."</li>
               <li>aggiorno <code>iAmHungry</code> a <code>false</code></li>
@@ -230,19 +228,19 @@ console.log('I am happy now! :)')
           <li>esco dall'<code>if ... else if ...</code></li>
           <li>
             eseguo l'operazione successiva:
-            <pre><code>iAmHappy = !iAmHungry &amp;&amp; !iAmThirsty &amp;&amp; !iAmTired</code></pre>
+            <pre><code>iAmHappy = !iAmHungry && !iAmThirsty && !iAmTired</code></pre>
             che è uguale a
-            <pre><code>iAmHappy = true &amp;&amp; true &amp;&amp; true</code></pre>
+            <pre><code>iAmHappy = true && true && true</code></pre>
             qunidi <code>iAmHappy</code> diventa <code>true</code>.
           </li>
         </ul>
       </li>
       <li>
-        valuto la condizione del while: : <code>!iAmHappy</code> è uguale a
+        valuto la condizione del while: <code>!iAmHappy</code> è uguale a
         <code>false</code>, quindi esco dal ciclo <code>while</code>
       </li>
       <li>
-        stampo "I am happy now! :)" Alla fine per essere felici basta poco
+        stampo "I am happy now! :)" ...Alla fine per essere felici basta poco
         si direbbe 🧘
       </li>
     </ul>
@@ -277,7 +275,7 @@ Cosa esegue? Noti qualcosa di strano?
     </p>
     <p>
       Per farla semplice: il computer continua ad eseguire le operazioni specificate all'interno del ciclo
-      indefinitivamnete, il che monopolizza le risorse, e manda in crush l'intero sistema.
+      indefinitivamnete, il chè monopolizza le risorse, e manda in crash l'intero sistema.
     </p>
     <p>Occhio a non cadere in cicli infiniti!</p>
   </div>
@@ -288,7 +286,7 @@ Cosa esegue? Noti qualcosa di strano?
 E' un errore molto comune quello di creare un loop la cui condizione non diventa mai `false`,
 ed incappare quindi in un ciclo infinito, come quello visto nell'[esempio precedente](#esempio-trabocchetto).
 
-Se ci fai caso, noterai che in tutti gli altri esempi visti fino ad ora, all'interno del `while` è presente
+Se ci fai caso, noterai che in tutti gli altri esempi visti fino ad ora all'interno del `while` è presente
 l'aggiornamento di una variabile dichiarata fuori dal ciclo.
 
 Negli esempi precedenti questi sono:
@@ -352,11 +350,82 @@ console.log('I am happy now! :)')
 In questo caso ci siamo ricordati di aggiornare la variabile `iAmHappy` ad ogni iterazione del ciclo,
 ma lo facciamo nel modo sbagliato: `iAmHappy` non sarà mai `true`.
 
+## Ciclo `for`
+
+TODO
+
+
+## *Sexy approfondimento per secchioni* 🤓 Ciclo `for` vs ciclo `while`
+
+> ⚠️ **IMPORTANTE** ⚠️
+> 
+> se non è tutto chiaro fino a qui, salta il resto di questo *Sexy Approfondimento*, servirebbe solo a fare confusione.
+> 
+> In questo approfondimento confrontiamo il cilco `while` con il ciclo `for`.
+> Sappi però che quelli in questo *Sexy approfondimento* sono discorsi che lasciano il tempo che trovano, per due motivi principalmente:
+>  - in generale la scelta migliore è di usare il tipo ciclo che tu preferisci
+>  - come [accenneremo in seguito](#ciclo-for-each), molti linguaggi offrono modi più comodi di scrivere cicli, che probabilmente
+>    usarai molto molto più spesso di quelli "tradizionali" trattai in questo *Sexy approfondimento*
+
+L'uso del ciclo `while` può essere spesso riassunto in 4 step:
+
+1) dichiaro una varibile fuori dal ciclo
+2) dishiaro il ciclo con la sua condizione, che dipende dalla variabile create nello step [1]
+3) specifico le operazioni del ciclo "vere e propie"
+4) al termine del ciclo, aggiorno la variabile creata nello step [1] per assicurarmi di uscire dal ciclo prima o poi
+
+
+Ad esempio:
+```javascript
+let i = 0 // [1]
+while (i < 10 ) // [2]
+{
+  //... [3]
+  i = i + 1  // [4]
+}
+```
+
+Il ciclo for invece già include nella sua sintassi sia la dichiarazinoe di una nuova variabile ([1]), sia la condizione del ciclo ([2]),
+che come aggiornare la variabile al termine di ogni iterazione del ciclo ([4]):
+
+```javascript
+for (let i = 0; i < iterations; i++)
+//   ---------  --------------  ----
+//      [1]          [2]        [4]
+```
+
+Questo fa sì che l'uso del ciclo `for` assuma questa forma:
+
+```javascript
+for (let i = 0; i ...; i ...) // [1], [2], [4]
+{
+  // ...  [3]
+}
+```
+
+Avendo così le operazioni che ci interessano da sole all'interno delle graffe del ciclo, e le varibili craete solo per usare il ciclo tutte
+contenute all'interno delle parentesi tonde.
+
+Questo ha due vantaggi principali:
+
+1. rende il codice più ordinato, perchè separa le operazioni specifiche del ciclo ([1], [2], [4]) dalle operazioni che
+  vogliamo eseguire per il nostro programma ([3])
+2. e rende più difficile incappare in [cicli infiniti](#occhio-ai-cicli-infiniti), in quanto è più difficile dimenticarsi di
+  aggiornare la variabile al termine del ciclo di modo da uscire prima o poi dal ciclo ([4]), in quanto questo step è richiesto
+  dalla sintassi stessa del ciclo `for`
+
+Quindi, se ti trovi nelle condizioni di dichiarare una nuova variabile SOLO per usarla nel ciclo ([1]), probabilmente ha senso usare un
+ciclo `for` invece che un ciclo `while`.
+
+## Ciclo `for each`
+
+TODO
+
 ### *Sexy approfondimento per secchioni* 🤓 Comando `break`
 
 TODO
 
-## Ciclo `for`
+## *Sexy approfondimento per secchioni* 🤓 Cicli avanzati (specifico per JavaScript)
 
 TODO
 
