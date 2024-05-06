@@ -22,9 +22,9 @@ finchè [CONDIZIONE], esegui [OPERAZIOINI]
 Schematicamente (è venuto davvero bene, sono un artista 🎨)
 
 ```
-  ↗️ ➡️ ➡️ ➡️ ➡️ verifica condizione
+  ➡️ ➡️ ➡️ ➡️ ➡️ verifica condizione
   ⬆            ↙️           ↘️
-  ⬆️          ↙️               ↘️
+  ⬆          ↙️               ↘️
   ⬆️       risolve a        risolve a
   ⬆️         true             false
   ⬆️           ⬇️                ⬇️
@@ -34,7 +34,7 @@ Schematicamente (è venuto davvero bene, sono un artista 🎨)
   ⬆️      specificate
   ⬆️          ⬇️
   ⬆️          ⬇️
-  ↖️ ⬅️ ⬅️ ⬅️ ⬅️ ⬅️
+  ⬅️ ⬅️ ⬅️ ⬅️ ⬅️ ⬅️
 ```
 
 Quindi, al termine dell'esecuzione delle operazioni specificate per il ciclo, invece di andare avanti nell'esecuzione
@@ -85,7 +85,7 @@ Flusso:
       - stampo  "Iterazione numero 2"
       - incremento `num` di 1, che ora vale 3
   - verifico la condizione: `num < iterations`, ovvero `3 < 3`, che risolve al booleano `false`
-  - l'esecuzione termina
+  - L'esecuzione termina
 
 In altre parole, il codice stampa:
 
@@ -355,7 +355,7 @@ ma lo facciamo nel modo sbagliato: `iAmHappy` non sarà mai `true`.
 TODO
 
 
-## *Sexy approfondimento per secchioni* 🤓 Ciclo `for` vs ciclo `while`
+### *Sexy approfondimento per secchioni* 🤓 Ciclo `for` vs ciclo `while`
 
 > ⚠️ **IMPORTANTE** ⚠️
 > 
@@ -363,16 +363,16 @@ TODO
 > 
 > In questo approfondimento confrontiamo il cilco `while` con il ciclo `for`.
 > Sappi però che quelli in questo *Sexy approfondimento* sono discorsi che lasciano il tempo che trovano, per due motivi principalmente:
->  - in generale la scelta migliore è di usare il tipo ciclo che tu preferisci
+>  - in generale la scelta migliore è di usare il tipo di ciclo che tu preferisci
 >  - come [accenneremo in seguito](#ciclo-for-each), molti linguaggi offrono modi più comodi di scrivere cicli, che probabilmente
 >    usarai molto molto più spesso di quelli "tradizionali" trattai in questo *Sexy approfondimento*
 
 L'uso del ciclo `while` può essere spesso riassunto in 4 step:
 
-1) dichiaro una varibile fuori dal ciclo
-2) dishiaro il ciclo con la sua condizione, che dipende dalla variabile create nello step [1]
-3) specifico le operazioni del ciclo "vere e propie"
-4) al termine del ciclo, aggiorno la variabile creata nello step [1] per assicurarmi di uscire dal ciclo prima o poi
+1. dichiaro una varibile fuori dal ciclo
+2. dichiaro il ciclo con la sua condizione, che dipende dalla variabile create allo step [1]
+3. specifico le operazioni del ciclo "vere e propie"
+4. al termine del ciclo, aggiorno la variabile creata allo step [1] per assicurarmi di uscire dal ciclo prima o poi
 
 
 Ad esempio:
@@ -381,7 +381,7 @@ let i = 0 // [1]
 while (i < 10 ) // [2]
 {
   //... [3]
-  i = i + 1  // [4]
+  i++  // [4]
 }
 ```
 
@@ -397,22 +397,21 @@ for (let i = 0; i < iterations; i++)
 Questo fa sì che l'uso del ciclo `for` assuma questa forma:
 
 ```javascript
-for (let i = 0; i ...; i ...) // [1], [2], [4]
+for (let i = 0; i < 10; i++) // [1], [2], [4]
 {
   // ...  [3]
 }
 ```
 
-Avendo così le operazioni che ci interessano da sole all'interno delle graffe del ciclo, e le varibili craete solo per usare il ciclo tutte
-contenute all'interno delle parentesi tonde.
+Avendo così le operazioni che ci interessano da sole all'interno delle graffe del ciclo, e quelle necessarie esclusivamente
+per usare il ciclo tutte contenute all'interno delle parentesi tonde.
 
 Questo ha due vantaggi principali:
 
 1. rende il codice più ordinato, perchè separa le operazioni specifiche del ciclo ([1], [2], [4]) dalle operazioni che
   vogliamo eseguire per il nostro programma ([3])
-2. e rende più difficile incappare in [cicli infiniti](#occhio-ai-cicli-infiniti), in quanto è più difficile dimenticarsi di
-  aggiornare la variabile al termine del ciclo di modo da uscire prima o poi dal ciclo ([4]), in quanto questo step è richiesto
-  dalla sintassi stessa del ciclo `for`
+2. rende più difficile incappare in [cicli infiniti](#occhio-ai-cicli-infiniti), in quanto non è possibile dimenticare di
+  aggiornare la variabile che si sta usando per ciclare, poichè questo step è richiesto dalla sintassi stessa del ciclo `for` ([4])
 
 Quindi, se ti trovi nelle condizioni di dichiarare una nuova variabile SOLO per usarla nel ciclo ([1]), probabilmente ha senso usare un
 ciclo `for` invece che un ciclo `while`.
@@ -421,7 +420,7 @@ ciclo `for` invece che un ciclo `while`.
 
 TODO
 
-### *Sexy approfondimento per secchioni* 🤓 Comando `break`
+## Comandi `break` e `continue`
 
 TODO
 

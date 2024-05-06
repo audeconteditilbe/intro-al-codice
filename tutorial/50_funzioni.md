@@ -84,7 +84,34 @@ Questo codice crea una variabile di nome `sentence` di tipo stringa e valore: "A
 Il bloco di codice specificato per `addText` viene eseguito prendendo come input ciò che viene messo fra parantesi, e restituendo
 come output ciò che segue alla parola chiave `return`.
 
-### Esempio: Flusso completo
+### Variabili all'interno di una funzione
+
+In generale, una funzione smette di esistere quando si chiude la graffa del blocco di codice in cui è stata dichiarata.
+
+L'esempio seguente è ❌ **SBAGLIATO** ❌
+
+```javascript
+function fun () {
+  let name = 'Arianna'
+} // ----> qui `name` smette di esistere
+
+name = 'Claudio' // ERRORE! ❌ `name` non esiste più!
+```
+
+la variabile `name` dichiarata dentro la funzione `fun` smette di esiste dopo la graffa che chiude la funzione, quindi
+l'operazione `name = "Claudio"` causa un errore: stai dicendo al computer di aggiornare una variabile, `name`, che però per lui non esiste più!
+
+L'esempio seguente invece è **corretto** ✅
+
+```javascript
+function fun () {
+  let name = 'Arianna'
+}
+
+let name = 'Claudio' // OK ✅
+```
+
+### Esempio: flusso completo
 
 Prendiamo di nuovo lo stesso esempio:
 
@@ -461,33 +488,6 @@ Sapresti scrivere una funzione che concatena un numero arbitrario di stinghe?
 
 Questa funzione è più o meno generica di `concatStrings` dell'esempio precedente? Come mai?
 
-## Variabili all'interno di una funzione
-
-In generale, una funzione smette di esistere quando si chiude la graffa del blocco di codice in cui è stata dichiarata.
-
-L'esempio seguente è ❌ **SBAGLIATO** ❌
-
-```javascript
-function fun () {
-  let name = 'Arianna'
-} // ----> qui `name` smette di esistere
-
-name = 'Claudio' // ERRORE! ❌ `name` non esiste più!
-```
-
-la variabile `name` dichiarata dentro la funzione `fun` smette di esiste dopo la graffa che chiude la funzione, quindi
-l'operazione `name = "Claudio"` causa un errore: stai dicendo al computer di aggiornare una variabile, `name`, che però per lui non esiste più!
-
-L'esempio seguente invece è **corretto** ✅
-
-```javascript
-function fun () {
-  let name = 'Arianna'
-}
-
-let name = 'Claudio' // OK ✅
-```
-
 ### Esempio: funzione con operatori logici (numeri)
 
 Il seguente esempio prende spunto da un
@@ -538,7 +538,7 @@ checkEquality("Arianna", "Claudio") // -> stampa: "Come il giorno e la notte"
 checkEquality(7, 7) // -> stampa: "Due gocce d'acqua"
 ```
 
-### Esercizio - funzione con if
+### Esercizio: funzione con if
 
 <a href="../src/catalogue/50_funzioni/exercise1/index.html" target="_blank">Ora prova tu!</a>
 Questo esercizio ti chiederà di completare una funzione di modo che esegua certe operazioni.
@@ -572,7 +572,7 @@ function sumNumbers (nums) {
 
 E' chiaro come *funziona questa funzione*? Forse può essere utile confrontarlo con [questo esempio](./40_cicli.md#esempio-flusso-completo-di-un-ciclo-while).
 
-Se non ti è chiaro, fai del [rubber ducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging) con te stessa!
+Se non ti è chiaro, fai del <a target="_blank" href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubber ducking</a> con te stessa!
 Prova a scrivere esplicitamente cosa succede ad ogni step di questo esempio con certi input:
 
 ```javascript
@@ -601,7 +601,7 @@ sumNumbers([1, 5, 7])
           <li>incremento <code>total</code> di 7, che ora vale 13</li>
         </ul>
       </li>
-      <li>l'esecuzione termina</li>
+      <li>L'esecuzione termina</li>
     </ul>
   </div>
 </details>
@@ -618,7 +618,7 @@ Quando una funzione arriva al `return`, il flusso di operazioni viene interrotto
 la funzione restutisce come outout qualunque cosa sia seguita dal `return`, e termina
 senza eseguire eventuali comandi successivi.
 
-### Esempio
+### Esempio: return dentro if
 
 ```javascript
 function greetFriend (name, isFriend) {
@@ -683,7 +683,7 @@ di una funzione si arriva ad un comando di `return`?
 Quello che succede ogni volta che una funzione trova un `return`: questa termina, e qualunque cosa sia a destra del
 `return` è il risultato.
 
-### Esempio
+### Esempio: return dentro un ciclo
 
 ```javascript
 function findWaldo(names) {
@@ -714,7 +714,7 @@ che ci si aspetta.
 In particolare, è spesso utile controllare che i valori passati come argomenti a una funzione siano
 definiti, e non [undefined](./20_variabili.md#variabili-non-definite).
 
-#### Esempio
+#### Esempio: validare gli argomenti di una funzione
 
 Modifichiamo uno degli esempi precedenti per controlllare che i valori ricevuti in input dalla nostra funzione siano definiti.
 
@@ -760,11 +760,11 @@ Poichè JavaScript non permette di specificare esplicitamente il tipo di una var
 
 E' possibile controllare il tipo di un dato usando il costrutto `typeof [variabile]`, che può valere:
 
-- `undefined`
-- `string`
-- `boolean`
-- `number`
-- `object`
+- `undefined` per variabili non definite (quindi con valore undefined)
+- `string` per variabili di tipo stringa
+- `boolean` per variabili di tipo booleano
+- `number` per variabili di tipo numerico
+- `object` per variabili con oggetti e array <s>(...e non solo...)</s>
 
 ```javascript
 let num = 5
@@ -802,7 +802,7 @@ console.log(isArr) // stampa `true`
 > Per controllare se un valore è un'array, si può usare la funzione speciale `Array.isArray(...)`. Questa restituisce
 > `true` se l'input è un'array, `false` altrimenti.
 
-#### Esempio
+#### Esempio: validare il tipo degli argomenti di una funzione
 
 Questo esempio verifica che gli argomenti della funzione siano del tipo che ci si aspetta
 (`string` e `boolean` rispettivamente). Qualora questo non sia il caso, la funzione ritorna
@@ -843,7 +843,7 @@ console.log(message5) // non stampa nulla, perchè message5 è `undefined`
 > è come scrivere `return undefined`
 
 
-### Esercizio - validazione argomenti
+### Esercizio: validazione argomenti
 
 <a href="../src/catalogue/50_funzioni/exercise2/index.html" target="_blank">Ora prova tu!</a>
 Questo esercizio è simile al [precedente](#esercizio---funzione), ma questa volta per completarlo correttamente
