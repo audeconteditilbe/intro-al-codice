@@ -370,9 +370,9 @@ TODO
 L'uso del ciclo `while` può essere spesso riassunto in 4 step:
 
 1. dichiaro una varibile fuori dal ciclo
-2. dichiaro il ciclo con la sua condizione, che dipende dalla variabile create allo step [1]
+2. dichiaro il ciclo con la sua condizione, che dipende dalla variabile create allo step \[1]
 3. specifico le operazioni del ciclo "vere e propie"
-4. al termine del ciclo, aggiorno la variabile creata allo step [1] per assicurarmi di uscire dal ciclo prima o poi
+4. al termine del ciclo, aggiorno la variabile creata allo step \[1] per assicurarmi di uscire dal ciclo prima o poi
 
 
 Ad esempio:
@@ -385,8 +385,8 @@ while (i < 10 ) // [2]
 }
 ```
 
-Il ciclo for invece già include nella sua sintassi sia la dichiarazinoe di una nuova variabile ([1]), sia la condizione del ciclo ([2]),
-che come aggiornare la variabile al termine di ogni iterazione del ciclo ([4]):
+Il ciclo for invece già include nella sua sintassi sia la dichiarazinoe di una nuova variabile (\[1]), sia la condizione del ciclo (\[2]),
+che come aggiornare la variabile al termine di ogni iterazione del ciclo (\[4]):
 
 ```javascript
 for (let i = 0; i < iterations; i++)
@@ -408,12 +408,12 @@ per usare il ciclo tutte contenute all'interno delle parentesi tonde.
 
 Questo ha due vantaggi principali:
 
-1. rende il codice più ordinato, perchè separa le operazioni specifiche del ciclo ([1], [2], [4]) dalle operazioni che
-  vogliamo eseguire per il nostro programma ([3])
+1. rende il codice più ordinato, perchè separa le operazioni specifiche del ciclo (\[1], \[2], \[4]) dalle operazioni che
+  vogliamo eseguire per il nostro programma (\[3])
 2. rende più difficile incappare in [cicli infiniti](#occhio-ai-cicli-infiniti), in quanto non è possibile dimenticare di
-  aggiornare la variabile che si sta usando per ciclare, poichè questo step è richiesto dalla sintassi stessa del ciclo `for` ([4])
+  aggiornare la variabile che si sta usando per ciclare, poichè questo step è richiesto dalla sintassi stessa del ciclo `for` (\[4])
 
-Quindi, se ti trovi nelle condizioni di dichiarare una nuova variabile SOLO per usarla nel ciclo ([1]), probabilmente ha senso usare un
+Quindi, se ti trovi nelle condizioni di dichiarare una nuova variabile SOLO per usarla nel ciclo (\[1]), probabilmente ha senso usare un
 ciclo `for` invece che un ciclo `while`.
 
 ## Ciclo `for each`

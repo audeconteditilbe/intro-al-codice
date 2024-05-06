@@ -329,7 +329,7 @@ se ci sono delle istruzioni che sai già eseguirai più volte, incapsularle in u
 ### Esempio: console.log
 
 La segute funzione prende in input due stringhe, e produce in output la frase
-"[nameA] e [nameB] sono meno belli di Arianna e Claudio"
+"\[nameA\] e \[nameB\] sono meno belli di Arianna e Claudio"
 
 ```javascript
 function makeSentence (nameA, nameB) // nome della funzione + dati in input
@@ -846,7 +846,7 @@ console.log(message5) // non stampa nulla, perchè message5 è `undefined`
 ### Esercizio: validazione argomenti
 
 <a href="../src/catalogue/50_funzioni/exercise2/index.html" target="_blank">Ora prova tu!</a>
-Questo esercizio è simile al [precedente](#esercizio---funzione), ma questa volta per completarlo correttamente
+Questo esercizio è simile al [precedente](#esercizio-funzione-con-if), ma questa volta per completarlo correttamente
 dovrai verificare la correttezza degli argomenti in input.
 
 ## Esercizi
