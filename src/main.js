@@ -58,7 +58,7 @@ class ExercisePageManager {
       window.editor.setValue(this.initialValue)
     }
   }
-  
+
   onSubmit (e) {
     e.preventDefault()
   
@@ -117,7 +117,7 @@ class ExercisePageManager {
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(
         document.getElementById('container'),
-        { value: initialValue, language: 'javascript', theme: 'vs-dark' }
+        { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true }
       )
     })
     
@@ -128,7 +128,6 @@ class ExercisePageManager {
     this.instructions.innerHTML = text
     this.validation = _validation
     this.tests = _tests
-    
     this.initialValue = initialValue
     
     this.form.addEventListener('submit', this.onSubmit.bind(this))
