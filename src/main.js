@@ -1,31 +1,17 @@
+require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@latest/min/vs' }})
+
 class ExercisePageManager {
   form = document.getElementById('exercise-form')
   title = document.getElementById('exercise-title')
   instructions = document.getElementById('exercise-instructions')
-  codeblock = document.getElementById('exercise-code-block')
   validationResult = document.getElementById('validation')
   reportResult = document.getElementById('report')
   testResults = document.getElementById('tests')
   resetButton = document.getElementById('reset-button')
   
-  init = {}
+  initialValue
   validation
   tests = []
-  
-  constructor () {
-    // Use tab inside textarea
-    this.codeblock.addEventListener('keydown', function (e) {
-      if (e.key === 'Tab') {
-        e.preventDefault()
-        const tab = "  "
-        const start = this.selectionStart
-        const end = this.selectionEnd
-    
-        this.value = this.value.substring(0, start) + tab + this.value.substring(end)
-        this.selectionStart = this.selectionEnd = start + tab.length
-      }
-    })
-  }
 
   resetValidation () {
     this.validationResult.classList.remove('error')
@@ -64,14 +50,15 @@ class ExercisePageManager {
   onReset(e) {
     e.preventDefault()
     
-    const {name, text, initialValue, validation, tests} = this.init
-  
     const ok = confirm("Sei sicura di voler rirpistinare i valori iniziali?")
     if (ok) {
-      this.loadExercise({name, text, initialValue, validation, tests})
+      this.resetValidation()
+      this.resetTestResults()
+      this.resetReport()
+      window.editor.setValue(this.initialValue)
     }
   }
-  
+
   onSubmit (e) {
     e.preventDefault()
   
@@ -81,7 +68,7 @@ class ExercisePageManager {
   
     let validationReport = {}
     try {
-      validationReport = this.validation(this.codeblock.value)
+      validationReport = this.validation(window.editor.getValue())
     } catch (err) {
       validationReport.error = `Il codice ha lanciato un errore:\n${err}`
     }
@@ -127,17 +114,21 @@ class ExercisePageManager {
   }
   
   loadExercise ({name, text, initialValue, validation: _validation, tests: _tests}) {
+    require(["vs/editor/editor.main"], function () {
+      window.editor = monaco.editor.create(
+        document.getElementById('container'),
+        { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true }
+      )
+    })
+    
     this.resetValidation()
     this.resetTestResults()
     this.resetReport()
-    
     this.title.innerText = name
     this.instructions.innerHTML = text
-    this.codeblock.value = initialValue
     this.validation = _validation
     this.tests = _tests
-  
-    this.init = { name, text, initialValue, validation, tests }
+    this.initialValue = initialValue
     
     this.form.addEventListener('submit', this.onSubmit.bind(this))
     this.resetButton.addEventListener('click', this.onReset.bind(this))
