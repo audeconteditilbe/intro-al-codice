@@ -116,5 +116,5 @@ addTest({
     }  catch (err) {
       return { error: `Error: with input ${JSON.stringify(input)}, the following error is thrown: ${err}` }
     }
-    })
+  })
 })
