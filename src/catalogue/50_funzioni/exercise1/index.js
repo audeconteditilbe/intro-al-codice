@@ -1,4 +1,4 @@
-const target = (age) => {
+const _target = (age) => {
   return typeof age === 'number' && age >= 18
 }
 
@@ -34,7 +34,11 @@ const _tests = Array(25).fill(0)
       return getTestResult(success, input, res, expected)
     }
   })
-_tests.push((code) => randomTesting(code, target))
+
+const _randomTest = (code) => {
+  const isAdult = code()
+  return randomTesting(isAdult, _target, 10)
+}
 
 const exercise = {
   name: 'Esercizio: vietato ai minori 🔞',
@@ -42,6 +46,8 @@ const exercise = {
   initialValue: _initialValue,
   validation: _validation,
   tests: _tests,
+  randomTest: _randomTest,
+  target: _target
 }
 
 new ExercisePageManager().loadExercise(exercise)

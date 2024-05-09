@@ -4,7 +4,7 @@ const rndBool = (prob = 0.5) => Math.random() < prob
 const rndFloat = (min = 0, max = 100) => ((Math.random() * (max - min)) + min).toFixed()
 const rndInt = (min = 0, max = 100) => parseInt(rndFloat(min, max))
 
-const extract = (arr) => arr[rndInt(0, arr.length)]
+const extract = (arr) => arr[rndInt(0, arr.length-1)]
 
 const rndString = () => (Math.random() + 1).toString(36).substring(7)
 
@@ -20,13 +20,13 @@ const rndAnimal = () => extract(ANIMALS)
 const rndPetName = () => extract(PET_NAMES)
 const rndCar = () => extract(CARS)
 const rndText = () => extract(TEXTS)
-const rndAddress = () => `${extract(['Via', 'Piazza', 'Viale'])} ${rndLastName()} ${rndInt(1)}`
+const rndAddress = () => `${extract(['Via', 'Piazza', 'Viale'])} ${rndLastName()} ${rndInt()}`
 const rndWeekday = () => extract(WEEK_DAYS)
 const rndMonth = () => extract(MONTHS)
 const rndDate = (day, month, year, separator) => {
-  const m = month ?? rndInt(1, 13)
+  const m = month ?? rndInt(1, 12)
   const d = day ?? rndInt(1, DAYS_PER_MONTH[m])
-  const y = year ?? rndInt(1970, 2025)
+  const y = year ?? rndInt(1970, 2024)
   const s = separator ?? extract(['/', '-', ' '])
   return [d, m, y].join(s)
 }
@@ -157,11 +157,10 @@ const rndObject = () => {
 
 const rndArray = (type) => {
   const n = rndInt(0, 10)
-  type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
-  const gen = TYPE_TO_GEN[type]
-  return Array(n).fill(0).map(gen)
+  const _type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
+  const gen = TYPE_TO_GEN[_type]
+  return Array(n).fill(0).map(() => gen())
 }
-
 const TYPE_TO_GEN = {
   string: extract([
     rndFirstName, rndLastName, rndFullName,
@@ -175,6 +174,7 @@ const TYPE_TO_GEN = {
   object: rndObject,
   array: rndArray
 }
+
 
 const rnd = (type) => {
   type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])

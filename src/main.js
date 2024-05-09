@@ -9,9 +9,11 @@ class ExercisePageManager {
   testResults = document.getElementById('tests')
   resetButton = document.getElementById('reset-button')
   
+  target
   initialValue
   validation
   tests = []
+  randomTest = []
 
   resetValidation () {
     this.validationResult.classList.remove('error')
@@ -104,15 +106,22 @@ class ExercisePageManager {
           passed += 1
         }
       })
-
+      
       this.addReportItem(
         `Report: ${passed} test passati su ${this.tests.length}`,
         passed === this.tests.length ? 'success' : 'error'
       )
+
+      const randomTestResults = this.randomTest(code)
+      const randomTestsPassed = randomTestResults.filter(res => !res.error).length
+      this.addReportItem(
+        `Report: ${randomTestsPassed} test automatici passati su ${randomTestResults.length}`,
+        randomTestsPassed === randomTestResults.length ? 'success' : 'error'
+      )
     }
   }
   
-  loadExercise ({ name, text, initialValue, validation: _validation, tests: _tests }) {
+  loadExercise ({ name, text, initialValue, validation: _validation, tests: _tests, randomTest: _randomTest, target }) {
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(
         document.getElementById('container'),
@@ -125,9 +134,11 @@ class ExercisePageManager {
     this.resetReport()
     this.title.innerText = name
     this.instructions.innerHTML = text
+    this.target = target
+    this.initialValue = initialValue
     this.validation = _validation
     this.tests = _tests
-    this.initialValue = initialValue
+    this.randomTest = _randomTest
     
     this.form.addEventListener('submit', this.onSubmit.bind(this))
     this.resetButton.addEventListener('click', this.onReset.bind(this))

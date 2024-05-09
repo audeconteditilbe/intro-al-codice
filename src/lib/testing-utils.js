@@ -37,10 +37,12 @@ const getTestResult = (success, input, output, expected) => {
 
 const randomTesting = (fun, target, n = 50) => {
   return ['string', 'integer', 'float', 'boolean', 'object', 'array']
-    .map((type) => Array(n).fill(0).map(() => rnd(type)))
-    .map((data) => {
-      const output = fun(data)
-      const expected = target(data)
-      return getTestResult(assertEq(output, expected), data, output, expected)
+    .flatMap((type) => {
+      return Array(n).fill(0).map(() => rnd(type))
+        .map((data) => {
+          const output = fun(data)
+          const expected = target(data)
+          return getTestResult(assertEq(output, expected), data, output, expected)
+        })
     })
 }
