@@ -22,11 +22,7 @@ function _validation (codeStr) {
 const testFunction = (input, expected) => (code) => {
   const isAdult = code()
   const res = isAdult(input)
-  
-  if (assertEq(res, expected)) {
-    return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(res)}` }
-  }
-  return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(res)}, ma dovrebbe restituire ${pretty(expected)}` }
+  return getTestResult(assertEq(res, expected), input, res, expected)
 }
 const _tests = [
   ...Array(25).fill(0).map((_, idx) => testFunction(idx, idx >= 18)),

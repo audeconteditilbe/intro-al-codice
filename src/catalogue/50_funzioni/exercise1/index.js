@@ -1,3 +1,7 @@
+const target = (age) => {
+  return typeof age === 'number' && age >= 18
+}
+
 const _initialValue = `\
 function isAdult (age)
 {
@@ -19,19 +23,18 @@ function _validation (codeStr) {
     code
   }
 }
-const _tests = Array(25).fill(0).map((_, idx) => {
-  return (code) => {
-    const isAdult = code()
-    const input = idx
-    const expected = idx >= 18
-    const res = isAdult(input)
-    
-    if (assertEq(res, expected)) {
-      return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(res)}` }
+const _tests = Array(25).fill(0)
+  .map((_, idx) => {
+    return (code) => {
+      const isAdult = code()
+      const input = idx
+      const expected = idx >= 18
+      const res = isAdult(input)
+      const success = assertEq(res, expected)
+      return getTestResult(success, input, res, expected)
     }
-    return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(res)}, ma dovrebbe restituire ${pretty(expected)}` }
-  }
-})
+  })
+_tests.push((code) => randomTesting(code, target))
 
 const exercise = {
   name: 'Esercizio: vietato ai minori 🔞',

@@ -1,25 +1,16 @@
-const TYPE_TO_GEN = {
-  string: extract([
-    rndFirstName, rndLastName, rndFullName,
-    rndCity, rndAnimal, rndPetName, rndCar,
-    rndText, rndAddress, rndWeekday, rndMonth,
-    rndDate
-  ]),
-  integer: rndInt,
-  float: rndFloat,
-  boolean: rndBool,
-  object: rndObject,
-  array: rndArray
-}
 
 const rndBool = (prob = 0.5) => Math.random() < prob
 
 const rndFloat = (min = 0, max = 100) => ((Math.random() * (max - min)) + min).toFixed()
-const rndInt = (min  = 0, max = 100) => parseInt(rndFloat(min, max))
+const rndInt = (min = 0, max = 100) => parseInt(rndFloat(min, max))
 
 const extract = (arr) => arr[rndInt(0, arr.length)]
 
 const rndString = () => (Math.random() + 1).toString(36).substring(7)
+
+const rndFloadStr = (min  = 0, max = 100) => JSON.stringify(rndFloat(min, max))
+const rndIntStr = (min = 0, max = 100) => JSON.stringify(rndInt(min, max))
+const rndBoolStr = (prob = 0.5) => JSON.stringify(rndBool(prob))
 
 const rndFirstName = () => extract(FIRST_NAMES)
 const rndLastName = () => extract(LAST_NAMES)
@@ -169,4 +160,24 @@ const rndArray = (type) => {
   type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
   const gen = TYPE_TO_GEN[type]
   return Array(n).fill(0).map(gen)
+}
+
+const TYPE_TO_GEN = {
+  string: extract([
+    rndFirstName, rndLastName, rndFullName,
+    rndCity, rndAnimal, rndPetName, rndCar,
+    rndText, rndAddress, rndWeekday, rndMonth,
+    rndDate, rndFloadStr, rndIntStr, rndBoolStr
+  ]),
+  integer: rndInt,
+  float: rndFloat,
+  boolean: rndBool,
+  object: rndObject,
+  array: rndArray
+}
+
+const rnd = (type) => {
+  type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
+  const gen = TYPE_TO_GEN[type]
+  return gen()
 }

@@ -17,11 +17,7 @@ function _validation (codeStr) {
 const testFunction = (input, expected) => (code) => {
   const introduceFamily = code()
   const res = introduceFamily(input)
-  
-  if (assertEq(res, expected)) {
-    return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(res)}` }
-  }
-  return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(res)}, ma dovrebbe restituire ${pretty(expected)}` }
+  return getTestResult(assertEq(res, expected), input, res, expected)
 }
 
 const _tests = [

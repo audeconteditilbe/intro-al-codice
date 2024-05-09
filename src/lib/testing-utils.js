@@ -27,3 +27,20 @@ function assertEq (result, expected) {
 
   return result === expected
 }
+
+const getTestResult = (success, input, output, expected) => {
+  if (success) {
+    return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(output)}` }
+  }
+  return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(output)}, ma dovrebbe restituire ${pretty(expected)}` }
+}
+
+const randomTesting = (fun, target, n = 50) => {
+  return ['string', 'integer', 'float', 'boolean', 'object', 'array']
+    .map((type) => Array(n).fill(0).map(() => rnd(type)))
+    .map((data) => {
+      const output = fun(data)
+      const expected = target(data)
+      return getTestResult(assertEq(output, expected), data, output, expected)
+    })
+}

@@ -86,7 +86,6 @@ class ExercisePageManager {
       let passed = 0
       
       this.tests.forEach((test) => {
-        
         let testReport = {}
         try {
           testReport = test(code)
@@ -105,7 +104,7 @@ class ExercisePageManager {
           passed += 1
         }
       })
-  
+
       this.addReportItem(
         `Report: ${passed} test passati su ${this.tests.length}`,
         passed === this.tests.length ? 'success' : 'error'
@@ -113,7 +112,7 @@ class ExercisePageManager {
     }
   }
   
-  loadExercise ({name, text, initialValue, validation: _validation, tests: _tests}) {
+  loadExercise ({ name, text, initialValue, validation: _validation, tests: _tests }) {
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(
         document.getElementById('container'),
