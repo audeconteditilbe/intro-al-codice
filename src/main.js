@@ -12,8 +12,8 @@ class ExercisePageManager {
   target
   initialValue
   validation
-  tests = []
-  randomTest = []
+  test
+  randomTest
 
   resetValidation () {
     this.validationResult.classList.remove('error')
@@ -30,7 +30,7 @@ class ExercisePageManager {
     this.reportResult.classList.remove('success')
     this.reportResult.innerText = ''
   }
-  
+
   addValidationResult (msg, type) {
     this.validationResult.classList.add(type)  
     this.validationResult.innerText = msg
@@ -74,54 +74,41 @@ class ExercisePageManager {
     } catch (err) {
       validationReport.error = `Il codice ha lanciato un errore:\n${err}`
     }
-  
-    const { error, code } = validationReport
-  
-    if (error) {
-      this.addValidationResult(error, 'error')
+    const { error: validationError, code } = validationReport
+    if (validationError) {
+      this.addValidationResult(validationError, 'error')
     }
-    // else if (success) {
-    //   this.addValidationResult(success, 'success')
-    // }
     
-    if (code) {
-      let passed = 0
-      
-      this.tests.forEach((test) => {
-        let testReport = {}
-        try {
-          testReport = test(code)
-        } catch (err) {
-          testReport.error = `Il codice ha lanciato un errore:\n${err}`
-        }
-        const { error, success } = testReport
-        
-        if (error) {
-          this.addTestResult(error, 'error')
-        }
-        else {
-          if (success) {
-            this.addTestResult(success, 'success')
-          }
-          passed += 1
-        }
-      })
-      
-      this.addReportItem(
-        `Report: ${passed} test passati su ${this.tests.length}`,
-        passed === this.tests.length ? 'success' : 'error'
-      )
-
-      const randomTestResults = this.randomTest(code)
-      const randomTestsPassed = randomTestResults.filter(res => !res.error).length
-      this.addReportItem(
-        `Report: ${randomTestsPassed} test automatici passati su ${randomTestResults.length}`,
-        randomTestsPassed === randomTestResults.length ? 'success' : 'error'
-      )
+    if (!code) {
+      return
     }
+
+    let report = this.test(code).reduce((acc, { msg, status }) => {
+      status === 'error' && acc.error.push(msg)
+      status === 'success' && acc.success.push(msg)
+      status === 'invalid' && acc.invalid.push(msg)
+      return acc
+    }, { error: [], success: [], invalid: [] })
+    let oks = report.success.length
+    let tot = report.error.length + report.success.length + report.invalid.length
+    this.addReportItem(`Report: ${oks} test passati su ${tot}`, oks === tot ? 'success' : 'error')
+    report.invalid.map(({ msg }) => this.addReportItem(msg, 'error'))
+    report.error.map(({ msg, status }) => this.addReportItem(msg, status))
+
+    report = this.randomTest(code).reduce((acc, { msg, status }) => {
+      status === 'error' && acc.error.push(msg)
+      status === 'success' && acc.success.push(msg)
+      status === 'invalid' && acc.invalid.push(msg)
+      return acc
+    }, { error: [], success: [], invalid: [] })
+    oks = report.success.length
+    tot = report.error.length + report.success.length + report.invalid.length
+    this.addReportItem(`Report: ${oks} test automatici passati su ${tot}`, oks === tot ? 'success' : 'error')
+    report.invalid.map(({ msg }) => this.addReportItem(msg, 'error'))
+    report.error.map(({ msg, status }) => this.addReportItem(msg, status))
   }
   
-  loadExercise ({ name, text, initialValue, validation: _validation, tests: _tests, randomTest: _randomTest, target }) {
+  loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, target }) {
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(
         document.getElementById('container'),
@@ -137,7 +124,7 @@ class ExercisePageManager {
     this.target = target
     this.initialValue = initialValue
     this.validation = _validation
-    this.tests = _tests
+    this.test = _test
     this.randomTest = _randomTest
     
     this.form.addEventListener('submit', this.onSubmit.bind(this))

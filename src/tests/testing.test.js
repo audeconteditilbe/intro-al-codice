@@ -105,7 +105,7 @@ const testCases = [
 ]
 
 addTest({
-  title: 'lib.test.js',
+  title: 'assertEq',
   test: () => testCases.map(({ input, expected }) => {
     try {
       const output = assertEq(...input)

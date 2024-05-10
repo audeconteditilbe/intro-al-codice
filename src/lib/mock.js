@@ -177,7 +177,8 @@ const TYPE_TO_GEN = {
 
 
 const rnd = (type) => {
-  type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
+  // todo implement max nesting
+  type = type ?? extract(['string', 'integer', 'float', 'boolean'])//, 'object', 'array'])
   const gen = TYPE_TO_GEN[type]
   return gen()
 }

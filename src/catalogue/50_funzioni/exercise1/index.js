@@ -23,31 +23,27 @@ function _validation (codeStr) {
     code
   }
 }
-const _tests = Array(25).fill(0)
-  .map((_, idx) => {
-    return (code) => {
-      const isAdult = code()
-      const input = idx
-      const expected = idx >= 18
-      const res = isAdult(input)
-      const success = assertEq(res, expected)
-      return getTestResult(success, input, res, expected)
-    }
-  })
+const _test = (code) => {
+  const isAdult = code()
+  return Array(25).fill(0).map((_, idx) => testing(isAdult, _target, idx))
+}
 
 const _randomTest = (code) => {
   const isAdult = code()
-  return randomTesting(isAdult, _target, 10)
+  return [
+    ...Array(100).fill(0).map(() => testing(isAdult, _target, rnd())),
+    ...Array(10).fill(0).map(() => testing(isAdult, _target, [rnd(), rnd()])),
+  ]
 }
 
 const exercise = {
   name: 'Esercizio: vietato ai minori 🔞',
   text: 'Completa la funzione in modo che ritorni true se l\'argomento age è maggiore o uguale di 18, false altrimenti',
   initialValue: _initialValue,
+  target: _target,
   validation: _validation,
-  tests: _tests,
+  test: _test,
   randomTest: _randomTest,
-  target: _target
 }
 
 new ExercisePageManager().loadExercise(exercise)
