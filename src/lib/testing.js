@@ -41,13 +41,13 @@ const getTestResult = (status, args, output, expected) => {
 }
 
 const testing = (fun, target, ...args) => {
+  const expected = target(...args)
   let output
   try {
     output = fun(...args)
   } catch (err) {
-    return getTestResult('invalid', args, output)
+    return getTestResult('invalid', args, err, expected)
   }
-  const expected = target(...args)
   const status = assertEq(output, expected) ? 'success' : 'error'
   return getTestResult(status, args, output, expected)
 }

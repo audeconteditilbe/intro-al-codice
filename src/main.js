@@ -91,21 +91,26 @@ class ExercisePageManager {
     }, { error: [], success: [], invalid: [] })
     let oks = report.success.length
     let tot = report.error.length + report.success.length + report.invalid.length
-    this.addReportItem(`Report: ${oks} test passati su ${tot}`, oks === tot ? 'success' : 'error')
-    report.invalid.map(({ msg }) => this.addReportItem(msg, 'error'))
-    report.error.map(({ msg, status }) => this.addReportItem(msg, status))
+    this.addTestResult(`Report: ${oks} test passati su ${tot}`, oks === tot ? 'success' : 'error')
+    report.invalid.map((msg) => this.addTestResult(msg, 'error'))
+    report.error.map((msg) => console.log({msg}))
+    report.error.map((msg) => this.addTestResult(msg, 'error'))
 
-    report = this.randomTest(code).reduce((acc, { msg, status }) => {
-      status === 'error' && acc.error.push(msg)
-      status === 'success' && acc.success.push(msg)
-      status === 'invalid' && acc.invalid.push(msg)
-      return acc
-    }, { error: [], success: [], invalid: [] })
-    oks = report.success.length
-    tot = report.error.length + report.success.length + report.invalid.length
-    this.addReportItem(`Report: ${oks} test automatici passati su ${tot}`, oks === tot ? 'success' : 'error')
-    report.invalid.map(({ msg }) => this.addReportItem(msg, 'error'))
-    report.error.map(({ msg, status }) => this.addReportItem(msg, status))
+    if (oks === tot) {
+      report = this.randomTest(code).reduce((acc, { msg, status }) => {
+        status === 'error' && acc.error.push(msg)
+        status === 'success' && acc.success.push(msg)
+        status === 'invalid' && acc.invalid.push(msg)
+        return acc
+      }, { error: [], success: [], invalid: [] })
+      oks = report.success.length
+      tot = report.error.length + report.success.length + report.invalid.length
+      this.addTestResult(`Report: ${oks} test automatici passati su ${tot}`, oks === tot ? 'success' : 'error')
+      report.invalid.map((msg) => this.addTestResult(msg, 'error'))
+      report.error.map((msg) => this.addTestResult(msg, 'error'))
+    } else {
+      this.addTestResult('Test automatici non eseguiti', 'info')
+    }
   }
   
   loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, target }) {

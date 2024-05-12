@@ -31,7 +31,7 @@ const rndDate = (day, month, year, separator) => {
   return [d, m, y].join(s)
 }
 
-const rndObject = () => {
+const rndObject = (nesting = 0, maxNesting = 2) => {
   const obj = {}
   
   let key = 'nome'
@@ -139,15 +139,16 @@ const rndObject = () => {
   }
 
   key = extract(['partner'])
-  if (rndBool(0.2)) {
-    obj[key] = rndObject()
+  if (nesting <= maxNesting && rndBool(0.2)) {
+    obj[key] = rndObject(nesting++, maxNesting)
   } else if (rndBool(0.2)) {
     obj[key] = undefined
   }
 
   key = extract(['colleghi', 'amici'])
-  if (rndBool(0.2)) {
-    obj[key] = rndArray(extract(['string', 'object', 'array']))
+  if (nesting <= maxNesting && rndBool(0.2)) {
+    const arrType = nesting <= maxNesting ? extract(['string', 'object', 'array']) : 'string'
+    obj[key] = rndArray(arrType, nesting++, maxNesting)
   } else if (rndBool(0.2)) {
     obj[key] = undefined
   }
@@ -155,12 +156,25 @@ const rndObject = () => {
   return obj
 }
 
-const rndArray = (type) => {
+const rndArray = (type, nesting = 0, maxNesting = 2) => {
   const n = rndInt(0, 10)
-  const _type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
+  let _type = type
+  if (!_type && nesting <= maxNesting) {
+    _type = extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
+  }
+  else if (!_type) {
+    _type = extract(['string', 'integer', 'float', 'boolean'])
+  }
   const gen = TYPE_TO_GEN[_type]
+  if (_type === 'object') {
+    return Array(n).fill(0).map(() => gen(nesting++, maxNesting))
+  }
+  if (type === 'array') {
+    return Array(n).fill(0).map(() => gen(undefined, nesting++, maxNesting))
+  }
   return Array(n).fill(0).map(() => gen())
 }
+
 const TYPE_TO_GEN = {
   string: extract([
     rndFirstName, rndLastName, rndFullName,
@@ -177,8 +191,7 @@ const TYPE_TO_GEN = {
 
 
 const rnd = (type) => {
-  // todo implement max nesting
-  type = type ?? extract(['string', 'integer', 'float', 'boolean'])//, 'object', 'array'])
+  type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
   const gen = TYPE_TO_GEN[type]
   return gen()
 }
