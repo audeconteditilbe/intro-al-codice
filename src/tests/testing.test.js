@@ -105,16 +105,13 @@ const testCases = [
 ]
 
 addTest({
-  title: 'lib.test.js',
+  title: 'assertEq',
   test: () => testCases.map(({ input, expected }) => {
     try {
       const output = assertEq(...input)
-        if (output === expected) {
-          return { success: `Success: with input: ${JSON.stringify(input)}, result is: ${JSON.stringify(output)}` }
-        }
-        return { error: `Error: with input ${JSON.stringify(input)}, result ${JSON.stringify(output)}, but expected ${JSON.stringify(expected)}` }
+      return getTestResult(output === expected, input, output, expected)
     }  catch (err) {
       return { error: `Error: with input ${JSON.stringify(input)}, the following error is thrown: ${err}` }
     }
-    })
+  })
 })

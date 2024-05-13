@@ -1,3 +1,36 @@
+const _target = function main (arr)
+{
+  let result = ''
+  if (Array.isArray(arr))
+  {
+    for (el of arr)
+    {
+      if (typeof el === 'string')
+      {
+        result = result + el
+      }
+    }
+  }
+  return result
+}
+
+const _solution = `\
+function main (arr)
+{
+  let result = ''
+  if (Array.isArray(arr))
+  {
+    for (el of arr)
+    {
+      if (typeof el === 'string')
+      {
+        result = result + el
+      }
+    }
+  }
+  return result
+}`
+
 function _validation (codeStr) {
   let error
   let code
@@ -13,30 +46,25 @@ function _validation (codeStr) {
     code
   }
 }
-
-const testFunction = (input, expected) => (code) => {
+const _test = (code) => {
   const main = code()
-  const res = main(input)
-  
-  if (assertEq(res, expected)) {
-    return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(res)}` }
-  }
-  return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(res)}, ma dovrebbe restituire ${pretty(expected)}` }
+  return [
+    testing(main, _target, ['A', 1, 'r', true, 'i', null, 'a', ['wrong'], 'n', {}, 'n', undefined, 'a']),
+    testing(main, _target, ['A', 'r', 'i', 'anna ', 'e ', 'Claudio ', 'vanno d\'accordo']),
+    testing(main, _target, 'str'),
+    testing(main, _target, false),
+    testing(main, _target, true),
+    testing(main, _target, [1, 2, 3]),
+    testing(main, _target, []),
+    testing(main, _target, {a: 'a'}),
+    testing(main, _target, undefined),
+    testing(main, _target, null),
+  ]
 }
-
-const _tests = [
-  testFunction(['A', 1, 'r', true, 'i', null, 'a', ['wrong'], 'n', {}, 'n', undefined, 'a'], 'Arianna'),
-  testFunction(['A', 'r', 'i', 'anna ', 'e ', 'Claudio ', 'vanno d\'accordo'], 'Arianna e Claudio vanno d\'accordo'),
-  testFunction('str', ''),
-  testFunction(false, ''),
-  testFunction(true, ''),
-  testFunction([1, 2, 3], ''),
-  testFunction([], ''),
-  testFunction({a: 'a'}, ''),
-  testFunction(undefined, ''),
-  testFunction(null, ''),
-]
-
+const _randomTest = (code) => {
+  const main = code()
+  return Array(100).fill(0).map(() => testing(main, _target, rnd()))
+}
 const exercise = {
   name: 'Esercizio: concateniamoci 😏',
   text: 'Scrivi una funzione di nome `main`'
@@ -46,7 +74,9 @@ const exercise = {
     + ' NOTA BENE: devi concatenare solo i valori di tipo stringa!',
   initialValue: '',
   validation: _validation,
-  tests: _tests,
+  solution: _solution,
+  test: _test,
+  randomTest: _randomTest
 }
 
 new ExercisePageManager().loadExercise(exercise)

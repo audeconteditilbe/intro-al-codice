@@ -1,3 +1,28 @@
+const _target  = function findWaldos (arr) {
+  let result = []
+  for (let idx = 0; idx < arr.length; idx++) {
+    const el = arr[idx]
+    if (el === 'Waldo') {
+      result.push(idx)
+    }
+  }
+  return result
+}
+const _solution = `\
+function findWaldos (arr)
+{
+  let result = []
+  for (let idx = 0; idx < arr.length; idx++)
+  {
+    const el = arr[idx]
+    if (el === 'Waldo')
+    {
+      result.push(idx)
+    }
+  }
+  return result
+}`
+
 function _validation (codeStr) {
   let error
   let code
@@ -18,20 +43,23 @@ const testFunction = (input, expected) => (code) => {
   const findWaldos = code()
   const res = findWaldos(input)
   
-  if (assertEq(res, expected)) {
-    return { success: `Ottimo! Con input ${pretty(input)}, la funzione restituisce ${pretty(res)}` }
-  }
-  return { error: `Errore: con input ${pretty(input)}, la funzione restituisce ${pretty(res)}, ma dovrebbe restituire ${pretty(expected)}` }
+  return getTestResult(assertEq(res, expected), input, res, expected)
 }
 
-const _tests = [
-  testFunction(['Waldo', 'Waldo', 'Arianna'], [0, 1]),
-  testFunction(['Arianna'], []),
-  testFunction([], []),
-  testFunction([1, 'Waldo', 'Arianna'], [1]),
-  testFunction(['Not Waldo', 'waldo', 'Waldo'], [2]),
-]
-
+const _test = (code) => {
+  const findWaldos = code()
+  return [
+    testing(findWaldos, _target, ['Waldo', 'Waldo', 'Arianna']),
+    testing(findWaldos, _target, ['Arianna']),
+    testing(findWaldos, _target, []),
+    testing(findWaldos, _target, [1, 'Waldo', 'Arianna']),
+    testing(findWaldos, _target, ['Not Waldo', 'waldo', 'Waldo']),
+  ]
+}
+const _randomTest = (code) => {
+  const findWaldos = code()
+  return Array(100).fill(0).map(() => testing(findWaldos, _target, rnd('array')))
+}
 const exercise = {
   name: 'Esercizio: find them Waldos!',
   text:`<div>
@@ -43,8 +71,10 @@ const exercise = {
     <p>Qualora "Waldo" non faccia parte dell\'array in input, la funzione deve ritornare un\'array vuoto.</p>
   </div>`,
   initialValue: '',
+  solution: _solution,
   validation: _validation,
-  tests: _tests,
+  test: _test,
+  randomTest: _randomTest,
 }
 
 new ExercisePageManager().loadExercise(exercise)

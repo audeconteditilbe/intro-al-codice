@@ -4,23 +4,17 @@ class ExercisePageManager {
   form = document.getElementById('exercise-form')
   title = document.getElementById('exercise-title')
   instructions = document.getElementById('exercise-instructions')
-  validationResult = document.getElementById('validation')
-  reportResult = document.getElementById('report')
-  testResults = document.getElementById('tests')
+  report = document.getElementById('report')
   resetButton = document.getElementById('reset-button')
-  
+  solutionButton = document.getElementById('solution-button')
+  solution
   initialValue
   validation
-  tests = []
-
-  resetValidation () {
-    this.validationResult.classList.remove('error')
-    this.validationResult.classList.remove('success')
-    this.validationResult.innerText = ''
-  }
+  test
+  randomTest
   
-  resetTestResults () {
-    this.testResults.innerHTML = null
+  resetReoport () {
+    this.report.innerHTML = null
   }
   
   resetReport () {
@@ -28,43 +22,58 @@ class ExercisePageManager {
     this.reportResult.classList.remove('success')
     this.reportResult.innerText = ''
   }
+
   
-  addValidationResult (msg, type) {
-    this.validationResult.classList.add(type)  
-    this.validationResult.innerText = msg
-  }
-  
-  addTestResult (msg, type) {
+  addReportItem (msg, type) {
     const item = document.createElement('li')
     item.innerText = msg
     item.classList.add(type)
   
-    this.testResults.appendChild(item)
+    this.report.appendChild(item)
   }
   
-  addReportItem (msg, type) {
-    this.reportResult.classList.add(type)  
-    this.reportResult.innerText = msg
-  }
-  
-  onReset(e) {
+  onReset (e) {
     e.preventDefault()
     
     const ok = confirm("Sei sicura di voler rirpistinare i valori iniziali?")
     if (ok) {
-      this.resetValidation()
-      this.resetTestResults()
-      this.resetReport()
+      this.resetReoport()
       window.editor.setValue(this.initialValue)
     }
+  }
+
+  onShowSolution (e) {
+    e.preventDefault()
+    
+    const ok = confirm("Sei sicura di voler vedere la soluzione?")
+    if (ok) {
+      this.resetReoport()
+      const current = window.editor.getValue()
+      const commented = current.split('\n').map((line) => `// ${line}`).join('\n')
+      window.editor.setValue(`${this.solution}\n${commented}`)
+    }
+  }
+
+  testMeLicia (testResults) {
+    const report = testResults.reduce((acc, { msg, status }) => {
+      status === 'error' && acc.error.push(msg)
+      status === 'success' && acc.success.push(msg)
+      status === 'invalid' && acc.invalid.push(msg)
+      return acc
+    }, { error: [], success: [], invalid: [] })
+    let oks = report.success.length
+    let kos = report.error.length + report.invalid.length
+    let tot = testResults.length
+    if (tot !== oks + kos) {
+      console.error(`Error: inconsistent report generated: ${oks} tests passed, ${kos} test failed, ${tot} test executed`)
+    }
+    return { report, oks, kos, tot, success: kos === 0 }
   }
 
   onSubmit (e) {
     e.preventDefault()
   
-    this.resetValidation()
-    this.resetTestResults()
-    this.resetReport()
+    this.resetReoport()
   
     let validationReport = {}
     try {
@@ -72,65 +81,53 @@ class ExercisePageManager {
     } catch (err) {
       validationReport.error = `Il codice ha lanciato un errore:\n${err}`
     }
-  
-    const { error, code } = validationReport
-  
-    if (error) {
-      this.addValidationResult(error, 'error')
+    const { error: validationError, code } = validationReport
+    if (validationError) {
+      this.addReportItem(validationError, 'error')
     }
-    // else if (success) {
-    //   this.addValidationResult(success, 'success')
-    // }
     
-    if (code) {
-      let passed = 0
-      
-      this.tests.forEach((test) => {
-        
-        let testReport = {}
-        try {
-          testReport = test(code)
-        } catch (err) {
-          testReport.error = `Il codice ha lanciato un errore:\n${err}`
-        }
-        const { error, success } = testReport
-        
-        if (error) {
-          this.addTestResult(error, 'error')
-        }
-        else {
-          if (success) {
-            this.addTestResult(success, 'success')
-          }
-          passed += 1
-        }
-      })
-  
-      this.addReportItem(
-        `Report: ${passed} test passati su ${this.tests.length}`,
-        passed === this.tests.length ? 'success' : 'error'
-      )
+    if (!code) {
+      return
     }
+
+    const { report, oks, tot, success } = this.testMeLicia(this.test(code))
+    if (!success) {
+      this.addReportItem(`Report: ${oks} test passati su ${tot}`, 'error')
+      report.invalid.map((msg) => this.addReportItem(msg, 'error'))
+      report.error.map((msg) => this.addReportItem(msg, 'error'))
+      this.addReportItem('Test automatici non eseguiti', 'info')
+      return
+    }
+    
+    const { report: rndReport, oks: rndOks, tot: rndTot, success: rndSuccess } = this.testMeLicia(this.randomTest(code))
+    if (!rndSuccess) {
+      this.addReportItem(`Report: ${oks + rndOks} test automatici passati su ${tot + rndTot}`, 'error')
+      rndReport.invalid.map((msg) => this.addReportItem(msg, 'error'))
+      rndReport.error.map((msg) => this.addReportItem(msg, 'error'))
+      return
+    }
+    
+    this.addReportItem(`Report: ${oks + rndOks} test automatici passati su ${tot + rndTot}`, 'success')
   }
   
-  loadExercise ({name, text, initialValue, validation: _validation, tests: _tests}) {
+  loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, solution: _solution }) {
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(
         document.getElementById('container'),
         { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true, scrollBeyondLastLine: false }
       )
     })
-    
-    this.resetValidation()
-    this.resetTestResults()
-    this.resetReport()
+    this.resetReoport()
     this.title.innerText = name
     this.instructions.innerHTML = text
-    this.validation = _validation
-    this.tests = _tests
     this.initialValue = initialValue
+    this.solution = _solution
+    this.validation = _validation
+    this.test = _test
+    this.randomTest = _randomTest
     
     this.form.addEventListener('submit', this.onSubmit.bind(this))
     this.resetButton.addEventListener('click', this.onReset.bind(this))
+    this.solutionButton.addEventListener('click', this.onShowSolution.bind(this))
   }
 }
