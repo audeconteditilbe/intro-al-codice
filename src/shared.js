@@ -11,12 +11,13 @@ class ExercisePage extends HTMLElement {
           <p id="exercise-instructions"></p>
           
           <div class="option-buttons">
-            <div id="reset-button" title="Reset">
+            <button id="solution-button" title="Show solution"> Solution </button>
+            <button id="reset-button" class="ghost" title="Reset">
               <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-              <svg fill="#000000" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
+              <svg width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
                 <path d="M960 0v112.941c467.125 0 847.059 379.934 847.059 847.059 0 467.125-379.934 847.059-847.059 847.059-467.125 0-847.059-379.934-847.059-847.059 0-267.106 126.607-515.915 338.824-675.727v393.374h112.94V112.941H0v112.941h342.89C127.058 407.38 0 674.711 0 960c0 529.355 430.645 960 960 960s960-430.645 960-960S1489.355 0 960 0" fill-rule="evenodd"/>
               </svg>
-            </div>
+            </button>
           </div>
         </div>
         
@@ -25,7 +26,6 @@ class ExercisePage extends HTMLElement {
           <input class="btn" type="submit" value="Conferma">
         </form>
       </section>
-      
       <div class="result">
         <ul id="report"></ul>
       </div>

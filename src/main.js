@@ -6,6 +6,7 @@ class ExercisePageManager {
   instructions = document.getElementById('exercise-instructions')
   report = document.getElementById('report')
   resetButton = document.getElementById('reset-button')
+  solutionButton = document.getElementById('solution-button')
   solution
   initialValue
   validation
@@ -31,13 +32,25 @@ class ExercisePageManager {
     this.report.appendChild(item)
   }
   
-  onReset(e) {
+  onReset (e) {
     e.preventDefault()
     
     const ok = confirm("Sei sicura di voler rirpistinare i valori iniziali?")
     if (ok) {
       this.resetReoport()
       window.editor.setValue(this.initialValue)
+    }
+  }
+
+  onShowSolution (e) {
+    e.preventDefault()
+    
+    const ok = confirm("Sei sicura di voler vedere la soluzione?")
+    if (ok) {
+      this.resetReoport()
+      const current = window.editor.getValue()
+      const commented = current.split('\n').map((line) => `// ${line}`).join('\n')
+      window.editor.setValue(`${this.solution}\n${commented}`)
     }
   }
 
@@ -78,7 +91,6 @@ class ExercisePageManager {
     }
 
     const { report, oks, tot, success } = this.testMeLicia(this.test(code))
-    
     if (!success) {
       this.addReportItem(`Report: ${oks} test passati su ${tot}`, 'error')
       report.invalid.map((msg) => this.addReportItem(msg, 'error'))
@@ -86,13 +98,16 @@ class ExercisePageManager {
       this.addReportItem('Test automatici non eseguiti', 'info')
       return
     }
-    this.addReportItem(`Report: ${oks} test passati su ${tot}`, 'success')
-    // this.addReportItem('Test automatici in esecuzione', 'info')
-
+    
     const { report: rndReport, oks: rndOks, tot: rndTot, success: rndSuccess } = this.testMeLicia(this.randomTest(code))
-    this.addReportItem(`Report: ${rndOks} test automatici passati su ${rndTot}`, rndSuccess ? 'success' : 'error')
-    rndReport.invalid.map((msg) => this.addReportItem(msg, 'error'))
-    rndReport.error.map((msg) => this.addReportItem(msg, 'error'))
+    if (!rndSuccess) {
+      this.addReportItem(`Report: ${oks + rndOks} test automatici passati su ${tot + rndTot}`, 'error')
+      rndReport.invalid.map((msg) => this.addReportItem(msg, 'error'))
+      rndReport.error.map((msg) => this.addReportItem(msg, 'error'))
+      return
+    }
+    
+    this.addReportItem(`Report: ${oks + rndOks} test automatici passati su ${tot + rndTot}`, 'success')
   }
   
   loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, solution: _solution }) {
@@ -113,5 +128,6 @@ class ExercisePageManager {
     
     this.form.addEventListener('submit', this.onSubmit.bind(this))
     this.resetButton.addEventListener('click', this.onReset.bind(this))
+    this.solutionButton.addEventListener('click', this.onShowSolution.bind(this))
   }
 }

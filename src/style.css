@@ -53,15 +53,28 @@ ul li {
 .option-buttons {
   display: flex;
   gap: 10px;
+  align-items: flex-end;
 }
 
 button {
+  height: 40px;
   padding: 10px 15px;
+  margin-bottom: 5px;
   border: 0;
   background: #333;
-  color: #fff;
+  color: #f4f4f4;
   border-radius: 5px;
   cursor: pointer;
+}
+button:hover {
+  background: #444;
+}
+
+.ghost {
+  background: #f4f4f4;
+}
+.ghost:hover {
+  background: #f4f4f4;
 }
 
 .btn {
@@ -70,7 +83,7 @@ button {
   padding: 10px 15px;
   border: 0;
   background: #333;
-  color: #fff;
+  color: #f4f4f4;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -88,7 +101,7 @@ button {
 
 .error {
   background: orangered;
-  color: #fff;
+  color: #f4f4f4;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
@@ -96,14 +109,14 @@ button {
 
 .success {
   background: green;
-  color: #fff;
+  color: #f4f4f4;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
 }
 
 .info {
-  background: skyblue;
+  background: rgb(74, 183, 226);
   color: #fff;
   padding: 5px;
   margin: 5px;
