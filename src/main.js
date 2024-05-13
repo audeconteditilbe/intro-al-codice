@@ -6,8 +6,7 @@ class ExercisePageManager {
   instructions = document.getElementById('exercise-instructions')
   report = document.getElementById('report')
   resetButton = document.getElementById('reset-button')
-  
-  target
+  solution
   initialValue
   validation
   test
@@ -88,15 +87,15 @@ class ExercisePageManager {
       return
     }
     this.addReportItem(`Report: ${oks} test passati su ${tot}`, 'success')
-    this.addReportItem('Test automatici in esecuzione', 'info')
+    // this.addReportItem('Test automatici in esecuzione', 'info')
 
     const { report: rndReport, oks: rndOks, tot: rndTot, success: rndSuccess } = this.testMeLicia(this.randomTest(code))
-    this.addReportItem(`Report: ${oks + rndOks} test passati su ${tot + rndTot}`, rndSuccess ? 'success' : 'error')
+    this.addReportItem(`Report: ${rndOks} test automatici passati su ${rndTot}`, rndSuccess ? 'success' : 'error')
     rndReport.invalid.map((msg) => this.addReportItem(msg, 'error'))
     rndReport.error.map((msg) => this.addReportItem(msg, 'error'))
   }
   
-  loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, target }) {
+  loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, solution: _solution }) {
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(
         document.getElementById('container'),
@@ -106,8 +105,8 @@ class ExercisePageManager {
     this.resetReoport()
     this.title.innerText = name
     this.instructions.innerHTML = text
-    this.target = target
     this.initialValue = initialValue
+    this.solution = _solution
     this.validation = _validation
     this.test = _test
     this.randomTest = _randomTest

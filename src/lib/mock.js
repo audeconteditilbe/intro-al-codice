@@ -190,8 +190,8 @@ const TYPE_TO_GEN = {
 }
 
 
-const rnd = (type) => {
+const rnd = (type, ...args) => {
   type = type ?? extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
   const gen = TYPE_TO_GEN[type]
-  return gen()
+  return gen(...args)
 }

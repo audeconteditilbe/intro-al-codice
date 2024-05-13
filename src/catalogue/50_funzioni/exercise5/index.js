@@ -1,3 +1,32 @@
+function introduce (name)
+{
+  return 'Hi! I am ' + name
+}
+function _target (parent)
+{
+  let result = [introduce(parent.name)]
+  for (child of parent.children)
+  {
+    result.push(introduce(child.name))
+  }
+  return result
+}
+
+const _solution = `\
+function introduce (name)
+{
+  return 'Hi! I am ' + name
+}
+function introduceFamily (parent)
+{
+  let result = [introduce(parent.name)]
+  for (child of parent.children)
+  {
+    result.push(introduce(child.name))
+  }
+  return result
+}`
+
 function _validation (codeStr) {
   let error
   let code
@@ -14,55 +43,58 @@ function _validation (codeStr) {
   }
 }
 
-const testFunction = (input, expected) => (code) => {
+const _test = (code) => {
   const introduceFamily = code()
-  const res = introduceFamily(input)
-  return getTestResult(assertEq(res, expected), input, res, expected)
+  return [
+    testing(
+      introduceFamily,
+      _target,
+      {
+        name: 'Elon Musk',
+        children: [
+          { name: 'Nevada Alexander Musk' }, // ❤️
+          { name: 'Griffin Musk' },
+          { name: 'Vivian Jenna Wilson' },
+          { name: 'Kai Musk' },
+          { name: 'Saxon Musk' },
+          { name: 'Damian Musk' },
+          { name: 'Kai Musk' },
+          { name: 'Saxon Musk' },
+          { name: 'Damian Musk' },
+          { name: 'X AE A-XII Musk' },
+          { name: 'Exa Dark Sideræl Musk' }
+        ]
+      }
+    ),
+    testing(
+      introduceFamily,
+      _target,
+      { name: 'Bob', children: [] }
+    ),
+    testing(
+      introduceFamily,
+      _target,
+      { name: 'Bruce', children: [{ name: 'Chettina' }] }
+    ),
+    testing(
+      introduceFamily,
+      _target,
+      { name: 'Homer', children: [{ name: 'Bart' }, { name: 'Lisa' }, { name: 'Meggie' }] }
+    )
+  ]
 }
+const _randomTest = (code) => {
+  const introduceFamily = code()
 
-const _tests = [
-  testFunction(
-    {
-      name: "Elon Musk",
-      children: [
-        { name: 'Nevada Alexander Musk' }, // ❤️
-        { name: 'Griffin Musk' },
-        { name: 'Vivian Jenna Wilson' },
-        { name: 'Kai Musk' },
-        { name: 'Saxon Musk' },
-        { name: 'Damian Musk' },
-        { name: 'Kai Musk' },
-        { name: 'Saxon Musk' },
-        { name: 'Damian Musk' },
-        { name: 'X AE A-XII Musk' },
-        { name: 'Exa Dark Sideræl Musk' }
-      ]
-    },
-    [
-      "Hi! I am Elon Musk",
-      "Hi! I am Nevada Alexander Musk",
-      "Hi! I am Griffin Musk",
-      "Hi! I am Vivian Jenna Wilson",
-      "Hi! I am Kai Musk",
-      "Hi! I am Saxon Musk",
-      "Hi! I am Damian Musk",
-      "Hi! I am Kai Musk",
-      "Hi! I am Saxon Musk",
-      "Hi! I am Damian Musk",
-      "Hi! I am X AE A-XII Musk",
-      "Hi! I am Exa Dark Sideræl Musk"
+  return Array(100).fill(0).map(() => testing(introduceFamily, _target, {
+    name: rnd('string'),
+    children: [
+      Array(rnd('integer', 0, 10))
+        .fill(0)
+        .map(() => ({ name: rnd('string') }))
     ]
-  ),
-  testFunction({ name: 'Bob', children: [] }, ['Hi! I am Bob']),
-  testFunction(
-    { name: 'Bruce', children: [{ name: 'Chettina' }] },
-    ['Hi! I am Bruce', 'Hi! I am Chettina']
-  ),
-  testFunction({
-    name: "Homer",
-    children: [{ name: "Bart" }, { name: "Lisa" }, { name: "Meggie" }]
-  }, ['Hi! I am Homer', 'Hi! I am Bart', 'Hi! I am Lisa', 'Hi! I am Meggie'])
-]
+  }))
+}
 
 const exercise = {
   name: 'Esercizio: sono pessimo coi nomi',
@@ -139,8 +171,10 @@ const exercise = {
     </div>
   `,
   initialValue: '',
+  solution: _solution,
   validation: _validation,
-  tests: _tests,
+  test: _test,
+  randomTest: _randomTest,
 }
 
 new ExercisePageManager().loadExercise(exercise)

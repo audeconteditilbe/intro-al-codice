@@ -1,6 +1,12 @@
-const _target = (age) => {
-  return typeof age === 'number' && age >= 18
+const _target = function isAdult (age)
+{
+  return age >= 18
 }
+const _solution = `\
+function isAdult (age)
+{
+  return age >= 18
+}`
 
 const _initialValue = `\
 function isAdult (age)
@@ -30,17 +36,14 @@ const _test = (code) => {
 
 const _randomTest = (code) => {
   const isAdult = code()
-  return [
-    ...Array(100).fill(0).map(() => testing(isAdult, _target, rnd())),
-    ...Array(10).fill(0).map(() => testing(isAdult, _target, [rnd(), rnd()])),
-  ]
+  return Array(100).fill(0).map(() => testing(isAdult, _target, rnd('integer')))
 }
 
 const exercise = {
   name: 'Esercizio: vietato ai minori 🔞',
-  text: 'Completa la funzione in modo che ritorni true se l\'argomento age è maggiore o uguale di 18, false altrimenti',
+  text: 'Completa la funzione in modo che ritorni true se l\'argomento numerico age è maggiore o uguale di 18, false altrimenti',
   initialValue: _initialValue,
-  target: _target,
+  solution: _solution,
   validation: _validation,
   test: _test,
   randomTest: _randomTest,
