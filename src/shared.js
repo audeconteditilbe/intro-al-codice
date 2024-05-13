@@ -27,9 +27,7 @@ class ExercisePage extends HTMLElement {
       </section>
       
       <div class="result">
-        <div id="validation"></div>
-        <div id="report"></div>
-        <ul id="tests"></ul>
+        <ul id="report"></ul>
       </div>
     `
   }

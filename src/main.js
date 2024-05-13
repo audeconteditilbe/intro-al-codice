@@ -4,9 +4,7 @@ class ExercisePageManager {
   form = document.getElementById('exercise-form')
   title = document.getElementById('exercise-title')
   instructions = document.getElementById('exercise-instructions')
-  validationResult = document.getElementById('validation')
-  reportResult = document.getElementById('report')
-  testResults = document.getElementById('tests')
+  report = document.getElementById('report')
   resetButton = document.getElementById('reset-button')
   
   target
@@ -14,15 +12,9 @@ class ExercisePageManager {
   validation
   test
   randomTest
-
-  resetValidation () {
-    this.validationResult.classList.remove('error')
-    this.validationResult.classList.remove('success')
-    this.validationResult.innerText = ''
-  }
   
-  resetTestResults () {
-    this.testResults.innerHTML = null
+  resetReoport () {
+    this.report.innerHTML = null
   }
   
   resetReport () {
@@ -31,22 +23,13 @@ class ExercisePageManager {
     this.reportResult.innerText = ''
   }
 
-  addValidationResult (msg, type) {
-    this.validationResult.classList.add(type)  
-    this.validationResult.innerText = msg
-  }
   
-  addTestResult (msg, type) {
+  addReportItem (msg, type) {
     const item = document.createElement('li')
     item.innerText = msg
     item.classList.add(type)
   
-    this.testResults.appendChild(item)
-  }
-  
-  addReportItem (msg, type) {
-    this.reportResult.classList.add(type)  
-    this.reportResult.innerText = msg
+    this.report.appendChild(item)
   }
   
   onReset(e) {
@@ -54,19 +37,31 @@ class ExercisePageManager {
     
     const ok = confirm("Sei sicura di voler rirpistinare i valori iniziali?")
     if (ok) {
-      this.resetValidation()
-      this.resetTestResults()
-      this.resetReport()
+      this.resetReoport()
       window.editor.setValue(this.initialValue)
     }
+  }
+
+  testMeLicia (testResults) {
+    const report = testResults.reduce((acc, { msg, status }) => {
+      status === 'error' && acc.error.push(msg)
+      status === 'success' && acc.success.push(msg)
+      status === 'invalid' && acc.invalid.push(msg)
+      return acc
+    }, { error: [], success: [], invalid: [] })
+    let oks = report.success.length
+    let kos = report.error.length + report.invalid.length
+    let tot = testResults.length
+    if (tot !== oks + kos) {
+      console.error(`Error: inconsistent report generated: ${oks} tests passed, ${kos} test failed, ${tot} test executed`)
+    }
+    return { report, oks, kos, tot, success: kos === 0 }
   }
 
   onSubmit (e) {
     e.preventDefault()
   
-    this.resetValidation()
-    this.resetTestResults()
-    this.resetReport()
+    this.resetReoport()
   
     let validationReport = {}
     try {
@@ -76,41 +71,29 @@ class ExercisePageManager {
     }
     const { error: validationError, code } = validationReport
     if (validationError) {
-      this.addValidationResult(validationError, 'error')
+      this.addReportItem(validationError, 'error')
     }
     
     if (!code) {
       return
     }
 
-    let report = this.test(code).reduce((acc, { msg, status }) => {
-      status === 'error' && acc.error.push(msg)
-      status === 'success' && acc.success.push(msg)
-      status === 'invalid' && acc.invalid.push(msg)
-      return acc
-    }, { error: [], success: [], invalid: [] })
-    let oks = report.success.length
-    let tot = report.error.length + report.success.length + report.invalid.length
-    this.addTestResult(`Report: ${oks} test passati su ${tot}`, oks === tot ? 'success' : 'error')
-    report.invalid.map((msg) => this.addTestResult(msg, 'error'))
-    report.error.map((msg) => console.log({msg}))
-    report.error.map((msg) => this.addTestResult(msg, 'error'))
-
-    if (oks === tot) {
-      report = this.randomTest(code).reduce((acc, { msg, status }) => {
-        status === 'error' && acc.error.push(msg)
-        status === 'success' && acc.success.push(msg)
-        status === 'invalid' && acc.invalid.push(msg)
-        return acc
-      }, { error: [], success: [], invalid: [] })
-      oks = report.success.length
-      tot = report.error.length + report.success.length + report.invalid.length
-      this.addTestResult(`Report: ${oks} test automatici passati su ${tot}`, oks === tot ? 'success' : 'error')
-      report.invalid.map((msg) => this.addTestResult(msg, 'error'))
-      report.error.map((msg) => this.addTestResult(msg, 'error'))
-    } else {
-      this.addTestResult('Test automatici non eseguiti', 'info')
+    const { report, oks, tot, success } = this.testMeLicia(this.test(code))
+    
+    if (!success) {
+      this.addReportItem(`Report: ${oks} test passati su ${tot}`, 'error')
+      report.invalid.map((msg) => this.addReportItem(msg, 'error'))
+      report.error.map((msg) => this.addReportItem(msg, 'error'))
+      this.addReportItem('Test automatici non eseguiti', 'info')
+      return
     }
+    this.addReportItem(`Report: ${oks} test passati su ${tot}`, 'success')
+    this.addReportItem('Test automatici in esecuzione', 'info')
+
+    const { report: rndReport, oks: rndOks, tot: rndTot, success: rndSuccess } = this.testMeLicia(this.randomTest(code))
+    this.addReportItem(`Report: ${oks + rndOks} test passati su ${tot + rndTot}`, rndSuccess ? 'success' : 'error')
+    rndReport.invalid.map((msg) => this.addReportItem(msg, 'error'))
+    rndReport.error.map((msg) => this.addReportItem(msg, 'error'))
   }
   
   loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, target }) {
@@ -120,10 +103,7 @@ class ExercisePageManager {
         { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true, scrollBeyondLastLine: false }
       )
     })
-    
-    this.resetValidation()
-    this.resetTestResults()
-    this.resetReport()
+    this.resetReoport()
     this.title.innerText = name
     this.instructions.innerHTML = text
     this.target = target
