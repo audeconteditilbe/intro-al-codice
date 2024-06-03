@@ -37,7 +37,7 @@ function _validation (codeStr) {
   try {
     code = new Function (codeStr + '\nreturn main')
   } catch (err) {
-    error = `Ahia... il codice che hai scritto non è valido!\n${error}`
+    error = `Ahia... il codice che hai scritto non è valido!\n${err}`
     return { error }
   }
 

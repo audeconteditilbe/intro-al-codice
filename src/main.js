@@ -101,13 +101,13 @@ class ExercisePageManager {
     
     const { report: rndReport, oks: rndOks, tot: rndTot, success: rndSuccess } = this.testMeLicia(this.randomTest(code))
     if (!rndSuccess) {
-      this.addReportItem(`Report: ${oks + rndOks} test automatici passati su ${tot + rndTot}`, 'error')
+      this.addReportItem(`Report: ${oks + rndOks} test passati su ${tot + rndTot}`, 'error')
       rndReport.invalid.map((msg) => this.addReportItem(msg, 'error'))
       rndReport.error.map((msg) => this.addReportItem(msg, 'error'))
       return
     }
     
-    this.addReportItem(`Report: ${oks + rndOks} test automatici passati su ${tot + rndTot}`, 'success')
+    this.addReportItem(`Report: ${oks + rndOks} test passati su ${tot + rndTot}`, 'success')
   }
   
   loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, solution: _solution }) {

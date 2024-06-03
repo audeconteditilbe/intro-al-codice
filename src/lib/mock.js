@@ -139,14 +139,14 @@ const rndObject = (nesting = 0, maxNesting = 2) => {
   }
 
   key = extract(['partner'])
-  if (nesting <= maxNesting && rndBool(0.2)) {
+  if (nesting < maxNesting && rndBool(0.2)) {
     obj[key] = rndObject(nesting++, maxNesting)
   } else if (rndBool(0.2)) {
     obj[key] = undefined
   }
 
   key = extract(['colleghi', 'amici'])
-  if (nesting <= maxNesting && rndBool(0.2)) {
+  if (nesting < maxNesting && rndBool(0.2)) {
     const arrType = nesting <= maxNesting ? extract(['string', 'object', 'array']) : 'string'
     obj[key] = rndArray(arrType, nesting++, maxNesting)
   } else if (rndBool(0.2)) {
@@ -159,7 +159,7 @@ const rndObject = (nesting = 0, maxNesting = 2) => {
 const rndArray = (type, nesting = 0, maxNesting = 2) => {
   const n = rndInt(0, 10)
   let _type = type
-  if (!_type && nesting <= maxNesting) {
+  if (!_type && nesting < maxNesting) {
     _type = extract(['string', 'integer', 'float', 'boolean', 'object', 'array'])
   }
   else if (!_type) {
