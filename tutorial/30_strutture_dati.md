@@ -3,6 +3,12 @@
   <a href="./40_if">lezione successiva (if)</a>
 </div>
 
+# Table of content
+{:.no_toc}
+
+* TOC
+{:toc}
+
 # Strutture dati
 
 Come [brevemente accennato](./10_intro.md#dati), i dati possono essere raggruppati / organizzati in modi utili.
