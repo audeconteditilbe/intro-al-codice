@@ -1,7 +1,6 @@
-
 <div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a href="./10_intro">lezione precedente (intro)</a>
-  <a href="./30_if">lezione successiva (if)</a>
+  <a href="./30_strutture_dati">lezione successiva (strutture dati)</a>
 </div>
 
 # Table of content
@@ -220,7 +219,7 @@ name = name + " è la CFO di Mia"
 > ```
 > In questo esempio `screamed` vale "ARIANNA".
 > 
-> `toUpperCase` si chiama "funzione". Parleremo delle funzioni [in seguito](./50_funzioni.md).
+> `toUpperCase` si chiama "funzione". Parleremo delle funzioni [in seguito](./60_funzioni.md).
 
 ## Booleani
 
@@ -241,7 +240,7 @@ let boolAnd = bool && bool2 // true AND false = false
 let bool = bool || bool2 // true OR false = true
 ```
 
-Se le variabili booleane ora ti sembrano oscure, tranquilla - vedremo presto [come utilizzarli con profitto](./30_if.md).
+Se le variabili booleane ora ti sembrano oscure, tranquilla - vedremo presto [come utilizzarli con profitto](./40_if.md).
 
 > 🔎 NOTA
 > 
@@ -333,5 +332,5 @@ il valore di `num` viene aggiornato a 6, ad indicare che è ancora un numero.
 
 <div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a href="./10_intro">lezione precedente (intro)</a>
-  <a href="./30_if">lezione successiva (if)</a>
+  <a href="./30_strutture_dati">lezione successiva (strutture dati)</a>
 </div>

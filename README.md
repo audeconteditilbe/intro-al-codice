@@ -3,5 +3,6 @@
   - [Introduzione](./tutorial/10_intro.md)
   - [Variabili](./tutorial/20_variabili.md)
   - [If](./tutorial/30_if.md)
-  - [Cicli](./tutorial/40_cicli.md)
-  - [Funzioni](./tutorial/50_funzioni.md)
+  - [Cicli](./tutorial/50_cicli.md)
+  - [Funzioni](./tutorial/60_funzioni.md)
+

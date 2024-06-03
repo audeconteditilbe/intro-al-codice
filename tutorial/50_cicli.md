@@ -1,6 +1,6 @@
 <div style="display: flex;justify-content: space-between;font-size: 12px;">
-  <a href="./30_if">lezione precedente (if)</a>
-  <a href="./50_funzioni">lezione successiva (funzioni)</a>
+  <a href="./40_if.md">lezione precedente (if)</a>
+  <a href="./60_funzioni.md">lezione successiva (funzioni)</a>
 </div>
 
 # Table of content
@@ -55,7 +55,7 @@ while ( CONDIZIONE ) // finchè CONDIZIONE si verifica...
 
 > 🔎 NOTA
 > 
-> come per gli [`if`](./30_if.md), la condizione verificata può essere una variabile booleana o un'espressione
+> come per gli [`if`](./40_if.md), la condizione verificata può essere una variabile booleana o un'espressione
 > il cui risultato è un booleano.
 
 ### Esempio: flusso completo di un ciclo `while`
@@ -162,7 +162,7 @@ console.log('I am happy now! :)')
         <ul>
           <li>
             trovo un costrutto
-            <a href="./30_if#controllare-più-condizioni-alternative"><code>if ... else if ...</code></a>.
+            <a href="./40_if#controllare-più-condizioni-alternative"><code>if ... else if ...</code></a>.
           </li>
           <li>
             valuto la condizione del primo <code>if</code>, ovvero <code>iAmTired</code>,
@@ -350,6 +350,75 @@ console.log('I am happy now! :)')
 In questo caso ci siamo ricordati di aggiornare la variabile `iAmHappy` ad ogni iterazione del ciclo,
 ma lo facciamo nel modo sbagliato: `iAmHappy` non sarà mai `true`.
 
+### Esempio: confrontare due array
+
+Nel precedente episodio abbiamo parlato delle difficoltà legate allo stabilire [l'uguaglianza di due strutture dati](./40_if.md#confrontare-strutture-dati).
+
+[Uno degli esmepio](./40_if.md#esempio-confrontare-due-strutture-dati), in particolare,
+mostrava come confrontare il contenuto di due array di cui si conosce la lunghezza.
+
+Ma come confrontare due array di cui non sono note a prescindere le lunghezze?
+Ora che conosciamo il ciclo `while`, hai tutti gli strumenti per poterlo fare.
+
+```javascript
+let names = [/*...*/]
+let names2 = [/*...*/]
+```
+
+`names` e `names2` sono due array di cui non conosci nulla.
+Come potresti capire che sono uguali?
+
+Un approccio iniziale potrebbe essere analogo a quello visto nel precedente episodio:
+
+```javascript
+// ... come sopra
+
+let areSame = (names[0] === names2[0])
+  && (names[1] === names2[1])
+  && (names[2] === names2[2])
+  // ...
+```
+
+Ma non va bene, perchè non sappiamo quanto a lungo dovremmo andare avanti! Infatti non conosciamo la lunghezza degli array.
+
+Come costruiresti un ciclo `while` per decretare se `names` e `names2` sono uguali
+
+Prova a farci una pensata!
+
+<details>
+  <summary>⚠️ SPOILER ⚠️</summary>
+  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+
+    ```javascript
+    let names = [/*...*/]
+    let names2 = [/*...*/]
+
+    let areSame
+
+    if (names.length !== names2.length)
+    {
+      areSame = false
+    } else
+    {
+      let L = names.length
+      let idx = 0
+      let areSame = true
+      while (idx < L)
+      {
+        areSame = areSame && (names[idx] === names2[idx])
+        idx = idx + 1
+      }
+    }
+    ```
+
+  </div>
+</details>
+
+### Esercizio: confrontare due oggetti
+
+<a href="../src/catalogue/50_cicli/exercise1/index.html" target="_blank">...e due oggetti?</a>
+
+
 ## Ciclo `for`
 
 TODO
@@ -416,7 +485,7 @@ Questo ha due vantaggi principali:
 Quindi, se ti trovi nelle condizioni di dichiarare una nuova variabile SOLO per usarla nel ciclo (\[1]), probabilmente ha senso usare un
 ciclo `for` invece che un ciclo `while`.
 
-## Ciclo `for each`
+## Ciclo `for of`
 
 TODO
 
@@ -429,6 +498,6 @@ TODO
 TODO
 
 <div style="display: flex;justify-content: space-between;font-size: 12px;">
-  <a href="./30_if">lezione precedente (if)</a>
-  <a href="./50_funzioni">lezione successiva (funzioni)</a>
+  <a href="./40_if.md">lezione precedente (if)</a>
+  <a href="./60_funzioni">lezione successiva (funzioni)</a>
 </div>
