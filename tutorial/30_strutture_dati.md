@@ -27,7 +27,7 @@ let ages = [2, 4, 16, 5, 10]
 > 💬 _Come dire..._
 >
 > Computer, usa parte della tua memoria per salvare questi numeri in questo ordine.\
-> D'ora in poi per referenziare (usare) questa lista (array) usaerò il nome `ages`.\
+> D'ora in poi per referenziare (usare) questa lista (array) usaerò il nome `ages`.
 
 Per accedere ai dati di un array, puoi usare la sintassi:
 
@@ -39,7 +39,7 @@ ages[1] // -> secondo valore, 4
 
 > 🔎 NOTA
 >
-> si inizia a contare da 0! Per accedere (leggere) al primo valore si sua <b>ages[0]</b> e NON <s>ages[1]</s>
+> si inizia a contare da 0! Per accedere (leggere) al primo valore si sua <b>ages\[0]</b> e NON <s>ages\[1]</s>
 > Questa è fonte di errore quando inizia a codare le prime volte, posso già dirti che ci andrai a sbattere 😊
 
 ### Esempio: accedere a (ie, leggere) un elemento di un array

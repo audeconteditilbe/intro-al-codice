@@ -18,7 +18,7 @@ let age = 45
 > 💬 *Come dire...*
 > 
 > Computer, usa una cella di memoria per salvare il valore 45.\
-> D'ora in poi per referenziare (usare) questo dato usaerò il nome `age`.\
+> D'ora in poi per referenziare (usare) questo dato usaerò il nome `age`.
 
 Si dice allora che `age` é una **variabile**.
 

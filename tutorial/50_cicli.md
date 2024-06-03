@@ -433,7 +433,7 @@ TODO
 > In questo approfondimento confrontiamo il cilco `while` con il ciclo `for`.
 > Sappi però che quelli in questo *Sexy approfondimento* sono discorsi che lasciano il tempo che trovano, per due motivi principalmente:
 >  - in generale la scelta migliore è di usare il tipo di ciclo che tu preferisci
->  - come [accenneremo in seguito](#ciclo-for-each), molti linguaggi offrono modi più comodi di scrivere cicli, che probabilmente
+>  - come [accenneremo in seguito](#ciclo-for-of), molti linguaggi offrono modi più comodi di scrivere cicli, che probabilmente
 >    usarai molto molto più spesso di quelli "tradizionali" trattai in questo *Sexy approfondimento*
 
 L'uso del ciclo `while` può essere spesso riassunto in 4 step:

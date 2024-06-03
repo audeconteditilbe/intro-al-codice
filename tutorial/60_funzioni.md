@@ -491,7 +491,7 @@ Questa funzione è più o meno generica di `concatStrings` dell'esempio preceden
 ### Esempio: funzione con operatori logici (numeri)
 
 Il seguente esempio prende spunto da un
-[esempio visto precedentemente](./30_if.md#esempio-combinare-operatori-di-confronto)
+[esempio visto precedentemente](./40_if.md#esempio-combinare-operatori-di-confronto)
 per costruire una funzione.
 
 Qual è il valore di `person1`, `person2`, `person3`?
