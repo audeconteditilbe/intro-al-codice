@@ -220,7 +220,7 @@ name = name + " è la CFO di Mia"
 > ```
 > In questo esempio `screamed` vale "ARIANNA".
 > 
-> `toUpperCase` si chiama "funzione". Parleremo delle funzioni [in seguito](./50_funzioni.md).
+> `toUpperCase` si chiama "funzione". Parleremo delle funzioni [in seguito](./60_funzioni.md).
 
 ## Booleani
 

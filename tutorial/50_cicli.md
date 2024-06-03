@@ -1,6 +1,6 @@
 <div style="display: flex;justify-content: space-between;font-size: 12px;">
-  <a href="./30_if">lezione precedente (if)</a>
-  <a href="./50_funzioni">lezione successiva (funzioni)</a>
+  <a href="./40_strutture_dati.md">lezione precedente (strutture dati)</a>
+  <a href="./60_funzioni.md">lezione successiva (funzioni)</a>
 </div>
 
 # Table of content
@@ -429,6 +429,6 @@ TODO
 TODO
 
 <div style="display: flex;justify-content: space-between;font-size: 12px;">
-  <a href="./30_if">lezione precedente (if)</a>
-  <a href="./50_funzioni">lezione successiva (funzioni)</a>
+  <a href="./40_strutture_dati.md">lezione precedente (strutture dati)</a>
+  <a href="./60_funzioni">lezione successiva (funzioni)</a>
 </div>
