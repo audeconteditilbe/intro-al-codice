@@ -2,6 +2,10 @@ class ExercisePage extends HTMLElement {
   connectedCallback () {
     this.innerHTML = `
       <header>
+        <nav>
+          <a href="../../../../tutorial/10_intro">Appunti</a>
+          <a href="../../../index.html">Lista esercizi</a>
+        </nav>
         <h1>Tocca a lei cara</h1>
         <p>Scrivi il codice nell'editor e premi "Conferma" per verificarne la correttezza</p>
       </header>
