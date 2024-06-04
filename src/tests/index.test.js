@@ -13,15 +13,7 @@ function start () {
     addReportSection(title, id)
     try {
       const res = test()
-      res.map(({ success, error }) => {
-        if (error) {
-          addReportItem(error, 'error', id)
-        } else if (success) {
-          addReportItem(success, 'success', id)
-        } else {
-          addReportItem('Encountered a test which is not "success" not "error"!', 'info', id)
-        }
-      })
+      res.map(({ status, msg, }) => addReportItem(msg, status, id))
       addReportItem(`Executed ${res.length} test cases`, 'info', id)
     } catch (err) {
       addReportItem(`Error executing ${title}: ${err}`, 'error', id)

@@ -1,11 +1,11 @@
-function pretty (input) {
+const pretty = (input) => {
   // if (typeof input === 'object' && !Array.isArray(input) && input !== null) {
   //   return JSON.stringify(input, null, 2)
   // }
   return JSON.stringify(input)
 }
 
-function assertEq (result, expected) {
+const assertEq = (result, expected) => {
   if (typeof result !== typeof expected) {
     return false
   }

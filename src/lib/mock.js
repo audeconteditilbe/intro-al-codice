@@ -1,7 +1,7 @@
 
 const rndBool = (prob = 0.5) => Math.random() < prob
 
-const rndFloat = (min = 0, max = 100) => ((Math.random() * (max - min)) + min).toFixed()
+const rndFloat = (min = 0, max = 100) => parseFloat(((Math.random() * (max - min)) + min).toFixed(2))
 const rndInt = (min = 0, max = 100) => parseInt(rndFloat(min, max))
 
 const extract = (arr) => arr[rndInt(0, arr.length-1)]
