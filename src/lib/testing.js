@@ -40,7 +40,7 @@ const getTestResult = (status, args, output, expected) => {
   }
 }
 
-const testing = (fun, target, ...args) => {
+const compare = (fun, target, ...args) => {
   const expected = target(...args)
   let output
   try {

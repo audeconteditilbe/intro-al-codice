@@ -49,21 +49,21 @@ function _validation (codeStr) {
 const _test = (code) => {
   const main = code()
   return [
-    testing(main, _target, ['A', 1, 'r', true, 'i', null, 'a', ['wrong'], 'n', {}, 'n', undefined, 'a']),
-    testing(main, _target, ['A', 'r', 'i', 'anna ', 'e ', 'Claudio ', 'vanno d\'accordo']),
-    testing(main, _target, 'str'),
-    testing(main, _target, false),
-    testing(main, _target, true),
-    testing(main, _target, [1, 2, 3]),
-    testing(main, _target, []),
-    testing(main, _target, {a: 'a'}),
-    testing(main, _target, undefined),
-    testing(main, _target, null),
+    compare(main, _target, ['A', 1, 'r', true, 'i', null, 'a', ['wrong'], 'n', {}, 'n', undefined, 'a']),
+    compare(main, _target, ['A', 'r', 'i', 'anna ', 'e ', 'Claudio ', 'vanno d\'accordo']),
+    compare(main, _target, 'str'),
+    compare(main, _target, false),
+    compare(main, _target, true),
+    compare(main, _target, [1, 2, 3]),
+    compare(main, _target, []),
+    compare(main, _target, {a: 'a'}),
+    compare(main, _target, undefined),
+    compare(main, _target, null),
   ]
 }
 const _randomTest = (code) => {
   const main = code()
-  return Array(100).fill(0).map(() => testing(main, _target, rnd()))
+  return Array(100).fill(0).map(() => compare(main, _target, rnd()))
 }
 const exercise = {
   name: 'Esercizio: concateniamoci 😏',
