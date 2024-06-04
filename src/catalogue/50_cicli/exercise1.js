@@ -1,36 +1,23 @@
-const _target = function main (obj1, obj2) {
-  let areEqual = true
-  let fieldNames = Object.keys(obj1)
-  let L = fieldNames.length
-  let idx = 0
-  while (idx < L)
+const _target = function main (names) {
+  let L = 0
+  for (let _ of names)
   {
-    let field = fieldNames[idx]
-    areEqual = areEqual && (obj1[field] === obj2[field])
-    idx = idx + 1
+    L = L + 1
   }
-  return areEqual
+  return L
 }
 
 const _solution = `
-let areEqual = true
-
-let fieldNames = Object.keys(obj1)
-let L = fieldNames.length
-let idx = 0
-while (idx < L)
+let L = 0
+for (let name of names)
 {
-  let field = fieldNames[idx]
-  areEqual = areEqual && (obj1[field] === obj2[field])
-  idx = idx + 1
+  L = L + 1
 }
 `
 
 const _initialValue = `
-// let obj = { ... }
-// let obj2 = { ... }
-
-let areEqual = ...
+// let names = [ ... ]
+let L
 `
 
 function _validation (codeStr) {
@@ -38,9 +25,9 @@ function _validation (codeStr) {
   let code
   try {
     code = new Function (`
-    function main (obj1, obj2) {
+    function main (names) {
       ${codeStr}
-      return areEqual
+      return L
     }
     return main
     `)
@@ -58,46 +45,27 @@ function _validation (codeStr) {
 const _test = (code) => {
   const main = code()
   
-  const data = [{ name: 'bob' }, { one: 1, two: 2 }, { name: 'Arianna', hot: true }]
-  const falseData = [{ name: 'bob2' }, { one: 1, two: 3 }, { name: 'Claudio', hot: true }]
   return [
-    ...data.map((obj, idx) => compare(main, _target, obj, falseData[idx])),
-    ...data.map((obj) => compare(main, _target, obj, obj)),
-    compare(main, _target, {}, {}),
-  ]
+    [],
+    [1],
+    [1, 2],
+    [1, 2, 3],
+    ['a', 'b', 'c'],
+    [false, false]
+  ].map((input) => compare(main, _target, input))
 }
 
 const _randomTest = (code) => {
   const main = code()
-
-  return [
-    ...Array(50).fill(0).map(() => {
-      const obj = rnd('object', 0, 0)
-      return compare(main, _target, obj, obj)
-    }),
-    ...Array(50).fill(0).map(() => {
-      const obj = rnd('object', 0, 0)
-      const field = Object.keys(obj)[0]
-      const fake = {...obj, [field]: 'unk'}
-      return compare(main, _target, obj, fake)
-    })
-  ]
+  return Array(100).fill(0).map(() => compare(main, _target, rnd('array')))
 }
 
 const exercise = {
-  name: 'Esercizio: confronta oggetti 🔎',
-  text: 'Modifica il codice di seguito in modo che, al termine dell\'esecuzione, il valore di "areEqual"'
-  + ' sia uguale a true se "obj1" e "obj2" hanno lo stesso contenuto, false altrimenti. Puoi assumere che:'
-  + `
-  <ul>
-    <li>
-      "obj1" e "obj2" abbiano gli stessi campi (ad esempio, se "obj1" ha solamente i campi "name" e "lastname",
-      anche "obj2" avrà solamente campi "name" e "lastname")
-    </li>
-    <li>
-      "obj1" e "obj2" non abbiano al loro interno campi di tipo oggetto o array
-    </li>
-  </ul>`,
+  name: 'Esercizio: la lunghezza non è tutto... ma è importante',
+  text: 'Fingiamo che non esista la proprietà <code>lenght</code> degli array: scrivi un ciclo <code>for of</code> di modo che al termine <code>L</code>'
+  + ' sia uguale alla lunghezza dell\'array <code>names</code>, ma non accedere mai a <code>names.length</code>!'
+  + '<br/>Nota come un ciclo for-of non serve usare a <code>.lenght</code>. Sapresti completare lo stesso esercizio con un ciclo for classico o un'
+  + ' while? Liberissima di provarci, ma non credo! 🙃',
   initialValue: _initialValue,
   solution: _solution,
   validation: _validation,

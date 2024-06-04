@@ -9,7 +9,7 @@ const route = () => {
     window.location.href = `./exercise.html${window.location.search}`
   }
   else {
-    window.location.href = './home.html'
+    window.location.href = './exerciseTree.html'
   }
 }
 
