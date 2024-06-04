@@ -484,7 +484,7 @@ Funzioni generiche, che si prestano ad essere usate in vari contesti, sono spess
 rendere le proprie funzioni tali.
 
 Sapresti scrivere una funzione che concatena un numero arbitrario di stinghe?
-<a href="../src/catalogue/60_funzioni/exercise3/index.html" target="_blank">Mettiti alla prova!</a>
+<a href="../pages/router.html?topic=60_funzioni&exercise=exercise3" target="_blank">Mettiti alla prova!</a>
 
 Questa funzione è più o meno generica di `concatStrings` dell'esempio precedente? Come mai?
 
@@ -540,7 +540,7 @@ checkEquality(7, 7) // -> stampa: "Due gocce d'acqua"
 
 ### Esercizio: funzione con if
 
-<a href="../src/catalogue/60_funzioni/exercise1/index.html" target="_blank">Ora prova tu!</a>
+<a href="../pages/router.html?topic=60_funzioni&exercise=exercise1" target="_blank">Ora prova tu!</a>
 Questo esercizio ti chiederà di completare una funzione di modo che esegua certe operazioni.
 
 ### Esempio: funzione con cicli all'interno
@@ -845,7 +845,7 @@ console.log(message5) // stampa "undefined"
 
 ### Esercizio: validazione argomenti
 
-<a href="../src/catalogue/60_funzioni/exercise2/index.html" target="_blank">Ora prova tu!</a>
+<a href="../pages/router.html?topic=60_funzioni&exercise=exercise2" target="_blank">Ora prova tu!</a>
 Questo esercizio è simile al [precedente](#esercizio-funzione-con-if), ma questa volta per completarlo correttamente
 dovrai verificare la correttezza degli argomenti in input.
 
@@ -854,21 +854,21 @@ dovrai verificare la correttezza degli argomenti in input.
 I seguenti esercizi possono essere utili per fare (ulteriore) pratica nella scrittura di funzioni,
 nonchè per renderti conto di cosa forse non ti è ancora chiaro.
 
-- <a href="../src/catalogue/60_funzioni/exercise4/index.html" target="_blank">Trova tutti i Waldo!</a>
-- <a href="../src/catalogue/60_funzioni/exercise5/index.html" target="_blank">Elon Musk ha 11 figli e è riuscito a non beccare neanche un nome normale</a>
-
+- <a href="../pages/router.html?topic=60_funzioni&exercise=exercise4" target="_blank">Trova tutti i Waldo!</a>
+- <a href="../pages/router.html?topic=60_funzioni&exercise=exercise5" target="_blank">Elon Musk ha 11 figli e è riuscito a non beccare neanche un nome normale</a>
+topic=60_funzioni&exercise=
 <details>
   <summary>Già incontrati sopra</summary>
   <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
     <ul>
       <li>
-        <a href="../src/catalogue/60_funzioni/exercise1/index.html" target="_blank">Vietato ai minori!</a>
+        <a href="../pages/router.html?topic=60_funzioni&exercise=exercise1" target="_blank">Vietato ai minori!</a>
       </li>
       <li>
-        <a href="../src/catalogue/60_funzioni/exercise2/index.html" target="_blank">Vietato ai minori... e a chi non ha età!</a>
+        <a href="../pages/router.html?topic=60_funzioni&exercise=exercise2" target="_blank">Vietato ai minori... e a chi non ha età!</a>
       </li>
       <li>
-        <a href="../src/catalogue/60_funzioni/exercise3/index.html" target="_blank">Concatenami tutto</a>
+        <a href="../pages/router.html?topic=60_funzioni&exercise=exercise3" target="_blank">Concatenami tutto</a>
       </li>
     </ul>
   </div>

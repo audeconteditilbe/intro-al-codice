@@ -46,7 +46,7 @@ function _validation (codeStr) {
 const _test = (code) => {
   const introduceFamily = code()
   return [
-    testing(
+    compare(
       introduceFamily,
       _target,
       {
@@ -66,17 +66,17 @@ const _test = (code) => {
         ]
       }
     ),
-    testing(
+    compare(
       introduceFamily,
       _target,
       { name: 'Bob', children: [] }
     ),
-    testing(
+    compare(
       introduceFamily,
       _target,
       { name: 'Bruce', children: [{ name: 'Chettina' }] }
     ),
-    testing(
+    compare(
       introduceFamily,
       _target,
       { name: 'Homer', children: [{ name: 'Bart' }, { name: 'Lisa' }, { name: 'Meggie' }] }
@@ -86,7 +86,7 @@ const _test = (code) => {
 const _randomTest = (code) => {
   const introduceFamily = code()
 
-  return Array(100).fill(0).map(() => testing(introduceFamily, _target, {
+  return Array(100).fill(0).map(() => compare(introduceFamily, _target, {
     name: rnd('string'),
     children: [
       Array(rnd('integer', 0, 10))

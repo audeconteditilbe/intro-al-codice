@@ -49,16 +49,16 @@ const testFunction = (input, expected) => (code) => {
 const _test = (code) => {
   const findWaldos = code()
   return [
-    testing(findWaldos, _target, ['Waldo', 'Waldo', 'Arianna']),
-    testing(findWaldos, _target, ['Arianna']),
-    testing(findWaldos, _target, []),
-    testing(findWaldos, _target, [1, 'Waldo', 'Arianna']),
-    testing(findWaldos, _target, ['Not Waldo', 'waldo', 'Waldo']),
+    compare(findWaldos, _target, ['Waldo', 'Waldo', 'Arianna']),
+    compare(findWaldos, _target, ['Arianna']),
+    compare(findWaldos, _target, []),
+    compare(findWaldos, _target, [1, 'Waldo', 'Arianna']),
+    compare(findWaldos, _target, ['Not Waldo', 'waldo', 'Waldo']),
   ]
 }
 const _randomTest = (code) => {
   const findWaldos = code()
-  return Array(100).fill(0).map(() => testing(findWaldos, _target, rnd('array')))
+  return Array(100).fill(0).map(() => compare(findWaldos, _target, rnd('array')))
 }
 const exercise = {
   name: 'Esercizio: find them Waldos!',

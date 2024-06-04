@@ -1,4 +1,3 @@
-
 <div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a></a>
   <a href="./20_variabili">lezione successiva (variabili)</a>

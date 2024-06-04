@@ -109,9 +109,31 @@ addTest({
   test: () => testCases.map(({ input, expected }) => {
     try {
       const output = assertEq(...input)
-      return getTestResult(output === expected, input, output, expected)
+      return getTestResult(output === expected ? 'success' : 'error', input, output, expected)
     }  catch (err) {
-      return { error: `Error: with input ${JSON.stringify(input)}, the following error is thrown: ${err}` }
+      return { status: 'error', msg: `Error: with input ${JSON.stringify(input)}, the following error is thrown: ${err}` }
     }
   })
+})
+
+addTest({
+  title: 'rnd',
+  test: () => Array(10).fill(0)
+    .flatMap(() => ([
+      ['string', 'integ', false],
+      ['integer', 'number', false],
+      ['float', 'number', false],
+      ['boolean', 'boolean', false],
+      ['object', 'object', false],
+      ['array', 'object', true],
+    ])
+  ).map(([input, expectedType, expectedIsArr]) => {
+    try {
+        const obj = rnd(input)
+        const result = (typeof obj === expectedType) && (Array.isArray(obj) === expectedIsArr)
+        return getTestResult(result ? 'success' : 'error', [input], obj, [expectedType, expectedIsArr])
+      }  catch (err) {
+        return { status: 'error', msg: `Error: with input ${JSON.stringify(input)}, the following error is thrown: ${err}` }
+      }
+    })
 })

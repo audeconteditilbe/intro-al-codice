@@ -2,40 +2,40 @@ const reportResult = document.getElementById('test-report')
 const startButton = document.getElementById('start-button')
 
 const tests = []
-function addTest ({title, test}) {
+const addTest = ({title, test}) => {
   tests.push({title, test})
 }
 
-function start () {
+const start = () => {
   reset()
 
   tests.forEach(({ title, test }, id) => {
     addReportSection(title, id)
     try {
-      const res = test()
-      res.map(({ success, error }) => {
-        if (error) {
-          addReportItem(error, 'error', id)
-        } else if (success) {
-          addReportItem(success, 'success', id)
-        } else {
-          addReportItem('Encountered a test which is not "success" not "error"!', 'info', id)
-        }
-      })
-      addReportItem(`Executed ${res.length} test cases`, 'info', id)
+      const reports = test().map(({ status, msg, }) => ({msg, status, id}))
+      addReportItem(`Executed ${reports.length} test cases`, 'info', id)      
+      const fails = reports.filter(({ status }) => status !== 'success')
+      
+      addReportItem(
+        `${reports.length - fails.length}/${reports.length} test cases passed`, fails.length > 0 ? 'error' : 'success', id
+      )
+      
+      if (fails.length > 0) {
+        fails.forEach(({ msg, status, id }) => addReportItem(msg, status, id))
+      }
     } catch (err) {
       addReportItem(`Error executing ${title}: ${err}`, 'error', id)
     }
   })
 }
 
-function reset () {
+const reset = () => {
   reportResult.classList.remove('error')
   reportResult.classList.remove('success')
   reportResult.innerText = ''
 }
 
-function addReportSection (title, id) {
+const addReportSection = (title, id) => {
   const sectionTitle = document.createElement('h2')
   sectionTitle.classList.add('test-section-title')
   sectionTitle.innerText = title
@@ -47,7 +47,7 @@ function addReportSection (title, id) {
   reportResult.appendChild(list)
 }
 
-function addReportItem (msg, type, id) {
+const addReportItem = (msg, type, id) => {
   const item = document.createElement('li')
   item.classList.add(type)
   item.innerText = msg

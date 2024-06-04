@@ -39,19 +39,19 @@ function _validation (codeStr) {
 const _test = (code) => {
   const isAdult = code()
   return [
-    ...Array(25).fill(0).map((_, idx) => testing(isAdult, _target, idx)),
-    testing(isAdult, _target, undefined),
-    testing(isAdult, _target, 'str'),
-    testing(isAdult, _target, '20'),
-    testing(isAdult, _target, false),
-    testing(isAdult, _target, true),
-    testing(isAdult, _target, { name: 'Arianna' }),
-    testing(isAdult, _target, [1, 2, 3]),
+    ...Array(25).fill(0).map((_, idx) => compare(isAdult, _target, idx)),
+    compare(isAdult, _target, undefined),
+    compare(isAdult, _target, 'str'),
+    compare(isAdult, _target, '20'),
+    compare(isAdult, _target, false),
+    compare(isAdult, _target, true),
+    compare(isAdult, _target, { name: 'Arianna' }),
+    compare(isAdult, _target, [1, 2, 3]),
   ]
 }
 const _randomTest = (code) => {
   const isAdult = code()
-  return Array(100).fill(0).map(() => testing(isAdult, _target, rnd()))
+  return Array(100).fill(0).map(() => compare(isAdult, _target, rnd()))
 }
 const exercise = {
   name: 'Esercizio: vietato ai minori 🔞... e a chi non ha un\'età',

@@ -31,12 +31,12 @@ function _validation (codeStr) {
 }
 const _test = (code) => {
   const isAdult = code()
-  return Array(25).fill(0).map((_, idx) => testing(isAdult, _target, idx))
+  return Array(25).fill(0).map((_, idx) => compare(isAdult, _target, idx))
 }
 
 const _randomTest = (code) => {
   const isAdult = code()
-  return Array(100).fill(0).map(() => testing(isAdult, _target, rnd('integer')))
+  return Array(100).fill(0).map(() => compare(isAdult, _target, rnd('integer')))
 }
 
 const exercise = {
