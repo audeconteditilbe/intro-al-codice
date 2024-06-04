@@ -61,9 +61,9 @@ const _test = (code) => {
   const data = [{ name: 'bob' }, { one: 1, two: 2 }, { name: 'Arianna', hot: true }]
   const falseData = [{ name: 'bob2' }, { one: 1, two: 3 }, { name: 'Claudio', hot: true }]
   return [
-    ...data.map((obj, idx) => testing(main, _target, obj, falseData[idx])),
-    ...data.map((obj) => testing(main, _target, obj, obj)),
-    testing(main, _target, {}, {}),
+    ...data.map((obj, idx) => compare(main, _target, obj, falseData[idx])),
+    ...data.map((obj) => compare(main, _target, obj, obj)),
+    compare(main, _target, {}, {}),
   ]
 }
 
@@ -73,13 +73,13 @@ const _randomTest = (code) => {
   return [
     ...Array(50).fill(0).map(() => {
       const obj = rnd('object', 0, 0)
-      return testing(main, _target, obj, obj)
+      return compare(main, _target, obj, obj)
     }),
     ...Array(50).fill(0).map(() => {
       const obj = rnd('object', 0, 0)
       const field = Object.keys(obj)[0]
       const fake = {...obj, [field]: 'unk'}
-      return testing(main, _target, obj, fake)
+      return compare(main, _target, obj, fake)
     })
   ]
 }

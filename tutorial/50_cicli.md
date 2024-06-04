@@ -416,7 +416,7 @@ Prova a farci una pensata!
 
 ### Esercizio: confrontare due oggetti
 
-<a href="../src/catalogue/50_cicli/exercise1/index.html" target="_blank">...e due oggetti?</a>
+<a href="../src/exercise.html?target=50_cicli&exercise=exercise1" target="_blank">...e due oggetti?</a>
 
 
 ## Ciclo `for`

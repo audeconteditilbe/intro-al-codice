@@ -1,12 +1,12 @@
 
 const route = () => {
   const searchValues = Object.fromEntries(window.location.search.replace(/^\?/, '').split('&').map((chunk) => chunk.split('=')))
-  
-  if (searchValues.path) {
-    window.location.href = `./catalogue/${searchValues.path}/index.js`
-  }
-  else if (searchValues.topic && searchValues.exercise) {
-    window.location.href = `./catalogue/${searchValues.topic}/${searchValues.exercise}/index.js`
+  // if (searchValues.path) {
+  //   window.location.href = `./${searchValues.path}`
+  // }
+  // else
+  if (searchValues.topic && searchValues.exercise) {
+    window.location.href = `./exercise.html${window.location.search}`
   }
   else {
     window.location.href = './home.html'
