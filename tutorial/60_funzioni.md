@@ -162,9 +162,9 @@ let sentence = addText("Arianna", "Ginger è bella!!")
                                        ⬇️
                                        ⬇️ // quello che sta a destra di `return` è il risultato
                                        ⬇️
-              |-------------------------------------------------------|
-              | "Arianna dice che: 'Ginger è bella!!'. Che ne pensi?" |
-              |-------------------------------------------------------|
+              |--------------------------------------------------------------|
+              | return "Arianna dice che: 'Ginger è bella!!'. Che ne pensi?" |
+              |--------------------------------------------------------------|
 
 let sentence = "Arianna dice che: 'Ginger è bella!!'. Che ne pensi?"
 ```
@@ -792,15 +792,15 @@ console.log(isArr) // stampa `true`
 > 🔎 NOTA
 > 
 > In JavaScript, come detto, le variabili non definite sono uguali ad `undefined`.
-> Quando si chiede il tipo di una variabile non definita, JavaScript risponde on la stringa "undefined".\
+> Quando si chiede il tipo di una variabile non definita, JavaScript risponde con la stringa "undefined".\
 > E' un linguaggio curioso.
 
 
 > 🔎 NOTA
 > 
 > In JavaScript, l'operatore `typeof` restituisce `object` sia nel caso di variabili array che nel caso di oggetti.
-> Per controllare se un valore è un'array, si può usare la funzione speciale `Array.isArray(...)`. Questa restituisce
-> `true` se l'input è un'array, `false` altrimenti.
+> Per controllare se un valore è un array, si può usare la funzione speciale `Array.isArray(...)`. Questa restituisce
+> `true` se l'input è un array, `false` altrimenti.
 
 #### Esempio: validare il tipo degli argomenti di una funzione
 
@@ -828,13 +828,13 @@ const message2 = greet("Bruce", false)
 console.log(message2) // stmapa: "Con te non ci parlo!"
 
 const message3 = greet(0, false)
-console.log(message3) // non stampa nulla, perchè message3 è `undefined`
+console.log(message3) // stampa "undefined"
 
 const message4 = greet("Arianna", 0)
-console.log(message4) // non stampa nulla, perchè message4 è `undefined`
+console.log(message4) // stampa "undefined"
 
 const message5 = greet("Arianna", undefined)
-console.log(message5) // non stampa nulla, perchè message5 è `undefined`
+console.log(message5) // stampa "undefined"
 ```
 
 > 🔎 NOTA

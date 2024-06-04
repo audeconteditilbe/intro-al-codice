@@ -184,9 +184,9 @@ TODO
 
 ## Mappe
 
-Le mappe, in generale, rappresentano l'associazione fra un identificativo arbitrario (detto "chiave") e un valore.
+Le mappe, in generale, rappresentano l'associazione 1 a 1 fra identificativi arbitrari (detti "chiave") e valori.
 
-Con le mappe vai normalmente a modellare quegli insiemi di dati che potrebbe essere efficacemente rappresentato tramite una singola riga di una tabella.
+Con le mappe vai normalmente a modellare quegli insiemi di dati che potrebbero essere efficacemente rappresentati tramite una singola riga di una tabella.
 
 Ad esempio, dati come questi:
 
