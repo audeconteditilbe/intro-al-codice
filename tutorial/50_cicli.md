@@ -1,4 +1,4 @@
-<div style="display: flex;justify-content: space-between;font-size: 12px;">
+../src/catalogue/60_funzioni/<div style="display: flex;justify-content: space-between;font-size: 12px;">
   <a href="./40_if">lezione precedente (if)</a>
   <a href="./60_funzioni">lezione successiva (funzioni)</a>
 </div>
@@ -416,7 +416,8 @@ Prova a farci una pensata!
 
 ### Esercizio: confrontare due oggetti
 
-<a href="../src/exercise.html?target=50_cicli&exercise=exercise1" target="_blank">...e due oggetti?</a>
+
+<a href="../pages/router.html?topic=50_cicli&exercise=exercise1" target="_blank">...e due oggetti?</a>
 
 
 ## Ciclo `for`

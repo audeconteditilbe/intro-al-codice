@@ -7,3 +7,6 @@
   - [Cicli](./tutorial/50_cicli.md)
   - [Funzioni](./tutorial/60_funzioni.md)
 
+## Esercizi
+
+Puoi giocherellare un po' <a href="./pages/router.html" target="_blank">qui</a> 😊
