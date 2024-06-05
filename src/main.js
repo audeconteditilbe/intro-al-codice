@@ -54,7 +54,7 @@ class ExercisePageManager {
     }
   }
 
-  testMeLicia (testResults) {
+  evaluateReport (testResults) {
     const report = testResults.reduce((acc, { msg, status }) => {
       status === 'error' && acc.error.push(msg)
       status === 'success' && acc.success.push(msg)
@@ -90,7 +90,7 @@ class ExercisePageManager {
       return
     }
 
-    const { report, oks, tot, success } = this.testMeLicia(this.test(code))
+    const { report, oks, tot, success } = this.evaluateReport(this.test(code))
     if (!success) {
       this.addReportItem(`Report: ${oks} test passati su ${tot}`, 'error')
       report.invalid.map((msg) => this.addReportItem(msg, 'error'))
@@ -99,7 +99,7 @@ class ExercisePageManager {
       return
     }
     
-    const { report: rndReport, oks: rndOks, tot: rndTot, success: rndSuccess } = this.testMeLicia(this.randomTest(code))
+    const { report: rndReport, oks: rndOks, tot: rndTot, success: rndSuccess } = this.evaluateReport(this.randomTest(code))
     if (!rndSuccess) {
       this.addReportItem(`Report: ${oks + rndOks} test passati su ${tot + rndTot}`, 'error')
       rndReport.invalid.map((msg) => this.addReportItem(msg, 'error'))
