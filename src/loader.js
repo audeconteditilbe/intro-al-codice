@@ -1,12 +1,11 @@
 
 const initialize = () => {
-  const searchValues = Object.fromEntries(window.location.search.replace(/^\?/, '').split('&').map((chunk) => chunk.split('=')))
+  const { topic, exercise } = searchValues()
   const base = 'intro-al-codice'
   const [prefix,] = window.location.pathname.split(base)
 
-  if (searchValues.topic && searchValues.exercise) {
-    const exercisePath = `${prefix}${base}/src/catalogue/${searchValues.topic}/${searchValues.exercise}.js`
-    console.log(prefix, exercisePath)
+  if (topic && exercise) {
+    const exercisePath = `${prefix}${base}/src/catalogue/${topic}/${exercise}.js`
     const script = document.createElement('script')
     script.setAttribute('src', exercisePath)
     document.body.appendChild(script)

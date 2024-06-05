@@ -1,5 +1,3 @@
-require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@latest/min/vs' }})
-
 class ExercisePageManager {
   form = document.getElementById('exercise-form')
   title = document.getElementById('exercise-title')
@@ -7,6 +5,7 @@ class ExercisePageManager {
   report = document.getElementById('report')
   resetButton = document.getElementById('reset-button')
   solutionButton = document.getElementById('solution-button')
+  editor = getEditor(searchValues().editor)
   solution
   initialValue
   validation
@@ -23,7 +22,6 @@ class ExercisePageManager {
     this.reportResult.innerText = ''
   }
 
-  
   addReportItem (msg, type) {
     const item = document.createElement('li')
     item.innerText = msg
@@ -38,7 +36,7 @@ class ExercisePageManager {
     const ok = confirm("Sei sicura di voler rirpistinare i valori iniziali?")
     if (ok) {
       this.resetReoport()
-      window.editor.setValue(this.initialValue)
+      this.editor.value = this.initialValue
     }
   }
 
@@ -48,9 +46,9 @@ class ExercisePageManager {
     const ok = confirm("Sei sicura di voler vedere la soluzione?")
     if (ok) {
       this.resetReoport()
-      const current = window.editor.getValue()
+      const current = this.editor.value
       const commented = current.split('\n').map((line) => `// ${line}`).join('\n')
-      window.editor.setValue(`${this.solution}\n${commented}`)
+      this.editor.value = `${this.solution}\n${commented}`
     }
   }
 
@@ -77,7 +75,7 @@ class ExercisePageManager {
   
     let validationReport = {}
     try {
-      validationReport = this.validation(window.editor.getValue())
+      validationReport = this.validation(this.editor.value)
     } catch (err) {
       validationReport.error = `Il codice ha lanciato un errore:\n${err}`
     }
@@ -111,12 +109,10 @@ class ExercisePageManager {
   }
   
   loadExercise ({ name, text, initialValue, validation: _validation, test: _test, randomTest: _randomTest, solution: _solution }) {
-    require(["vs/editor/editor.main"], function () {
-      window.editor = monaco.editor.create(
-        document.getElementById('container'),
-        { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true, scrollBeyondLastLine: false }
-      )
-    })
+    this.editor.mount(
+      document.getElementById('container'),
+      { value: initialValue, language: 'javascript', theme: 'vs-dark', automaticLayout: true, scrollBeyondLastLine: false }
+    )
     this.resetReoport()
     this.title.innerText = name
     this.instructions.innerHTML = text

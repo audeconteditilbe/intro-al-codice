@@ -387,38 +387,36 @@ Prova a farci una pensata!
 
 <details>
   <summary>⚠️ SPOILER ⚠️</summary>
-  <div style="border: 1px solid #aaa;border-radius: 5px;padding: 5px;">
+  <div style="border: 1px solid #aaa; border-radius: 5px; padding: 5px;">
+  <code class="language-javascript">
+      
+      let names = [/*...*/]
+      let names2 = [/*...*/]
 
-    ```javascript
-    let names = [/*...*/]
-    let names2 = [/*...*/]
+      let areSame
 
-    let areSame
-
-    if (names.length !== names2.length)
-    {
-      areSame = false
-    } else
-    {
-      let L = names.length
-      let idx = 0
-      let areSame = true
-      while (idx < L)
+      if (names.length !== names2.length)
       {
-        areSame = areSame && (names[idx] === names2[idx])
-        idx = idx + 1
+        areSame = false
+      } else
+      {
+        let L = names.length
+        let idx = 0
+        let areSame = true
+        while (idx < L)
+        {
+          areSame = areSame && (names[idx] === names2[idx])
+          idx = idx + 1
+        }
       }
-    }
-    ```
 
+  </code>
   </div>
 </details>
 
 ### Esercizio: confrontare due oggetti
 
-
 <a href="../pages/router.html?topic=50_cicli&exercise=exercise1" target="_blank">...e due oggetti?</a>
-
 
 ## Ciclo `for`
 

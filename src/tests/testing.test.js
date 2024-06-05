@@ -120,7 +120,7 @@ addTest({
   title: 'rnd',
   test: () => Array(10).fill(0)
     .flatMap(() => ([
-      ['string', 'integ', false],
+      ['string', 'string', false],
       ['integer', 'number', false],
       ['float', 'number', false],
       ['boolean', 'boolean', false],
