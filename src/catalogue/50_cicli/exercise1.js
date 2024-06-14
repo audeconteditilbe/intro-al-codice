@@ -63,9 +63,9 @@ const _randomTest = (code) => {
 
 const exercise = {
   name: 'Esercizio: la lunghezza non è tutto... ma è importante',
-  text: 'Fingiamo che non esista la proprietà <code>lenght</code> degli array: scrivi un ciclo <code>for of</code> di modo che al termine <code>L</code>'
+  text: 'Fingiamo che non esista la proprietà <code>length</code> degli array: scrivi un ciclo <code>for of</code> di modo che al termine la variabile <code>L</code>'
   + ' sia uguale alla lunghezza dell\'array <code>names</code>, ma non accedere mai a <code>names.length</code>!'
-  + '<br/>Nota come un ciclo for-of non serve usare a <code>.lenght</code>. Sapresti completare lo stesso esercizio con un ciclo for classico o un'
+  + '<br/>Nota come usando un ciclo for-of non serve usare <code>.lenght</code>. Sapresti completare lo stesso esercizio con un ciclo for classico o un'
   + ' while? Liberissima di provarci, ma non credo! 🙃',
   initialValue: _initialValue,
   solution: _solution,
