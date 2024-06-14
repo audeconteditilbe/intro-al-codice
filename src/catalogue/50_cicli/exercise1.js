@@ -16,6 +16,7 @@ for (let name of names)
 `
 
 const _initialValue = `
+// Immagina che siano qualche riga più sia stato definito l'array names
 // let names = [ ... ]
 let L
 `
