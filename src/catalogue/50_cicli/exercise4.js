@@ -9,10 +9,11 @@ const _solution = `
 `
 
 const _initialValue = `
+// Immagina che siano qualche riga più su siano stati definiti obj1 e obj2
 // let obj = { ... }
 // let obj2 = { ... }
 
-let areEqual = ...
+let areEqual
 `
 
 function _validation (codeStr) {
@@ -70,9 +71,9 @@ const exercise = {
   + `
   <details>
     <summary>In caso te lo stessi chiedendo</summary>
-    La versione SUPER difficile, in cui non vale neanche l'assunzione rimasta, e in cui quindi gli oggetti possano includere al loro interno campi
-    di tipo oggetto o array, non te la darò come esercizio, poichè è un po' troppo avanzata - probabilmente qua e là trovi dev professionisti che
-    avrebbero difficoltà a farla...
+    La versione SUPER difficile, in cui non vale neanche l'assunzione rimasta - in cui quindi gli oggetti possano includere al loro interno campi
+    di tipo oggetto o array - non te la darò come esercizio, poichè è un po' troppo avanzata - probabilmente qua e là trovi dev professionisti che
+    ne sarebbero messi in difficoltà...
     <br/>
     E' difficile ma non impossibile e se vuoi cimentarti sei assolutamente incoraggiata a farlo, ma prima ti consiglio di passare da me, in quanto
     è richiesta <a href="https://en.wikipedia.org/wiki/Recursion_(computer_science)" target="_blank">una tecnica di programmazione particolare</a>
