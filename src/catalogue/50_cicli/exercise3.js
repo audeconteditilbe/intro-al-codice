@@ -27,6 +27,7 @@ while (idx < L)
 `
 
 const _initialValue = `
+// Immagina che siano qualche riga più su siano stati definiti obj1 e obj2
 // let obj = { ... }
 // let obj2 = { ... }
 
